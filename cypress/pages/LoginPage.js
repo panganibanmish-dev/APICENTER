@@ -38,6 +38,7 @@ class LoginPage {
   };
 
   blankInput = () => {
+    cy.wait(3000);
     this.elements.rememberMeToggle().click();
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
     this.elements.btn().click().should("be.visible").contains("Log in");
@@ -62,6 +63,9 @@ class LoginPage {
 
   goToSignUpLink() {
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
+    cy.visit('/register');
+    cy.wait(3000);
+    this.goToLoginPage();
   };
 }
 

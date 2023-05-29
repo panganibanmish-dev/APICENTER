@@ -1,6 +1,7 @@
 import data from "../fixtures/data.json";
-import LoginPage from "../pages/LoginPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import LoginPage from "../pages/LoginPage";
+// import SignupPage from "../pages/SignupPage";
 
 describe('Login Page Test Suite', () => {
     beforeEach(() => {
@@ -12,7 +13,9 @@ describe('Login Page Test Suite', () => {
     });
     it('Email and Password Fields - Blank input', () => {
         LoginPage
-            .blankInput()
+            .goToSignUpLink();
+        LoginPage
+            .blankInput();
     });
     it('Email and Password Fields - Fill out email and password fields with the invalid credentials', () => {
         LoginPage
