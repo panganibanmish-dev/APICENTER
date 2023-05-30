@@ -2,7 +2,7 @@ class LoginPage {
   elements = {
     emailTextBox: () => cy.get("#email-field"),
     passwordTextBox: () => cy.get("#password-field"),
-    rememberMeToggle: () => cy.get("label[for='remember-me']"),
+    rememberMeToggle: () => cy.get("label[for='remember-me']"), 
     btn: () => cy.get(".button"),
     btnLink: () => cy.get(".btn.btn-link.font_bold"),
     homePage: () => cy.get(".breadcrumb_link.active"),

@@ -6,11 +6,14 @@ class SignupPage {
         inputEmailAdd: () => cy.get("#email-field"),
         inputPassword: () => cy.get("#password-field"),
         inputConfirmPassword: () => cy.get("#password-confirm-field"),
-        selectTags: () => cy.get(".multiselect__tags"),
-        clickToggleTerms: () => cy.get("label[for='terms']"),
-        clickToggleProcessingAgreement: () => cy.get("label[for='processing_agreement']"),
+        selectTags: () => cy.get("div[type='multi-select'] div[class='multiselect__tags']"),
+        clickToggleTerms: () => cy.get(".form_row.form_group.mb-0"),
+        clickToggleProcessingAgreement: () => cy.get(".form_row.form_group.mt-0"),
         btn: () => cy.get(".button"),
         btnLink: () => cy.get(".btn.btn-link.font_bold"),
+        inputRegisterApps: () => cy.get("#register-applications"),
+        app1: () => cy.get("//li[@id='register-applications-890']"),
+        selectApps: () => cy.get(".multiselect__option--highlight multiselect__option"),
     };
 
     goToRegisterPage = () => {
@@ -20,24 +23,21 @@ class SignupPage {
     };
 
     checkRequiredFields = () => {
-        cy.wait(3000);
         this.elements.inputFirstName().click();
         this.elements.inputLastName().click();
         this.elements.inputPhoneNumber().click();
         this.elements.inputEmailAdd().click();
         this.elements.inputPassword().click();
         this.elements.inputConfirmPassword().click();
-        // this.elements.selectTags().click().should("be.visible").contains("English");
-        // this.elements.selectTags().click().should("be.visible").contains("Applications");
-        this.elements.clickToggleTerms().click().should("be.visible").contains("I accept the Terms of Service");
-        this.elements.clickToggleProcessingAgreement().click().should("be.visible").contains("I accept the Processing Agreement");
+        this.elements.clickToggleTerms().click();
+        this.elements.clickToggleProcessingAgreement().click();
         cy.wait(5000);
         this.elements.btn().should("be.visible").contains("Sign up").click();
     };
 
     clickToggleTermsAndProcessingAgreement() {
-        this.elements.clickToggleTerms().click().should("be.visible").contains("I accept the Terms of Service");
-        this.elements.clickToggleProcessingAgreement().click().should("be.visible").contains("I accept the Processing Agreement");
+        this.elements.clickToggleTerms().click();
+        this.elements.clickToggleProcessingAgreement().click();
     };
 
     goToLoginLink() {

@@ -8,7 +8,7 @@ describe('Sign Up Page Test Suite', () => {
     it('Just redirected - Check the required fields', () => {
         SignupPage.goToLoginLink();
         SignupPage.checkRequiredFields();
-
+        
         // SignupPage.clickToggleTermsAndProcessingAgreement();
         // cy.window().should("be.visible").then(([mainWindow, newWindow]) => {
         //     const newWindowPage = new NewWindowPage(newWindow);
