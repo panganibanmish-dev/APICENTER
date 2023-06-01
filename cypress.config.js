@@ -6,12 +6,16 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    env: {
+      login_email: "panganibanmish.work@gmail.com",
+      login_password: "Radeonstar@1030",
+    },
   },
   requestTimeout: 30000,
   numTestsKeptInMemory: 0,
   numTestsKeptInMemory: 0,
   responseTimeout: 30000,
-  pageLoadTimeout: 60000,
+  pageLoadTimeout: 80000,
   chromeWebSecurity: false,
   screenshotOnRunFailure: false,
   defaultCommandTimeout: 30000,

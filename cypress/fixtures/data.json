@@ -3,6 +3,12 @@
         "email": "panganibanmish.work@gmail.com",
         "password": "Radeonstar@1030",
         "inEmail": "panganibanmish.test@gmail.com",
-        "inPassword": "Radeonstar@1120"
+        "inPassword": "Radeonstar@1120",
+        "mainfirstname": "Michelle",
+        "mainlastname": "Panganiban",
+        "mainphone": "0923456784",
+        "firstname": "Test Michelle",
+        "lastname": "Test Panganiban",
+        "phone": "0923456784"
     }
 }
