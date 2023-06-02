@@ -36,13 +36,49 @@ class BillingPage {
                 .should("be.visible").contains("VAT ID number"),
         inputVATNumber: () =>
             cy.get("#billing-vat_id"),
-        btnUpdate: () => cy.get("div[class='form_row'] button[class='button']")
+        btnUpdate: () => cy.get("div[class='form_row'] button[class='button']"),
+        errormsg: () => cy.get(".invalid-feedback"),
     };
     
     clickBillingTab = () => {
         this.elements.btnAccount().click();
         this.elements.btnBilling().should("be.visible").contains("Billing").click();
     };
+
+    verifyLabel = () => {
+        this.elements.lblActiveSubscriptions();
+        this.elements.lblCurrentPlan();
+        this.elements.lblFooter();
+        this.elements.lblPaymentInfo();
+        this.elements.lblWarning();
+        this.elements.lblWarning2();
+        this.elements.lblSendingInvoiceTo();
+        this.elements.lblCCInvoiceTo();
+        this.elements.lblVATNumber();
+    };
+
+    clickUpdatePaymentMethod = () => {
+        this.elements.btnPaymentMethod().click();
+    };
+
+    clickUpdatePaymentInfo = () => {
+        this.elements.btnUpdate().click();
+    };
+
+    checkRequiredFields = (invoice_to, vat_id) => {
+        this.elements.inputDisableSendingInvoiceTo().should("be.vsible");
+        this.elements.inputCCInvoiceTo().should("be.visible").type(invoice_to);
+        this.elements.inputVATNumber().should("be.visible").type(vat_id);
+        this.elements.btnUpdate().click();
+
+        this.elements.errormsg().should("be.visible").contains("The billing cc invoices to must be a valid email address.");
+        this.elements.errormsg().should("be.visible").contains("This VAT identification number is invalid.");
+    };
+
+    
+
+
+
 }
 
 module.exports = new BillingPage(); 
