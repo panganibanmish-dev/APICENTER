@@ -25,11 +25,11 @@ class ProfilePage {
     };
 
     //redirect to profile page
-    goToProfile = () => {
-        cy.viewport(1280, 768)
-        cy.visit('/dashboard/account/profile')
-        cy.wait(3000)
-    };
+    // goToProfile = () => {
+    //     cy.viewport(1280, 768)
+    //     cy.visit('/dashboard/account/profile')
+    //     cy.wait(3000)
+    // };
 
     //redirect to profile account
     clickProfileTab = () => {
@@ -38,16 +38,8 @@ class ProfilePage {
     };
 
     //update profile photo
-    uploadPhoto(fileName, fileType) {
-        const fileInputSelector = '#choose-photo';
-
-        cy.fixture(fileName).then((fileContent) => {
-            cy.get(fileInputSelector).attachFile({
-                fileName,
-                fileType,
-                fileContent
-            });
-        });
+    setProfilePhoto() {
+       this.elements.uploadProfilePhoto().selectFile('cypress/fixtures/api.png');
     };
 
     //update profile language
@@ -70,7 +62,7 @@ class ProfilePage {
         this.elements.btnUpdateProfile().click();
     };
 
-    //Update info and showing confirmation updated
+    //update info and showing confirmation updated
     updateContactInformation = (firstname, lastname, phone, email) => {
         cy.wait(5000);
         this.elements.inputFirstname().clear();

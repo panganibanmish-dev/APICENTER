@@ -9,10 +9,7 @@ describe('Profile Page Test Suite', () => {
         cy.get("body").contains("Account");
         ProfilePage.clickProfileTab();
     });
-    it('It should be allowing the user to change/update the profile photo of the account and it should be showing confirmation that the contact information and billing address has been updated ', () => {
-        const fileName = 'api.png';
-        const fileType = 'image/png';
-
+    it('It should be allowing the user to change/update the profile photo of the account and it should be showing confirmation that the contact information and billing address have been updated ', () => {
         const data = 'English';
         const data1 = "Nederlands";
 
@@ -23,8 +20,7 @@ describe('Profile Page Test Suite', () => {
         const zip = "4405";
         const country = "Philippines";
 
-        // cy.get("#choose-photo").should("contain", "Update Photo").click().attachFile("api.png");
-        ProfilePage.uploadPhoto(fileName, fileType);
+        ProfilePage.setProfilePhoto();
         ProfilePage.setProfileLanguage(data, data1);
         ProfilePage.updateContactInformation(updatedata.valid.firstname, updatedata.valid.lastname, updatedata.valid.phone, updatedata.valid.email);
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
