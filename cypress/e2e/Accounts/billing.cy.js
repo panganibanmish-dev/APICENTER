@@ -1,6 +1,5 @@
 import BillingPage from "../../pages/Accounts/BillingPage";
 import LoginPage from "../../pages/LoginPage";
-import updatedata from "../../fixtures/data.json";
 
 describe('Billing Page Test Suite', () => {
     beforeEach(() => {

@@ -27,5 +27,14 @@ describe('Integrations Page Test Suite', () => {
     it('Step 2 - It should be add two application', () => {
         IntegrationsPage
             .followStep2();
+        cy.wait(3000);
+    });
+    it('Step 3 - It should be synchronize your applications', () => {
+        IntegrationsPage
+            .followStep3();
+        cy.wait(3000);
+    });
+    it('Step 4 - It should be se your integration settings', () => {
+        
     });
 })

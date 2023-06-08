@@ -212,8 +212,57 @@ class IntegrationsPage {
             .btnTestConnection()
             .click();
         cy.wait(5000);
-        //step 3 synchronize your applications
     };
+    //step 3 synchronize your applications
+    followStep3 = () => {
+        const lblStep3 = ".color_theme.pb-2.flex.items-center"
+        const lblSynchronization = "div[class='wizard_grid'] div div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1) h3:nth-child(1)"
+        const b2bPricelist10Toggle = "label[for='check-0-0']"
+        // const lblProductSynchronization = "div[class='wizard_grid'] div div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1) h3:nth-child(1)"
+        const product9Toggle = "label[for='check-0-1']"
+        const stockToggle = "label[for='check-0-2']"
+        const salesOrderToggle = "label[for='check-0-3']"
+        const total = ".flex.justify-end.mt-6.mb-2.tile"
+
+        cy.get(lblStep3)
+            .should('be.visible')
+            .contains("Step 3 Synchronize your applications");
+        cy.get(lblSynchronization)
+            .should('be.visible')
+            .contains("B2B Price Synchronization");
+        cy.get(b2bPricelist10Toggle)
+            .should('be.visible')
+            .click();
+        cy.get(lblSynchronization)
+            .should("be.visible")
+            .contains("Product Synchronization");
+        cy.get(product9Toggle)
+            .should('be.visible')
+            .click();
+        cy.get(lblSynchronization)
+            .should("be.visible")
+            .contains("Stock synchronization");
+        cy.get(stockToggle)
+            .should('be.visible')
+            .click();
+        cy.get(lblSynchronization)
+            .should('be.visible')
+            .contains("Sales Order Synchronization");
+        cy.get(salesOrderToggle)
+            .should('be.visible')
+            .click();
+        cy.get(total)
+            .should("be.visible")
+            .contains("Total€ 34.96 / month");
+        this.elements
+            .btnNext()
+            .click();
+    };
+    //Step 4 settings
+    followStep4 = () => {
+        
+    };
+
 }
 
 module.exports = new IntegrationsPage();
