@@ -15,26 +15,27 @@ describe('Integrations Page Test Suite', () => {
             .gotoIntegrations();
     });
     it('It should be click the Add Integration button to proceed to step 1', () => {
+        const visibility = "Active"
+        const variantvisibility = "Active"
+        
+        // const set_variant = "Active"
         IntegrationsPage
             .addIntegration();
         cy.wait(3000);
-    });
-    it('Step 1 - It should showing the label/text and go start to proceed into the step 2 ', () => {
         IntegrationsPage
             .followStep1();
         cy.wait(3000);
-    });
-    it('Step 2 - It should be add two application', () => {
         IntegrationsPage
             .followStep2();
         cy.wait(3000);
-    });
-    it('Step 3 - It should be synchronize your applications', () => {
         IntegrationsPage
             .followStep3();
         cy.wait(3000);
-    });
-    it('Step 4 - It should be se your integration settings', () => {
-        
+        IntegrationsPage
+            .followStep4(visibility, variantvisibility);
+        cy.wait(3000);
+        IntegrationsPage
+            .followStep5();
+        cy.wait(3000);
     });
 })

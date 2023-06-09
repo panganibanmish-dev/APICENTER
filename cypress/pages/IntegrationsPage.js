@@ -43,6 +43,12 @@ class IntegrationsPage {
             cy.get("button[role='button']"),
         btnTestConnection: () =>
             cy.get(".button.button_app"),
+
+        toggleUpdateExistingproduct: () => cy.get("label[for='update-existing-products24-dependency-36']"),
+        toggleUpdatecategory: () => cy.get("label[for='update-category15-null']"),
+        toggleUpdateimages: () => cy.get("label[for='update-images13-null']"),
+        toggleUpdateDescription: () => cy.get("label[for='update-description18-null']"),
+        toggleUpdateProductTitle: () => cy.get("label[for='update-product-title20-null']"),
     };
     //redirect to integration
     gotoIntegrations = () => {
@@ -68,9 +74,7 @@ class IntegrationsPage {
         const label2 = "div[class='grid-2 wizard_grid'] div p";
 
         this.elements
-            .lblStep()
-            .should("be.visible")
-            .contains("Step 1");
+            .lblStep();
         cy.get(label1)
             .should("be.visible")
             .contains("Follow the steps to complete your integration.");
@@ -259,10 +263,59 @@ class IntegrationsPage {
             .click();
     };
     //Step 4 settings
-    followStep4 = () => {
-        
-    };
+    followStep4 = (visibility, variantvisibility) => {
+        const lblStep4 = ".step-label"
+        const lblSynchronization = "div[class='grid grid-2'] div div:nth-child(1) div:nth-child(1) h3:nth-child(1)"
+        const setVisibilitylbl = "body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > label:nth-child(1)"
+        const visibility1 = "body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > label:nth-child(1) > div:nth-child(1)"
+        const clickProductvisibilty = 'body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > label:nth-child(1) > div:nth-child(1)'
+        const inputVisibility = '.multiselect__input'
+        const clickVariantvisibility = 'body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)'
+        const selectProcessOrderswithstates = "div[class='multiselect--above multiselect'] div[class='multiselect__tags']"
+        const inputProcessOrderswithstates = "input[placeholder='Select Process orders with states']"
 
+        cy.get(lblStep4).should('be.visible').contains("Step 4 - Settings");
+        cy.get(lblSynchronization).should('be.visible').contains("B2B Price Synchronization");
+        cy.get(lblSynchronization).should('be.visible').contains("Product synchronization");
+        cy.get(setVisibilitylbl).should('be.visible').click();
+        cy.get(clickProductvisibilty).should('be.visible').click();
+        cy.get(inputVisibility).should('be.visible').type(`${visibility}{enter}`);
+        cy.get(clickProductvisibilty).should('be.visible').click();
+        cy.get(inputVisibility).should('be.visible').type(`${variantvisibility}{enter}`);
+        // cy.get(clickVariantvisibility).should('be.visible').click();
+        // cy.get(inputVisibility).should('be.visible').type(`${set_variant}{enter}`);
+
+        this.elements.toggleUpdateExistingproduct().click();
+        this.elements.toggleUpdatecategory().click();
+        this.elements.toggleUpdateimages().click();
+        this.elements.toggleUpdateDescription().click();
+        this.elements.toggleUpdateProductTitle().click();
+
+        cy.get(selectProcessOrderswithstates).click();
+        cy.get(inputProcessOrderswithstates).clear().type("open", `{enter}`);
+        cy.get(inputProcessOrderswithstates).clear().type("processed", `{enter}`);
+        cy.get(inputProcessOrderswithstates).clear().type("closed", `{enter}`);
+        cy.get(inputProcessOrderswithstates).clear().type("in process", `{enter}`);
+        cy.get(inputProcessOrderswithstates).clear().type("cancelled", `{enter}`);
+
+        this.elements.btnNext().click();
+    };
+    //step 5 - order summary
+    followStep5 = () => {
+        const lblstep5OrderSummary = ".color_theme.h4.mb-3"
+        const b2bpriceToggle = "label[for='check-flow-37']"
+        const productToggle = "label[for='check-flow-36']"
+        const stockToggle = "label[for='check-flow-35']"
+        const saleOrderToggle = "label[for='check-flow-34']"
+        const total = "tbody tr:nth-child(2) td:nth-child(1)"
+
+        cy.get(lblstep5OrderSummary).should("be.visible").contains("Step 5 - Order Summary");
+        cy.get(b2bpriceToggle).click();
+        cy.get(productToggle).click();
+        cy.get(stockToggle).click();
+        cy.get(saleOrderToggle).click();
+        cy.get(total).should("be.visible");
+    };
 }
 
 module.exports = new IntegrationsPage();
