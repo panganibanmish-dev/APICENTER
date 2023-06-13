@@ -16,7 +16,8 @@ class LoginPage {
   };
 
   goToLoginPage = () => {
-    cy.viewport(1280, 768)
+    // cy.viewport(1280, 768)
+    cy.viewport(1800, 850)
     cy.visit('/login')
     cy.get("body").contains("Log in");
     // cy.wait(3000)

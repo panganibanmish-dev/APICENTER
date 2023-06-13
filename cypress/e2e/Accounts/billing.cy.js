@@ -8,6 +8,13 @@ describe('Billing Page Test Suite', () => {
         cy.get("body").contains("Account");
         BillingPage.clickBillingTab();
     });
-    it(' ', () => {
+    it('It should be present in this section (Payment Method, Email fields for invoice and update button', () => {
+        BillingPage.verifyLabel();
+        BillingPage.clickUpdatePaymentMethod();
+        BillingPage.paymentMolliebyCard();
+        BillingPage.paymentMolliebyiDeal();
+        BillingPage.paymentMolliebyKbcCbc();
+        BillingPage.checkRequiredFields();
+        BillingPage.inputRequiredFields();
     });
 })

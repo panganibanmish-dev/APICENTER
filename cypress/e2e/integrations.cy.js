@@ -1,4 +1,4 @@
-import IntegrationsPage from "../pages/IntegrationsPage";
+import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
 import LoginPage from "../pages/LoginPage";
 
 describe('Integrations Page Test Suite', () => {
@@ -11,30 +11,28 @@ describe('Integrations Page Test Suite', () => {
                 Cypress.env('login_password'));
         cy.get("body")
             .contains("Integrations");
-        IntegrationsPage
+        AddIntegrationsPage
             .gotoIntegrations();
     });
-    it('It should be click the Add Integration button to proceed to step 1', () => {
+    it('It should be click the Add Integration button to proceed to step 1 to step 5', () => {
         const visibility = "Active"
         const variantvisibility = "Active"
-        
-        // const set_variant = "Active"
-        IntegrationsPage
+        AddIntegrationsPage
             .addIntegration();
         cy.wait(3000);
-        IntegrationsPage
+        AddIntegrationsPage
             .followStep1();
         cy.wait(3000);
-        IntegrationsPage
+        AddIntegrationsPage
             .followStep2();
         cy.wait(3000);
-        IntegrationsPage
+        AddIntegrationsPage
             .followStep3();
         cy.wait(3000);
-        IntegrationsPage
+        AddIntegrationsPage
             .followStep4(visibility, variantvisibility);
         cy.wait(3000);
-        IntegrationsPage
+        AddIntegrationsPage
             .followStep5();
         cy.wait(3000);
     });
