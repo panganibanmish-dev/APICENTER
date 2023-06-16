@@ -11,16 +11,16 @@ describe('Billing Page Test Suite', () => {
     });
     it('It should be present in this section (Payment Method, Email fields for invoice and update button) and should be redirect to Nova to check the billing', () => 
     {
-        // BillingPage.verifyLabel();
-        // BillingPage.clickUpdatePaymentMethod();
-        // BillingPage.paymentMolliebyCard();
-        // BillingPage.paymentMolliebyiDeal();
-        // BillingPage.paymentMolliebyKbcCbc();
-        // BillingPage.checkRequiredFields();
-        // cy.wait(5000);
-        // BillingPage.inputRequiredFields();
-        // BillingPage.clickDownloadButton();
-        // cy.wait(5000);
+        BillingPage.verifyLabel();
+        BillingPage.clickUpdatePaymentMethod();
+        BillingPage.paymentMolliebyCard();
+        BillingPage.paymentMolliebyiDeal();
+        BillingPage.paymentMolliebyKbcCbc();
+        BillingPage.checkRequiredFields();
+        cy.wait(5000);
+        BillingPage.inputRequiredFields();
+        BillingPage.clickDownloadButton();
+        cy.wait(5000);
         CheckNovaPage.InvoiceDownload();
     });
 })
