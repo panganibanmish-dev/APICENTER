@@ -41,22 +41,30 @@ class BillingPage {
         selectLocale: () => cy.get("#select-locale"),
         linkBackwebsite: () => cy.get('.button--link'),
         btnCard: () => cy.get(".grid-button-creditcard"),
-        btnIdeal: () => cy.get(".grid-button-ideal"), 
-        btnKbc: () => cy.get('.grid-button-kbc'),
-        inputCardNumber: () => cy.get("input#cc-name"), 
-        inputCardHolder: () => cy.get("#cardHolder"),
-        inputExpiryDate: () => cy.get("#expiryDate"),
-        inputcvv: () => cy.get("#verificationCode"),
+        btnIdeal: () => cy.get(".grid-button-ideal"),
+        btnIdealASNBank: () => cy.get(".grid-button-ideal-ASNBNL21"),
+        btnKbcCBc: () => cy.get('.grid-button-kbc'),
+        btnCbc: () => cy.get(".grid-button-kbc-cbc"),
+        btnKbc: () => cy.get(".grid-button-kbc-kbc"),
+        inputCardNumber: () => cy.get("iframe[name='cardNumber-input']"),
+        inputCardHolder: () => cy.get("iframe[name='cardHolder-input']"),
+        inputExpiryDate: () => cy.get("iframe[name='expiryDate-input']"),
+        inputcvv: () => cy.get("iframe[name='verificationCode-input']"),
         btnPaySubmit: () => cy.get("#submit-button"),
+        togglePaid: () => cy.get("input[value='paid']"),
+        btnContinue: () => cy.get("button[name='sumbit']"),
         form_errormsg: () => cy.get('#form-errors'),
+        downloadFile: () => cy.get("tbody tr:nth-child(1) td:nth-child(4) a:nth-child(1)"),
     };
     //redirects to billing url
     clickBillingTab = () => {
         this.elements.btnAccount().click();
         this.elements.btnBilling().should("be.visible").contains("Billing").click();
+        cy.wait(2000);
     };
     //verifying label elements
     verifyLabel = () => {
+        cy.wait(3000);
         this.elements.lblActiveSubscriptions();
         this.elements.lblCurrentPlan();
         this.elements.lblFooter();
@@ -74,32 +82,95 @@ class BillingPage {
     paymentRedirects = () => {
         this.elements.linkBackwebsite().click();
         this.clickUpdatePaymentMethod();
+        cy.wait(5000);
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
+    };
+    afterPayRedirectBackToWebsite = () => {
+        cy.visit('https://stg.apicenter.io/dashboard/account/billing?payment-method-status=expired#/payment-method');
     };
     //pay by using card
     paymentMolliebyCard = () => {
         this.paymentRedirects();
         this.elements.btnCard().click();
+        cy.wait(3000);
         this.verifyErrormsg();
-        this.elements.inputCardNumber().type('4000056655665556');
-        this.elements.inputCardHolder().type('Test visa');
-        this.elements.inputExpiryDate().type('1030');
-        this.elements.inputcvv().type("234");
-        this.elements.btnPaySubmit().click();
-        this.paymentRedirects();
+        this.elements
+            .inputCardNumber()
+            .its("0.contentDocument.body")
+            .should("not.be.empty")
+            .then((body) => {
+                cy.wrap(body)
+                    .find("#cardNumber")
+                    .type('4000056655665556', { force: true });
+        });
+        this.elements
+            .inputCardHolder()
+            .its("0.contentDocument.body")
+            .should("not.be.empty")
+            .then((body) => {
+                cy.wrap(body)
+                    .find("#cardHolder")
+                    .type('Test visa', { force: true });
+        });
+        this.elements
+            .inputExpiryDate()
+            .its("0.contentDocument.body")
+            .should("not.be.empty")
+            .then((body) => {
+                cy.wrap(body)
+                    .find("#expiryDate")
+                    .type('1030', { force: true });
+        });
+        this.elements
+            .inputcvv()
+            .its("0.contentDocument.body")
+            .should("not.be.empty")
+            .then((body) => {
+                cy.wrap(body)
+                    .find("#verificationCode")
+                    .type("234", { force: true });
+        });
+        this.elements.btnPaySubmit().should("be.visible").click();
+        this.elements.togglePaid().click();
+        this.elements.btnContinue().click();
+        cy.wait(5000);
+        this.afterPayRedirectBackToWebsite();
     };
     //pay by using ideal
     paymentMolliebyiDeal = () => {
+        this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnIdeal();
-        this.elements.linkBackwebsite().click();
+        this.elements.btnIdeal().click();
+        this.elements.btnIdealASNBank().click();
+        this.elements.togglePaid().click();
+        this.elements.btnContinue().click();
+        // this.elements.linkBackwebsite().click();
+        cy.wait(2000);
+        // this.elements.linkBackwebsite().click();
+        this.afterPayRedirectBackToWebsite();
     };
     //pay by using kbc
     paymentMolliebyKbcCbc = () => {
+        //payment for cbc
+        this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnKbc();
-        this.elements.linkBackwebsite().click();
+        this.elements.btnKbcCBc().click();
+        this.elements.btnCbc().click();
+        this.elements.togglePaid().click();
+        this.elements.btnContinue().click();
+        this.afterPayRedirectBackToWebsite();
+        cy.wait(3000);
+        //payment for kbc
+        this.clickUpdatePaymentMethod();
+        this.paymentRedirects();
+        this.elements.btnKbcCBc().click();
+        this.elements.btnKbc().click();
+        this.elements.togglePaid().click();
+        this.elements.btnContinue().click();
+        this.afterPayRedirectBackToWebsite();
+        cy.wait(3000);
     };
+    //verifying error message
     verifyErrormsg = () => {
         this.elements.btnPaySubmit().click();
         this.elements.form_errormsg().should('be.visible');
@@ -110,21 +181,23 @@ class BillingPage {
     };
     //check the invalid/required fields
     checkRequiredFields = () => {
-        this.elements.inputDisableSendingInvoiceTo().should("be.vsible");
-        this.elements.inputCCInvoiceTo().should("be.visible").type('test');
-        this.elements.inputVATNumber().should("be.visible").type('validnumber');
+        this.elements.inputDisableSendingInvoiceTo().should("be.disabled");
+        this.elements.inputCCInvoiceTo().should("be.visible").clear().type('test');
+        this.elements.inputVATNumber().should("be.visible").clear().type('validnumber');
         this.elements.btnUpdate().click();
         this.elements.errormsg().should("be.visible").contains("The billing cc invoices to must be a valid email address.");
         this.elements.errormsg().should("be.visible").contains("This VAT identification number is invalid.");
     };
+    //input the required fields
     inputRequiredFields = () => {
-        this.elements.inputDisableSendingInvoiceTo().should("be.vsible");
-        this.elements.inputCCInvoiceTo().should("be.visible").type('test 1');
-        this.elements.inputVATNumber().should("be.visible").type('NL123456789B12');
+        this.elements.inputDisableSendingInvoiceTo().should("be.disabled");
+        this.elements.inputCCInvoiceTo().should("be.visible").clear().type('panganibanmish.work@gmail.com');
+        this.elements.inputVATNumber().should("be.visible").clear().type('NL861742163B01');
         this.elements.btnUpdate().click();
-
-
+    };
+    //download the invoice pdf
+    clickDownloadButton = () => {
+        this.elements.downloadFile().click();
     };
 }
-
 module.exports = new BillingPage(); 

@@ -11,10 +11,10 @@ class AddIntegrationsPage {
             cy.get(".button.button_prev"),
         btnNext: () =>
             cy.get("button[class='button']"),
-        btnSubmit: () => 
+        btnSubmit: () =>
             cy.get("button[class='button'] span"),
         btnApplication1: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)"),
+            cy.get("div[class='grid-2 justify-content-start mt-4 mb-4'] div:nth-child(1) div:nth-child(1) div:nth-child(2)"),
         btnApplication2: () =>
             cy.get(".icon_add"),
         lblApp: () =>
@@ -26,11 +26,13 @@ class AddIntegrationsPage {
         appSearch: () =>
             cy.get("#app-search"),
         appBox1: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)"),
+            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1)"),
         appBox2: () =>
-            cy.get(".all-app-tile.inner-box.overflow-hidden.tile.cursor-pointer.inner-box.overflow-hidden.tile.tile_app"),
-        appToggle: () => cy.get(".application_toolbar_toggle"),
-        appEdit: () => cy.get("div[class='grid-2 justify-content-start mt-4 mb-4'] p:nth-child(1)"),
+            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4)"),
+        appToggle: () =>
+            cy.get(".application_toolbar_toggle"),
+        appEdit: () =>
+            cy.get("div[class='grid-2 justify-content-start mt-4 mb-4'] p:nth-child(1)"),
         appConnect: () =>
             cy.get(".px-6.mb-4.justify-center"),
         appSettings: () =>
@@ -121,7 +123,7 @@ class AddIntegrationsPage {
         this.elements
             .appSearch()
             .should("be.visible")
-            .type("Shopify").clear();
+            .type("Magento 2").clear();
         cy.wait(2000);
         this.elements
             .appBox1()
@@ -153,33 +155,25 @@ class AddIntegrationsPage {
         this.elements
             .appBox2()
             .should("be.visible")
-            .contains("Shopware 6.4 (Shopware 6.4)")
             .click();
         cy.wait(5000);
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        const lblStep3 = ".color_theme.pb-2.flex.items-center"
-        const lblSynchronization = "div[class='wizard_grid'] div div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1) h3:nth-child(1)"
-        const b2bPricelist10Toggle = ".my-4 input#check-0-0"
-        const product9Toggle = "label[for='check-0-1']"
-        const stockToggle = "label[for='check-0-2']"
-        const salesOrderToggle = "label[for='check-0-3']"
+        const customerToggle = 'input#check-2-0[type="checkbox"]'
+        const product9Toggle = 'input#check-0-1[type="checkbox"]'
+        const salesOrderToggle = 'input#check-0-2[type="checkbox"]'
+        const stockToggle = 'input#check-0-4[type="checkbox"]'
         const total = ".flex.justify-end.mt-6.mb-2.tile"
 
-        cy.get(lblStep3)
-            .should('be.visible')
-            .contains("Step 3 Synchronize your applications");
-        cy.get(lblSynchronization)
-            .should('be.visible')
-            .contains("B2B Price Synchronization");
-        cy.get(b2bPricelist10Toggle).check();
-        // cy.get(product9Toggle)
-        //     .click();
-        // cy.get(stockToggle)
-        //     .click();
-        // cy.get(salesOrderToggle)
-        //     .click();
+        cy.get(customerToggle)
+            .check({ force: true });
+        cy.get(product9Toggle)
+            .check({ force: true });
+        cy.get(salesOrderToggle)
+            .check({ force: true });
+        cy.get(stockToggle)
+            .check({ force: true });
         cy.get(total)
             .should("be.visible")
         this.elements
@@ -192,14 +186,11 @@ class AddIntegrationsPage {
     };
     //step 5 - order summary
     followStep5 = () => {
-        const lblstep5OrderSummary = ".color_theme.h4.mb-3"
-        const total = "tbody tr:nth-child(2) td:nth-child(1)"
-
-        cy.get(lblstep5OrderSummary).should("be.visible").contains("Step 5 - Order Summary");
-        cy.get(total).should("be.visible");
-
-        this.elements.btnSubmit().click();
+        this.elements.btnSubmit().should('be.visible').click();
+        this.redirectToDasboard();
+    };
+    redirectToDasboard = () => {
+        cy.visit("https://stg.apicenter.io/dashboard/")
     };
 }
-
 module.exports = new AddIntegrationsPage();

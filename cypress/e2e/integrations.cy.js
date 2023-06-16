@@ -1,4 +1,6 @@
 import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
+import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
+import IntegrationsFlowPage from "../pages/Integrations/IntegrationsFlowPage";
 import LoginPage from "../pages/LoginPage";
 
 describe('Integrations Page Test Suite', () => {
@@ -14,7 +16,7 @@ describe('Integrations Page Test Suite', () => {
         AddIntegrationsPage
             .gotoIntegrations();
     });
-    it('It should be click the Add Integration button to proceed to step 1 to step 5', () => {
+    it('It should be click the add integration button to proceed to step 1 to step 5', () => {
         const visibility = "Active"
         const variantvisibility = "Active"
         AddIntegrationsPage
@@ -35,5 +37,19 @@ describe('Integrations Page Test Suite', () => {
         AddIntegrationsPage
             .followStep5();
         cy.wait(3000);
+    });
+    it('It should be update the configure flow setting ', () => {
+        IntegrationsSettingPage
+            .OverviewConfigureFlow();
+        cy.wait(2000);
+        IntegrationsSettingPage
+            .IntegrationSettings();
+        cy.wait(2000);
+        IntegrationsSettingPage
+            .ActivityTab();
+        cy.wait(2000);
+    });
+    it('It should be synchronize the flow of the integrations', () => {
+        IntegrationsFlowPage
     });
 })
