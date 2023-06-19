@@ -80,13 +80,15 @@ class SignupPage {
 
     //dropdown for the register language and apps 
     drpdownClick(data, data1, app1, app2, app3) {
-        //change into english language
-        this.elements.drpdownLanguage().click();
-        this.elements.inputLanguage().type(`${data}{enter}`);
-
         //change into netherlands language
         this.elements.drpdownLanguage().click();
         this.elements.inputLanguage().type(`${data1}{enter}`);
+
+        cy.wait(3000);
+        
+        //change into english language
+        this.elements.drpdownLanguage().click();
+        this.elements.inputLanguage().type(`${data}{enter}`);
 
         cy.wait(2000);
         //Register apps

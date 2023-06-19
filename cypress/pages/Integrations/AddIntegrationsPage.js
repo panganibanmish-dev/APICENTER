@@ -26,7 +26,7 @@ class AddIntegrationsPage {
         appSearch: () =>
             cy.get("#app-search"),
         appBox1: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1)"),
+            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"),
         appBox2: () =>
             cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4)"),
         appToggle: () =>
@@ -50,8 +50,7 @@ class AddIntegrationsPage {
         btnPrevious: () =>
             cy.get("button[role='button']"),
         btnTestConnection: () =>
-            cy.get(".button.button_app"),
-
+            cy.get("button[class='button button_app'] span"),
         toggleUpdateExistingproduct: () => cy.get("label[for='update-existing-products24-dependency-36']"),
         toggleUpdatecategory: () => cy.get("label[for='update-category15-null']"),
         toggleUpdateimages: () => cy.get("label[for='update-images13-null']"),
@@ -139,6 +138,8 @@ class AddIntegrationsPage {
             .click();
         this.elements
             .btnTestConnection()
+            .should("be.visible")
+            .contains("Test Connection")
             .click();
         cy.wait(5000);
         this.elements

@@ -22,7 +22,7 @@ describe('Profile Page Test Suite', () => {
 
         ProfilePage.setProfilePhoto();
         ProfilePage.setProfileLanguage(data, data1);
-        ProfilePage.updateContactInformation(updatedata.valid.firstname, updatedata.valid.lastname, updatedata.valid.phone, updatedata.valid.email);
+        ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.firstname, updatedata.valid.lastname, updatedata.valid.phone, updatedata.valid.email);
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
     });
     it('It should be showing error information that the field is required', () => {

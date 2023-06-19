@@ -6,6 +6,7 @@ class ProfilePage {
         dropdownProfileLanguage: () => cy.get("div[class='form-group'] div[class='multiselect__select']"),
         btnUpdateProfile: () =>
             cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(4) > div:nth-child(2) > button:nth-child(2)"),
+        inputCompany: () => cy.get("#user-company_name"),
         inputFirstname: () => cy.get("#user-first_name"),
         inputLastname: () => cy.get("#user-last_name"),
         inputPhonenumber: () => cy.get("#user-phone_number"),
@@ -63,16 +64,13 @@ class ProfilePage {
     };
 
     //update info and showing confirmation updated
-    updateContactInformation = (firstname, lastname, phone, email) => {
+    updateContactInformation = (company_name, firstname, lastname, phone, email) => {
         cy.wait(5000);
-        this.elements.inputFirstname().clear();
-        this.elements.inputFirstname().type(firstname);
-        this.elements.inputLastname().clear();
-        this.elements.inputLastname().type(lastname);
-        this.elements.inputPhonenumber().clear();
-        this.elements.inputPhonenumber().type(phone);
-        this.elements.inputEmail().clear();
-        this.elements.inputEmail().type(email);
+        this.elements.inputCompany().clear().type(company_name);
+        this.elements.inputFirstname().clear().type(firstname);
+        this.elements.inputLastname().clear().type(lastname);
+        this.elements.inputPhonenumber().clear().type(phone);
+        this.elements.inputEmail().clear().type(email);
         this.elements.btnUpdateInfo().click();
         cy.wait(2000);
         this.elements.msgSuccess().should('be.visible').contains("Your contact information has been updated!")

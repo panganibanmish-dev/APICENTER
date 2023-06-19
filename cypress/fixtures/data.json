@@ -7,8 +7,9 @@
         "mainfirstname": "Michelle",
         "mainlastname": "Panganiban",
         "mainphone": "0923456784",
-        "firstname": "Test Michelle",
-        "lastname": "Test Panganiban",
-        "phone": "0923456784"
+        "firstname": "Test",
+        "lastname": "Michelle",
+        "phone": "0923456784",
+        "company": "GG QA"
     }
 }

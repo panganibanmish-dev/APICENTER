@@ -1,6 +1,6 @@
 import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
-import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import IntegrationsFlowPage from "../pages/Integrations/IntegrationsFlowPage";
+import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
 describe('Integrations Page Test Suite', () => {

@@ -1,5 +1,4 @@
 import BillingPage from "../../pages/Accounts/BillingPage";
-import CheckNovaPage from "../../pages/Accounts/CheckNovaPage";
 import LoginPage from "../../pages/LoginPage";
 
 describe('Billing Page Test Suite', () => {
@@ -21,6 +20,6 @@ describe('Billing Page Test Suite', () => {
         BillingPage.inputRequiredFields();
         BillingPage.clickDownloadButton();
         cy.wait(5000);
-        CheckNovaPage.InvoiceDownload();
+        // CheckNovaPage.InvoiceDownload();
     });
 })

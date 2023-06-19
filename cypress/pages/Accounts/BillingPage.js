@@ -170,7 +170,7 @@ class BillingPage {
         this.afterPayRedirectBackToWebsite();
         cy.wait(3000);
     };
-    //verifying error message
+    //verifying error message  
     verifyErrormsg = () => {
         this.elements.btnPaySubmit().click();
         this.elements.form_errormsg().should('be.visible');
