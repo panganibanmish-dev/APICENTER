@@ -1,5 +1,5 @@
 import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
-import IntegrationsFlowPage from "../pages/Integrations/IntegrationsFlowPage";
+import ProductSynchronizationPage from "../pages/Integrations/Flow/ProductSynchronizationPage";
 import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
@@ -49,7 +49,9 @@ describe('Integrations Page Test Suite', () => {
             .ActivityTab();
         cy.wait(2000);
     });
-    it('It should be synchronize the flow of the integrations', () => {
-        IntegrationsFlowPage
+    it('It should be synchronize the product flow of the integrations', () => {
+        ProductSynchronizationPage
+            .productSyncronizationFlow();
+        
     });
 })
