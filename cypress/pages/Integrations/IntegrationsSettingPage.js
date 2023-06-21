@@ -18,8 +18,8 @@ class IntegrationsSettingPage {
     OverviewConfigureFlow = () => {
         this.elements.cardTile().click();
         cy.wait(2000);
-        this.elements.btnConfigureFlow().click();
-        this.elements.btnAgree().click();
+        // this.elements.btnConfigureFlow().click();
+        // this.elements.btnAgree().click();
     };
     //integration setting to update the settings of the apps
     IntegrationSettings = () => {

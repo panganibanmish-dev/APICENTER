@@ -1,5 +1,6 @@
-import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
+import AddIntegrationsPage, { addIntegration } from "../pages/Integrations/AddIntegrationsPage";
 import ProductSynchronizationPage from "../pages/Integrations/Flow/ProductSynchronizationPage";
+import SalesOrderSynchronizationPage, { saleSynchronizationFlow } from "../pages/Integrations/Flow/SalesOrderSynchronizationPage";
 import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
@@ -19,6 +20,7 @@ describe('Integrations Page Test Suite', () => {
     it('It should be click the add integration button to proceed to step 1 to step 5', () => {
         const visibility = "Active"
         const variantvisibility = "Active"
+
         AddIntegrationsPage
             .addIntegration();
         cy.wait(3000);
@@ -37,8 +39,6 @@ describe('Integrations Page Test Suite', () => {
         AddIntegrationsPage
             .followStep5();
         cy.wait(3000);
-    });
-    it('It should be update the configure flow setting ', () => {
         IntegrationsSettingPage
             .OverviewConfigureFlow();
         cy.wait(2000);
@@ -48,10 +48,11 @@ describe('Integrations Page Test Suite', () => {
         IntegrationsSettingPage
             .ActivityTab();
         cy.wait(2000);
-    });
-    it('It should be synchronize the product flow of the integrations', () => {
+        AddIntegrationsPage
+            .gotoIntegrations();
         ProductSynchronizationPage
             .productSyncronizationFlow();
-        
+        SalesOrderSynchronizationPage
+            .saleSynchronizationFlow();
     });
-})
+});

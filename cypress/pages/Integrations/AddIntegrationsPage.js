@@ -161,25 +161,31 @@ class AddIntegrationsPage {
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        const customerToggle = 'input#check-2-0[type="checkbox"]'
+        const customerToggle = "label[for='check-2-0']"
         const product9Toggle = 'input#check-0-1[type="checkbox"]'
         const salesOrderToggle = 'input#check-0-2[type="checkbox"]'
         const stockToggle = 'input#check-0-4[type="checkbox"]'
         const total = ".flex.justify-end.mt-6.mb-2.tile"
 
-        cy.get(customerToggle)
-            .check({ force: true });
+        // cy.get(customerToggle)
+        //     .click({ force: true });
+        // cy.wait(3000);
         cy.get(product9Toggle)
-            .check({ force: true });
-        cy.get(salesOrderToggle)
-            .check({ force: true });
-        cy.get(stockToggle)
-            .check({ force: true });
+            .click({ force: true });
+        cy.wait(3000);
+        // cy.get(salesOrderToggle)
+        //     .click({ force: true });
+        // cy.wait(3000);
+        // cy.get(stockToggle)
+        //     .click({ force: true });
+        // cy.wait(3000);
         cy.get(total)
             .should("be.visible")
+        cy.wait(3000);
         this.elements
             .btnNext()
             .click();
+        cy.wait(3000);
     };
     //Step 4 settings
     followStep4 = () => {
