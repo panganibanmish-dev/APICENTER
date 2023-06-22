@@ -1,7 +1,7 @@
 class ProductSyncronizationPage {
     elements = {
         cardTile: () => cy.get(".tile.tile-wide.cursor-pointer.overflow-hidden.h-100"),
-        tabOverview: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)"),
+        tabOverview: () => cy.get("main a:nth-child(1)"),
         productflow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1)"),
         resumeFlow: () => cy.get("button[class='button'] span"),
         cancelBtn: () => cy.get("button[class='swal2-cancel swal2-styled']"),

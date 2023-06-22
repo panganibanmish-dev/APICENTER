@@ -1,6 +1,8 @@
-import AddIntegrationsPage, { addIntegration } from "../pages/Integrations/AddIntegrationsPage";
+import AddIntegrationsPage from "../pages/Integrations/AddIntegrationsPage";
 import ProductSynchronizationPage from "../pages/Integrations/Flow/ProductSynchronizationPage";
-import SalesOrderSynchronizationPage, { saleSynchronizationFlow } from "../pages/Integrations/Flow/SalesOrderSynchronizationPage";
+import SalesOrderSynchronizationPage from "../pages/Integrations/Flow/SalesOrderSynchronizationPage";
+import CustomerSynchronizationPage from "../pages/Integrations/Flow/CustomerSynchronizationPage";
+import StockSynchronizationPage from "../pages/Integrations/Flow/StockSynchronizationPage";
 import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
@@ -54,5 +56,10 @@ describe('Integrations Page Test Suite', () => {
             .productSyncronizationFlow();
         SalesOrderSynchronizationPage
             .saleSynchronizationFlow();
+        CustomerSynchronizationPage
+            .customerSynchronizationFlow();
+        StockSynchronizationPage
+            .stockSynchronizationFlow();
+        
     });
 });

@@ -1,8 +1,6 @@
 class IntegrationsSettingPage {
     elements = {
         cardTile: () => cy.get('.tile.tile-wide.cursor-pointer.overflow-hidden.h-100'),
-        btnConfigureFlow: () => cy.get('.button.button_success'),
-        btnAgree: () => cy.get("button[class='button']"),
         tabSettings: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(2)"),
         currenciesSettings: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
         customerSettings: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"),
@@ -18,8 +16,6 @@ class IntegrationsSettingPage {
     OverviewConfigureFlow = () => {
         this.elements.cardTile().click();
         cy.wait(2000);
-        // this.elements.btnConfigureFlow().click();
-        // this.elements.btnAgree().click();
     };
     //integration setting to update the settings of the apps
     IntegrationSettings = () => {

@@ -33,29 +33,14 @@ class AddIntegrationsPage {
             cy.get(".application_toolbar_toggle"),
         appEdit: () =>
             cy.get("div[class='grid-2 justify-content-start mt-4 mb-4'] p:nth-child(1)"),
-        appConnect: () =>
-            cy.get(".px-6.mb-4.justify-center"),
         appSettings: () =>
             cy.get(".h5"),
-        inputDisplayTitle: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)"),
-        inputAPIandClientpassword: () =>
-            cy.get("input[type='password']"),
-        inputAPIusername: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)"),
-        inputAPIurl: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)"),
         btnSave: () =>
             cy.get(".button.button_success"),
         btnPrevious: () =>
             cy.get("button[role='button']"),
         btnTestConnection: () =>
             cy.get("button[class='button button_app'] span"),
-        toggleUpdateExistingproduct: () => cy.get("label[for='update-existing-products24-dependency-36']"),
-        toggleUpdatecategory: () => cy.get("label[for='update-category15-null']"),
-        toggleUpdateimages: () => cy.get("label[for='update-images13-null']"),
-        toggleUpdateDescription: () => cy.get("label[for='update-description18-null']"),
-        toggleUpdateProductTitle: () => cy.get("label[for='update-product-title20-null']"),
     };
     //redirect to integration
     gotoIntegrations = () => {
@@ -161,24 +146,12 @@ class AddIntegrationsPage {
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        const customerToggle = "label[for='check-2-0']"
         const product9Toggle = 'input#check-0-1[type="checkbox"]'
-        const salesOrderToggle = 'input#check-0-2[type="checkbox"]'
-        const stockToggle = 'input#check-0-4[type="checkbox"]'
         const total = ".flex.justify-end.mt-6.mb-2.tile"
 
-        // cy.get(customerToggle)
-        //     .click({ force: true });
-        // cy.wait(3000);
         cy.get(product9Toggle)
             .click({ force: true });
         cy.wait(3000);
-        // cy.get(salesOrderToggle)
-        //     .click({ force: true });
-        // cy.wait(3000);
-        // cy.get(stockToggle)
-        //     .click({ force: true });
-        // cy.wait(3000);
         cy.get(total)
             .should("be.visible")
         cy.wait(3000);
