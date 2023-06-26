@@ -40,6 +40,7 @@ class ProductSyncronizationPage {
             .cardTile()
             .click();
     };
+    //it should be reloading the current page as this tab is opened by default upon redirecting
     clickOverview = () => {
         this.elements
             .tabOverview()
@@ -64,7 +65,7 @@ class ProductSyncronizationPage {
         this.elements.dialogActivate().should("be.visible");
         this.clickOkBtn();
     };
-    //product flow
+    //product resume flow - it should be showing a modal of confirmation for resuming the flow of integration
     productResumeFlow = () => {
         cy.wait(3000);
         this.elements
@@ -72,17 +73,19 @@ class ProductSyncronizationPage {
             .click();
         cy.wait(3000);
         // this.clickOverview();
-        cy.wait(3000);
+        // cy.wait(3000);
         this.clickResumeFlow();
         cy.wait(3000);
         this.clickCancelBtn();
         this.clickResumeFlow();
         this.clickOkBtn();
         this.dialogActivateModal();
-    };
+    };//product settings flow - 
     productSettingsFlow = () => {
+        // It should be redirecting to the settings of the integration
         this.elements.tabSettings().click();
         cy.wait(5000);
+        //It should show an option for enabling the debug
         this.elements.adminsettingsExpand().click();
         cy.wait(3000);
         this.elements.debugEnabled().click();
@@ -95,15 +98,19 @@ class ProductSyncronizationPage {
         this.elements.stockwarehousesettingsExpand().should("be.visible").contains("Stock & Warehouse Settings").click();
         this.elements.taxtaxratesExpand().should("be.visible").contains("Tax & Tax Rates").click();
         this.elements.btnSaveSettings().click();
+        //should click the tab data mapping
         this.elements.tabDataMapping().click();
         this.elements.btnDefault().click().should("be.visible").contains("Back to default mappings");
         this.elements.btnConfirm().click();
+        //should click the tab endpoints
         this.elements.tabEndpoints().click();
         this.elements.btnBackDefault().click();
         this.elements.btnSaveEndpoint().click();
+        //should click the tab filter options
         this.elements.tabFilterOptions().click();
         cy.wait(3000);
     };
+    //should go to activity tab 
     settingsActivityTab = () => {
         this.elements.tabActivity().click();
         cy.wait(3000);
@@ -143,6 +150,7 @@ class ProductSyncronizationPage {
         this.elements.selectTrigger().select('—').should('have.value', '—');
         cy.wait(3000);
     };
+    //should go to admin tab and click the trigger manual button
     settingsAdminTab = () => {
         this.elements.tabAdmin().click();
         this.elements.btnTriggerManual().click();

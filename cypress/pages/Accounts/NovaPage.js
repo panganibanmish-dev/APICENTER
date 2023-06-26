@@ -28,8 +28,8 @@ class NovaPage {
     Nova = (email, password) => {
         cy.viewport(1800, 1000);
         cy.visit('/nova/login');
-        this.elements.inputEmail().type(email, { delay: 100 });
-        this.elements.inputPassword().type(password, { delay: 100 });
+        this.elements.inputEmail().type(email, { delay: 1000 });
+        this.elements.inputPassword().type(password, { delay: 1000 });
         this.elements.checkRememberMe().click();
         this.elements.btnLogin().click();
     };
