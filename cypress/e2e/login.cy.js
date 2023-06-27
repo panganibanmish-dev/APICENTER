@@ -13,7 +13,8 @@ describe('Login Page Test Suite', () => {
     });
     it('Email and Password Fields - Blank input', () => {
         LoginPage
-            .goToSignUpLink()
+            .goToSignUpLink();
+        LoginPage
             .blankInput();
     });
     it('Email and Password Fields - Fill out email and password fields with the invalid credentials', () => {
@@ -26,6 +27,6 @@ describe('Login Page Test Suite', () => {
         ForgotPasswordPage
             .loginWithoutEmail()
         ForgotPasswordPage
-            .loginWithForgotPassword(data.valid.email-forgotpass);
+            .loginWithForgotPassword(data.valid.emailForgotpass, data.valid.newPassword);
     });
 })
