@@ -25,8 +25,7 @@ describe('Login Page Test Suite', () => {
         LoginPage
             .goTologinWithForgotPassword()
         ForgotPasswordPage
-            .loginWithoutEmail()
-        ForgotPasswordPage
-            .loginWithForgotPassword(data.valid.emailForgotpass, data.valid.newPassword);
+            .loginWithoutEmail();
+        ForgotPasswordPage.Email(data.valid.newPassword);
     });
 })

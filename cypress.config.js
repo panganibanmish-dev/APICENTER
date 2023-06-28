@@ -9,6 +9,7 @@ module.exports = defineConfig({
     env: {
       login_email: "panganibanmish.work@gmail.com",
       login_password: "Radeonstar@1030",
+      MAILOSAUR_API_KEY: "k0xaoDI5ND0KbxaoJsFqHZfQRBLjpV4N"
     },
   },
   requestTimeout: 30000,
