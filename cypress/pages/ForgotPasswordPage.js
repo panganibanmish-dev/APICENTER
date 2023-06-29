@@ -19,11 +19,12 @@ class ForgotPasswordPage {
         cy.wait(3000);
     };
 
-    Email(newpassword = "") {
+    Email() {
         const serverId = 'k1xcudsr'
         const serverDomain = 'k1xcudsr.mailosaur.net'
         const emailAddress = 'michtestuser@' + serverDomain
         let passwordResetLink
+        // let passwordResetLink = ".button.button-primary"
 
         this.goToForgotPassword();
         this.elements.emailTextBox().type(emailAddress);
@@ -36,15 +37,18 @@ class ForgotPasswordPage {
             sentTo: emailAddress
         }).then(email => {
             cy.log(email.subject)
+            // cy.get(passwordResetLink = email.html.links[0].href).click();
             passwordResetLink = email.html.links[0].href
+            // cy.get(passwordResetLink).click();
         });
 
         //set new password
-        cy.visit(passwordResetLink);
-        this.elements.newpassword().type(newpassword);
-        this.elements.confirmpassword().type(newpassword);
-        cy.wait(3000);
-        this.elements.btn().click();
+        // cy.visit(passwordResetLink);
+        // // cy.visit("/reset-password/");
+        // this.elements.newpassword().type(newpassword);
+        // this.elements.confirmpassword().type(newpassword);
+        // cy.wait(3000);
+        // this.elements.btn().click();
     };
 }
 

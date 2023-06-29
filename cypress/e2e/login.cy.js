@@ -1,7 +1,7 @@
 import data from "../fixtures/data.json";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import LoginPage from "../pages/LoginPage";
-// import SignupPage from "../pages/SignupPage";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 describe('Login Page Test Suite', () => {
     beforeEach(() => {
@@ -26,6 +26,7 @@ describe('Login Page Test Suite', () => {
             .goTologinWithForgotPassword()
         ForgotPasswordPage
             .loginWithoutEmail();
-        ForgotPasswordPage.Email(data.valid.newPassword);
+        ForgotPasswordPage.Email();
+        ResetPasswordPage.mailosaur(data.valid.email, data.valid.password, data.valid.newPassword);
     });
 })
