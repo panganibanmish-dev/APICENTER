@@ -24,6 +24,7 @@ describe('Profile Page Test Suite', () => {
         ProfilePage.setProfileLanguage(data, data1);
         ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.firstname, updatedata.valid.lastname, updatedata.valid.phone, updatedata.valid.email);
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
+        cy.wait(5000);
     });
     it('It should be showing error information that the field is required', () => {
         //data
@@ -38,7 +39,8 @@ describe('Profile Page Test Suite', () => {
         ProfilePage.invalidInfo();
         
         //this is for the real info/original info
-        ProfilePage.updateContactInformation(updatedata.valid.mainfirstname, updatedata.valid.mainlastname, updatedata.valid.mainphone, updatedata.valid.email);
-        ProfilePage.updateBillingAddress(add, add2, city, state, zip, country)
+        ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.mainfirstname, updatedata.valid.mainlastname, updatedata.valid.mainphone, updatedata.valid.email);
+        ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
+        cy.wait(5000);
     });
 })

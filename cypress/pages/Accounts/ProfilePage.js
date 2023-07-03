@@ -4,15 +4,15 @@ class ProfilePage {
         btnProfile: () => cy.get(".nav_link.nav_sublink"),
         uploadProfilePhoto: () => cy.get("#choose-photo"),
         dropdownProfileLanguage: () => cy.get("div[class='form-group'] div[class='multiselect__select']"),
-        btnUpdateProfile: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(4) > div:nth-child(2) > button:nth-child(2)"),
+        // btnUpdateProfile: () =>
+        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(4) > div:nth-child(2) > button:nth-child(2)"),
         inputCompany: () => cy.get("#user-company_name"),
         inputFirstname: () => cy.get("#user-first_name"),
         inputLastname: () => cy.get("#user-last_name"),
         inputPhonenumber: () => cy.get("#user-phone_number"),
         inputEmail: () => cy.get("#user-email_address"),
-        btnUpdateInfo: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(5) > button:nth-child(2)"),
+        btnUpdate: () =>
+            cy.get(".button"),
         msgSuccess: () => cy.get(".alert.alert-success"),
         inputAddress: () => cy.get("#user-billing_address"),
         inputAddress2: () => cy.get("#user-billing_address_line_2"),
@@ -20,7 +20,7 @@ class ProfilePage {
         inputState: () => cy.get("#user-billing_state"),
         inputZip: () => cy.get("#user-billing_zip"),
         drpdwnCountry: () => cy.get("div[class='form_group'] div div[class='multiselect__tags']"),
-        btnUpdateBilling: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(2) > div:nth-child(5) > button:nth-child(2)"),
+        // btnUpdateBilling: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(2) > div:nth-child(5) > button:nth-child(2)"),
         errormsg: () => cy.get(".invalid-feedback"),
         errormsg1: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(3)"),
     };
@@ -40,7 +40,7 @@ class ProfilePage {
 
     //update profile photo
     setProfilePhoto() {
-       this.elements.uploadProfilePhoto().selectFile('cypress/fixtures/api.png');
+        this.elements.uploadProfilePhoto().selectFile('cypress/fixtures/api.png');
     };
 
     //update profile language
@@ -60,7 +60,7 @@ class ProfilePage {
 
     //button for update profile
     clickUpdateProfile() {
-        this.elements.btnUpdateProfile().click();
+        this.elements.btnUpdate().eq(1).click();
     };
 
     //update info and showing confirmation updated
@@ -70,8 +70,8 @@ class ProfilePage {
         this.elements.inputFirstname().clear().type(firstname);
         this.elements.inputLastname().clear().type(lastname);
         this.elements.inputPhonenumber().clear().type(phone);
-        this.elements.inputEmail().clear().type(email);
-        this.elements.btnUpdateInfo().click();
+        this.elements.inputEmail().clear().type(email, { force: true });
+        this.elements.btnUpdate().eq(2).click();
         cy.wait(2000);
         this.elements.msgSuccess().should('be.visible').contains("Your contact information has been updated!")
     };
@@ -87,7 +87,7 @@ class ProfilePage {
         this.elements.inputZip().clear().type(zip);
         this.elements.drpdwnCountry().click();
         cy.get(inputCountry).type(`${country}{enter}`);
-        this.elements.btnUpdateBilling().click();
+        this.elements.btnUpdate().eq(3).click();
         cy.wait(2000);
         this.elements.msgSuccess().should('be.visible');
     };
@@ -97,7 +97,7 @@ class ProfilePage {
         this.elements.inputFirstname().clear();
         this.elements.inputLastname().clear();
         this.elements.inputEmail().clear();
-        this.elements.btnUpdateInfo().click();
+        this.elements.btnUpdate().eq(2).click();
         cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The first name field is required.");
         this.elements.errormsg().should("be.visible").contains("The last name field is required.");
@@ -111,7 +111,7 @@ class ProfilePage {
         this.elements.inputCity().clear();
         this.elements.inputState().clear();
         this.elements.inputZip().clear();
-        this.elements.btnUpdateBilling().click();
+        this.elements.btnUpdate().eq(3).click();
         cy.wait(2000);
         this.elements.errormsg1().should("be.visible").contains("The billing address field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing city field is required.");

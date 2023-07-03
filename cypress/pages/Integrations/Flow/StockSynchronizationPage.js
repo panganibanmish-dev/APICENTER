@@ -22,7 +22,7 @@ class StockSynchronizationPage {
         selectFlow: () => cy.get("select[dusk='filter-flow-select']"),
         selectTrigger: () => cy.get("select[dusk='filter-trigger-select']"),
 
-        tabOverview: () => cy.get("main a:nth-child(1)"),
+        tabOverview: () => cy.get("div[class='tile tabs mx-6 mt-4'] a:nth-child(1)"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
     };
     acitvitySettingsTab = () => {

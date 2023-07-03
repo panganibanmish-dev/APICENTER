@@ -6,8 +6,8 @@ class SignupPage {
         inputEmailAdd: () => cy.get("#email-field"),
         inputPassword: () => cy.get("#password-field"),
         inputConfirmPassword: () => cy.get("#password-confirm-field"),
-        clickToggleTerms: () => cy.get(".form_row.form_group.mb-0"),
-        clickToggleProcessingAgreement: () => cy.get(".form_row.form_group.mt-0"),
+        clickToggleTerms: () => cy.get("#terms"),
+        clickToggleProcessingAgreement: () => cy.get("#processing_agreement"),
         btn: () => cy.get(".button"),
         btnLink: () => cy.get(".btn.btn-link.font_bold"),
         drpdownLanguage: () => cy.get(".multiselect__single"),
@@ -20,15 +20,16 @@ class SignupPage {
 
     //redirect to sign up
     goToRegisterPage = () => {
-        cy.viewport(1280, 768)
+        // cy.viewport(1280, 768)
+        cy.viewport(1800, 1000)
         cy.visit('/register')
         cy.wait(3000)
     };
 
     //toogle that needs to check for the agreement
     clickToggleTermsAndProcessingAgreement() {
-        this.elements.clickToggleTerms().click();
-        this.elements.clickToggleProcessingAgreement().click();
+        this.elements.clickToggleTerms().check({force: true});
+        this.elements.clickToggleProcessingAgreement().check({force: true});
     };
 
     //link that redirect to login
@@ -85,7 +86,7 @@ class SignupPage {
         this.elements.inputLanguage().type(`${data1}{enter}`);
 
         cy.wait(3000);
-        
+
         //change into english language
         this.elements.drpdownLanguage().click();
         this.elements.inputLanguage().type(`${data}{enter}`);

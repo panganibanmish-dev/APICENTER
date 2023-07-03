@@ -3,13 +3,15 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     baseUrl:"https://stg.apicenter.io",
+  
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
     env: {
       login_email: "panganibanmish.work@gmail.com",
       login_password: "Radeonstar@1030",
-      MAILOSAUR_API_KEY: "k0xaoDI5ND0KbxaoJsFqHZfQRBLjpV4N"
+      MAILOSAUR_API_KEY: "k0xaoDI5ND0KbxaoJsFqHZfQRBLjpV4N",
+      baseUrl2: "https://apicenter.io/",
     },
   },
   requestTimeout: 30000,

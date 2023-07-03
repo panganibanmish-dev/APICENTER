@@ -19,7 +19,7 @@ describe('Integrations Page Test Suite', () => {
         AddIntegrationsPage
             .gotoIntegrations();
     });
-    it('It should be click the add integration button to proceed to step 1 to step 5', () => {
+    it('It should be the add integration flow to proceed to step 1 to step 5', () => {
         const visibility = "Active"
         const variantvisibility = "Active"
 
