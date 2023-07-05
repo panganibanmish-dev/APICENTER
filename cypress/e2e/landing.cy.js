@@ -6,16 +6,12 @@ describe('Landing Page Test Suite', () => {
         LoginPage.goToLoginPage();
     });
     it('Viewing the landing page of the APIcenter', () => {
-        cy.on('uncaught:exception', (err, runnable) => {
-            // Prevent Cypress from failing the test
-            return false;
-        });
-        cy.request('https://apicenter.io/').then((response) => {
-            // Perform assertions or actions on the response
-            expect(response.status).to.eq(200);
-            cy.visit('https://apicenter.io/');
-        });
+
+        const app1 = "shopify"
+        const app2 = "magento 2"
+
+        LandingPage.gotoLandingpage();
         cy.wait(5000);
-        LandingPage.apicenterPage();
+        LandingPage.apicenterPage(app1, app2);
     });
 });

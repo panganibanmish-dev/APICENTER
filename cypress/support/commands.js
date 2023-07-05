@@ -25,5 +25,6 @@ import 'cypress-file-upload';
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import 'cypress-mailosaur'
+import 'cypress-mailosaur';
+import "cypress-real-events/support";
 
