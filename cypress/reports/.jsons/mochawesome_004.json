@@ -1,0 +1,128 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-07T07:37:06.006Z",
+    "end": "2023-07-07T07:38:27.597Z",
+    "duration": 81591,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fc67a0b5-25b4-4e66-93fa-ab21b9db22ce",
+      "title": "",
+      "fullFile": "cypress\\e2e\\signup.cy.js",
+      "file": "cypress\\e2e\\signup.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e6ea956e-6ce6-43d5-bf36-f4a490ed05a9",
+          "title": "Sign Up Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Just redirected - Check the required fields",
+              "fullTitle": "Sign Up Page Test Suite Just redirected - Check the required fields",
+              "timedOut": null,
+              "duration": 29629,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_SignupPage.default.checkRequireFields();",
+              "err": {},
+              "uuid": "18ae0068-a812-4a07-b3fb-e8cd5da017ca",
+              "parentUUID": "e6ea956e-6ce6-43d5-bf36-f4a490ed05a9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User should be input the required fields and able to proceed to the next page for the completion of the registration",
+              "fullTitle": "Sign Up Page Test Suite User should be input the required fields and able to proceed to the next page for the completion of the registration",
+              "timedOut": null,
+              "duration": 51808,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const inputInfoUser = {\n  email: \"michuser30@mailinator.com\"\n};\nconst data = 'English';\nconst data1 = \"Nederlands\";\nconst app1 = \"Shopify\";\nconst app2 = \"Magento\";\nconst app3 = \"Shopware 6.3\";\n_SignupPage.default.fillData(inputInfoUser);\n_SignupPage.default.clickToggleTermsAndProcessingAgreement();\ncy.wait(3000);\n_SignupPage.default.drpdownClick(data, data1, app1, app2, app3);\ncy.get(\".button\").click();\n_SignupPage.default.redirectHomePage();",
+              "err": {},
+              "uuid": "b0346891-1506-4bb5-9d6f-0eb7b29179dd",
+              "parentUUID": "e6ea956e-6ce6-43d5-bf36-f4a490ed05a9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "18ae0068-a812-4a07-b3fb-e8cd5da017ca",
+            "b0346891-1506-4bb5-9d6f-0eb7b29179dd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 81437,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "My Test Suite",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

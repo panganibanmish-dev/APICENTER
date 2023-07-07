@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-07T07:29:45.893Z",
+    "end": "2023-07-07T07:35:04.920Z",
+    "duration": 319027,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ce16e067-159d-4be3-961a-e4d6e214f8e6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\landing.cy.js",
+      "file": "cypress\\e2e\\landing.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "69ac6aa9-824b-463f-b328-16e2a2cd490d",
+          "title": "Landing Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Viewing the landing page of the APIcenter",
+              "fullTitle": "Landing Page Test Suite Viewing the landing page of the APIcenter",
+              "timedOut": null,
+              "duration": 317511,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const app1 = \"shopify\";\nconst app2 = \"magento 2\";\n_LandingPage.default.gotoLandingpage();\ncy.wait(5000);\n_LandingPage.default.apicenterPage(app1, app2);",
+              "err": {},
+              "uuid": "0c3d2451-09c5-420a-94ff-3f6542388ad2",
+              "parentUUID": "69ac6aa9-824b-463f-b328-16e2a2cd490d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0c3d2451-09c5-420a-94ff-3f6542388ad2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 317511,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "My Test Suite",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

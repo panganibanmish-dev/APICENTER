@@ -27,4 +27,6 @@ import 'cypress-file-upload';
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-mailosaur';
 import "cypress-real-events/support";
-
+import '@shelex/cypress-allure-plugin';
+import 'cypress-file-upload';
+import 'cypress-mochawesome-reporter/register';

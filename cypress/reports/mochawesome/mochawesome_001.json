@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-07-07T08:29:20.268Z",
+    "end": "2023-07-07T08:32:16.362Z",
+    "duration": 176094,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e9d4fa5b-611d-4de3-bacd-cb39b088a604",
+      "title": "",
+      "fullFile": "cypress\\e2e\\integrations.cy.js",
+      "file": "cypress\\e2e\\integrations.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4b107771-8943-40f4-8bdf-6798c844752a",
+          "title": "Integrations Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "It should be the add integration flow to proceed to step 1 to step 5",
+              "fullTitle": "Integrations Page Test Suite It should be the add integration flow to proceed to step 1 to step 5",
+              "timedOut": null,
+              "duration": 84926,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const visibility = \"Active\";\nconst variantvisibility = \"Active\";\n_AddIntegrationsPage.default.addIntegration();\ncy.wait(3000);\n_AddIntegrationsPage.default.followStep1();\ncy.wait(3000);\n_AddIntegrationsPage.default.followStep2();\ncy.wait(3000);\n_AddIntegrationsPage.default.followStep3();\ncy.wait(3000);\n_AddIntegrationsPage.default.followStep4(visibility, variantvisibility);\ncy.wait(3000);\n_AddIntegrationsPage.default.followStep5();\ncy.wait(3000);\n_IntegrationsSettingPage.default.OverviewConfigureFlow();\ncy.wait(2000);\n_IntegrationsSettingPage.default.IntegrationSettings();\ncy.wait(2000);\n_IntegrationsSettingPage.default.ActivityTab();\ncy.wait(2000);\n_AddIntegrationsPage.default.gotoIntegrations();\n_ProductSynchronizationPage.default.productSyncronizationFlow();\n_SalesOrderSynchronizationPage.default.saleSynchronizationFlow();\n_CustomerSynchronizationPage.default.customerSynchronizationFlow();\n_StockSynchronizationPage.default.stockSynchronizationFlow();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 30000ms: Expected to find element: `body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 30000ms: Expected to find element: `body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)`, but never found it.\n    at AddIntegrationsPage.eval [as connectApplication2] (webpack:///./cypress/pages/Integrations/AddIntegrationsPage.js:143:13)\n    at AddIntegrationsPage.eval [as followStep2] (webpack:///./cypress/pages/Integrations/AddIntegrationsPage.js:85:13)\n    at Context.eval (webpack:///./cypress/e2e/integrations.cy.js:33:13)",
+                "diff": null
+              },
+              "uuid": "df5ce95e-ee52-4572-a373-1992ac829ba4",
+              "parentUUID": "4b107771-8943-40f4-8bdf-6798c844752a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "df5ce95e-ee52-4572-a373-1992ac829ba4"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 84926,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,11 +1,18 @@
 const { defineConfig } = require("cypress");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+// import allureWriter from "@shelex/cypress-allure-plugin/writer";
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+
   e2e: {
-    baseUrl:"https://stg.apicenter.io",
-  
+    baseUrl: "https://stg.apicenter.io",
+
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      allureWriter(on, config);
+      require('cypress-mochawesome-reporter/plugin')(on);
+      return config;
     },
     env: {
       login_email: "panganibanmish.work@gmail.com",
@@ -23,6 +30,23 @@ module.exports = defineConfig({
   screenshotOnRunFailure: false,
   defaultCommandTimeout: 30000,
   video: true,
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress/report/mochawesome-report",
+    reportFilename: "[status]_[datetime]-[name]-report",
+    title: "[status]_[datetime]-[name]-report",
+    timestamp: "longDate",
+    charts: true,
+    html: true,
+    json: true,
+    embeddedScreenshots: true,
+    overwrite: true,
+    inlineAssets: true,
+    enableCharts: true,
+  },
+  compilerOptions: {
+    types: ["jest", "node"],
+  },
   experimentalSingleTabRunMode: true,
   watchForFileChanges: false,
   retries: {

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-07T08:26:57.651Z",
+    "end": "2023-07-07T08:29:11.238Z",
+    "duration": 133587,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6dced306-5da0-4df4-8c2a-9f2fc94b8505",
+      "title": "",
+      "fullFile": "cypress\\e2e\\application.cy.js",
+      "file": "cypress\\e2e\\application.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4779d77f-d8a5-4e7a-aca6-6e6dbf8482c0",
+          "title": "Application Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "It should be able to add, edit, delete and search the applications",
+              "fullTitle": "Application Page Test Suite It should be able to add, edit, delete and search the applications",
+              "timedOut": null,
+              "duration": 133199,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_ApplicationPage.default.YourApplications();",
+              "err": {},
+              "uuid": "7f26b67e-cf1b-43bd-8d7b-41a6131bac42",
+              "parentUUID": "4779d77f-d8a5-4e7a-aca6-6e6dbf8482c0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7f26b67e-cf1b-43bd-8d7b-41a6131bac42"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 133199,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-07-07T13:25:13.998Z",
+    "end": "2023-07-07T13:27:24.000Z",
+    "duration": 130002,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "f3221a23-ac0e-477c-a556-b920cfe84b1a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\application.cy.js",
+      "file": "cypress\\e2e\\application.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8b5a1296-72f4-4baf-bfb7-d74ce013cf19",
+          "title": "Application Page Test Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "It should be able to add, edit, delete and search the applications",
+              "fullTitle": "Application Page Test Suite It should be able to add, edit, delete and search the applications",
+              "timedOut": null,
+              "duration": 129687,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-videos-passed\",\n  \"value\": \"cypress\\\\e2e\\\\application.cy.js\"\n}",
+              "code": "_ApplicationPage.default.YourApplications();",
+              "err": {},
+              "uuid": "4821a347-4a3c-49d1-a82b-c79aee37d9f7",
+              "parentUUID": "8b5a1296-72f4-4baf-bfb7-d74ce013cf19",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4821a347-4a3c-49d1-a82b-c79aee37d9f7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 129687,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
