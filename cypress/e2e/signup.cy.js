@@ -1,5 +1,5 @@
 import SignupPage from "../pages/SignupPage";
-// import LoginPage from "../pages/LoginPage";
+import NovaPage from "../pages/Accounts/NovaPage";
 
 describe('Sign Up Page Test Suite', () => {
     beforeEach(() => {
@@ -25,5 +25,8 @@ describe('Sign Up Page Test Suite', () => {
         SignupPage.drpdownClick(data, data1, app1, app2, app3);
         cy.get(".button").click();
         SignupPage.redirectHomePage();
+        
+        //delete michelle tester user after you sign up new account
+        NovaPage.deleteUsers();
     });
-})
+});

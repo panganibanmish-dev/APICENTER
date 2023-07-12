@@ -9,20 +9,22 @@ class LoginPage {
     accountMenu: () => cy.get("#dropdownMenuButton"),
     accountLabel: () => cy.get(".dropdown-header"),
     accountDropdownItem: () => cy.get(".dropdown-item"),
+    userIcon: () => cy.get("img[alt='User Photo']"),
     accountLogout: () => cy.get("button[class='dropdown-item']"),
     loginlabelInline: () => cy.get(".form_label_inline"),
     errorMsg: () => cy.get(".invalid-feedback"),
     sidebar: () => cy.get(".sidebar_nav.sidebar_list"),
   };
 
+  //redirect to login page
   goToLoginPage = () => {
     // cy.viewport(1280, 768)
     cy.viewport(1800, 1000)
     cy.visit('/login')
     cy.get("body").contains("Log in");
-    // cy.wait(3000)
   };
 
+  //user should input valid creds and must redirect to homepage 
   loginAdmin = (email, password) => {
     cy.get("#email-field").should("be.visible").and("have.class", "form_field");
     this.elements.emailTextBox().type(email);
@@ -46,17 +48,12 @@ class LoginPage {
     sidebar.forEach((s) => {
       cy.get(".sidebar_nav.sidebar_list").contains(s);
     });
-    // this.elements.accountMenu().click();
-    // this.elements.accountLabel().should("be.visible");
-    // this.elements.accountDropdownItem().should("be.visible").contains("Profile");
-    // this.elements.accountDropdownItem().should("be.visible").contains("Billing");
-    // this.elements.accountDropdownItem().should("be.visible").contains("Logout");
-    // cy.wait(2000);
-    // this.elements.accountLogout().click();
     cy.wait(5000);
   };
 
-  blankInput = () => {
+  // user with no creds input and must display the required fields
+  userWithNoCredsInput = () => {
+    this.goToSignUpLink();
     cy.wait(3000);
     this.elements.rememberMeToggle().click();
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
@@ -66,6 +63,7 @@ class LoginPage {
     cy.wait(5000);
   };
 
+  // user with invalid creds and must display the message that the account don't match
   loginAdminWithInvalidCreds(email = "", password = "") {
     this.elements.emailTextBox().type(email);
     this.elements.passwordTextBox().type(password);
@@ -76,25 +74,27 @@ class LoginPage {
     cy.wait(3000);
   };
 
+  // redirect to forgot password page
   goTologinWithForgotPassword() {
     this.elements.btnLink().should("be.visible").contains("Reset").click();
   };
 
+  //redirect link to register page
   goToSignUpLink() {
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
     cy.visit('/register');
     cy.wait(3000);
     this.goToLoginPage();
   };
-
-  // loginValidAdmin = (email = "", password = "") => {
-  //   this.elements.emailTextBox().type(email);
-  //   this.elements.passwordTextBox().type(password);
-  //   this.elements.rememberMeToggle().click();
-  //   this.elements.btn().click();
-  //   this.elements.homePage().should("be.visible");
-  //   cy.wait(3000);
-  // }
+  
+  // user must be logout the account after used
+  logout() {
+    this.elements.userIcon().click();
+    cy.wait(3000);
+    this.elements.accountLogout().contains("Logout");
+    this.elements.accountLogout().click();
+    cy.wait(3000);
+  };
 }
 
 module.exports = new LoginPage();

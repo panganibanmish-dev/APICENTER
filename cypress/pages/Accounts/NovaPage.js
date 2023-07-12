@@ -7,7 +7,7 @@ class NovaPage {
         sideBarInvoices: () => cy.get(".text-white.text-justify.no-underline.dim[href='/nova/resources/invoices']"),
         sideBarOrders: () => cy.get(".text-white.text-justify.no-underline.dim[href='/nova/resources/orders']"),
         sideBarSubscriptions: () => cy.get(".text-white.text-justify.no-underline.dim[href='/nova/resources/subscriptions']"),
-        searchInvoice: () => cy.get("input[placeholder='Search']"),
+        search: () => cy.get("input[placeholder='Search']"),
         ID: () => cy.get(".text-left.text-left"),
         clickEyesIcon: () => cy.get("tbody tr:nth-child(1) td:nth-child(8) div:nth-child(1) span:nth-child(2)"),
         selectActionInvoice: () => cy.get(".form-control.form-select.mr-2"),
@@ -24,6 +24,10 @@ class NovaPage {
         btnPrev: () => cy.get(".btn.btn-link.py-3.px-4.text-primary.dim[rel='prev']"),
         ordersIndex: () => cy.get("div[dusk='orders-index-component']"),
         subscriptionsIndex: () => cy.get("div[dusk='subscriptions-index-component']"),
+        sideBarUsers: () => cy.get(".text-white.text-justify.no-underline.dim[href='/nova/resources/users']"),
+        btnDeleteUser: () => cy.get("button[class='inline-flex appearance-none cursor-pointer text-70 hover:text-primary mr-3 has-tooltip']"),
+        verifyDeleteResource: () => cy.get(".mb-6.text-90.font-normal.text-xl"),
+        btnConfirmDelete: () => cy.get("#confirm-delete-button"),
     };
     Nova = (email, password) => {
         cy.viewport(1800, 1000);
@@ -38,7 +42,7 @@ class NovaPage {
         cy.wait(3000);
     };
     searchInvoiceByID = () => {
-        this.elements.searchInvoice().type('382', { delay: 2000 }).clear();
+        this.elements.search().type('382', { delay: 2000 }).clear();
         cy.wait(5000);
     };
     viewInvoiceAndDownloadInvoice = () => {
@@ -92,6 +96,19 @@ class NovaPage {
         this.recipientDetails();
         this.sidebarNovaOrders();
         this.sideNovaSubscriptions();
+    };
+
+    //delete the new register user of Michelle Test
+    deleteUsers = () => {
+        this.Nova();
+        this.elements.sideBarUsers().contains("Users").click();
+        cy.wait(3000);
+        this.elements.search().type("Michelle Tester");
+        cy.wait(3000);
+        this.elements.btnDeleteUser().click();
+        this.elements.verifyDeleteResource().should("be.visible").contains("Delete Resource");
+        this.elements.btnConfirmDelete().click();
+        cy.wait(3000);
     };
 }
 module.exports = new NovaPage();

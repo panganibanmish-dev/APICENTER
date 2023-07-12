@@ -9,13 +9,12 @@ describe('Login Page Test Suite', () => {
     });
     it('Email and Password Fields - Fill out email and password fields with the valid credentials', () => {
         LoginPage
-            .loginAdmin(data.valid.email, data.valid.password)
+            .loginAdmin(data.valid.email, data.valid.password);
+        LoginPage.logout();
     });
     it('Email and Password Fields - Blank input', () => {
         LoginPage
-            .goToSignUpLink();
-        LoginPage
-            .blankInput();
+            .userWithNoCredsInput();
     });
     it('Email and Password Fields - Fill out email and password fields with the invalid credentials', () => {
         LoginPage

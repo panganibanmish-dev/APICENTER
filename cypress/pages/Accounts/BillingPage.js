@@ -54,7 +54,7 @@ class BillingPage {
         togglePaid: () => cy.get("input[value='paid']"),
         btnContinue: () => cy.get("button[name='sumbit']"),
         form_errormsg: () => cy.get('#form-errors'),
-        downloadFile: () => cy.get("tbody tr:nth-child(1) td:nth-child(4) a:nth-child(1)"),
+        downloadFile: () => cy.get(".button"),
     };
     //redirects to billing url
     clickBillingTab = () => {
@@ -197,7 +197,7 @@ class BillingPage {
     };
     //download the invoice pdf
     clickDownloadButton = () => {
-        this.elements.downloadFile().click();
+        this.elements.downloadFile().eq(2).click();
     };
 }
 module.exports = new BillingPage(); 

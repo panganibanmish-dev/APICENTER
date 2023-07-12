@@ -4,15 +4,12 @@ class ProfilePage {
         btnProfile: () => cy.get(".nav_link.nav_sublink"),
         uploadProfilePhoto: () => cy.get("#choose-photo"),
         dropdownProfileLanguage: () => cy.get("div[class='form-group'] div[class='multiselect__select']"),
-        // btnUpdateProfile: () =>
-        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(4) > div:nth-child(2) > button:nth-child(2)"),
         inputCompany: () => cy.get("#user-company_name"),
         inputFirstname: () => cy.get("#user-first_name"),
         inputLastname: () => cy.get("#user-last_name"),
         inputPhonenumber: () => cy.get("#user-phone_number"),
         inputEmail: () => cy.get("#user-email_address"),
-        btnUpdate: () =>
-            cy.get(".button"),
+        btnUpdate: () => cy.get(".button"),
         msgSuccess: () => cy.get(".alert.alert-success"),
         inputAddress: () => cy.get("#user-billing_address"),
         inputAddress2: () => cy.get("#user-billing_address_line_2"),
@@ -20,21 +17,11 @@ class ProfilePage {
         inputState: () => cy.get("#user-billing_state"),
         inputZip: () => cy.get("#user-billing_zip"),
         drpdwnCountry: () => cy.get("div[class='form_group'] div div[class='multiselect__tags']"),
-        // btnUpdateBilling: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(2) > div:nth-child(5) > button:nth-child(2)"),
         errormsg: () => cy.get(".invalid-feedback"),
-        errormsg1: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(3)"),
     };
-
-    //redirect to profile page
-    // goToProfile = () => {
-    //     cy.viewport(1280, 768)
-    //     cy.visit('/dashboard/account/profile')
-    //     cy.wait(3000)
-    // };
 
     //redirect to profile account
     clickProfileTab = () => {
-        this.elements.btnAccount().click();
         this.elements.btnProfile().should("be.visible").contains("Profile").click();
     };
 
@@ -102,9 +89,7 @@ class ProfilePage {
         this.elements.errormsg().should("be.visible").contains("The first name field is required.");
         this.elements.errormsg().should("be.visible").contains("The last name field is required.");
         this.elements.errormsg().should("be.visible").contains("The email field is required.");
-
         cy.wait(2000);
-
         //Showing an error billing information
         this.elements.inputAddress().clear();
         this.elements.inputAddress2().clear();
@@ -113,10 +98,19 @@ class ProfilePage {
         this.elements.inputZip().clear();
         this.elements.btnUpdate().eq(3).click();
         cy.wait(2000);
-        this.elements.errormsg1().should("be.visible").contains("The billing address field is required.");
+        this.elements.errormsg().should("be.visible").contains("The billing address field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing city field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing zip field is required.");
     };
+
+    // //calling function to e2e profile page
+    // updateProfilePage() {
+    //     this.setProfilePhoto();
+    //     this.setProfileLanguage();
+    //     this.updateContactInformation();
+    //     this.updateBillingAddress();
+    //     cy.wait(5000);
+    // }
 }
 
 module.exports = new ProfilePage(); 
