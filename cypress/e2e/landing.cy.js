@@ -11,7 +11,16 @@ describe('Landing Page Test Suite', () => {
         const app2 = "magento 2"
 
         LandingPage.gotoLandingpage();
-        cy.wait(5000);
-        LandingPage.apicenterPage(app1, app2);
+        LandingPage.navbar();
+        LandingPage.apicenterLogo();
+        LandingPage.homepage();
+        LandingPage.IntegrationPage(app1, app2);
+        LandingPage.navPlatform();
+        LandingPage.navIntegrations();
+        LandingPage.navSolutions();
+        LandingPage.navEcommerce();
+        LandingPage.navPartners();
+        LandingPage.navPricing();
+        LandingPage.footer();
     });
 });

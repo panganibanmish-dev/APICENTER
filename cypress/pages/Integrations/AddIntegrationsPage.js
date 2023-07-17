@@ -25,10 +25,11 @@ class AddIntegrationsPage {
             cy.get("h3[class='mx-6']"),
         appSearch: () =>
             cy.get("#app-search"),
-        appBox1: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3)"),
-        appBox2: () =>
-            cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)"),
+        appBox: () => cy.get(".all-app-tile.inner-box.overflow-hidden.tile.cursor-pointer.inner-box.overflow-hidden.tile.tile_app"),
+        // appBox1: () =>
+        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3)"),
+        // appBox2: () =>
+        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)"),
         appToggle: () =>
             cy.get(".application_toolbar_toggle"),
         appEdit: () =>
@@ -110,7 +111,9 @@ class AddIntegrationsPage {
             .type("Magento 2").clear();
         cy.wait(2000);
         this.elements
-            .appBox1()
+            // .appBox1()
+            .appBox()
+            .eq(1)
             .click();
         cy.wait(2000);
         this.elements
@@ -139,7 +142,9 @@ class AddIntegrationsPage {
             .btnApplication2()
             .click();
         this.elements
-            .appBox2()
+            // .appBox2()
+            .appBox()
+            .eq(0)
             .should("be.visible")
             .click();
         cy.wait(5000);

@@ -29,9 +29,9 @@ class ForgotPasswordPage {
         this.goToForgotPassword();
         this.elements.emailTextBox().type(emailAddress);
         this.elements.btn().click().should("be.visible");
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.successmessage().should("be.visible");
-        cy.wait(5000);
+        // cy.wait(5000);
 
         cy.mailosaurGetMessage(serverId, {
             sentTo: emailAddress

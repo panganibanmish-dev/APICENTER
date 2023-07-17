@@ -58,31 +58,29 @@ class BillingPage {
     };
     //redirects to billing url
     clickBillingTab = () => {
-        this.elements.btnAccount().click();
+        this.elements.btnAccount().should("be.visible").click();
         this.elements.btnBilling().should("be.visible").contains("Billing").click();
-        cy.wait(2000);
+        // cy.wait(2000);
     };
     //verifying label elements
     verifyLabel = () => {
         cy.wait(3000);
-        this.elements.lblActiveSubscriptions();
-        this.elements.lblCurrentPlan();
-        this.elements.lblFooter();
-        this.elements.lblPaymentInfo();
-        // this.elements.lblWarning();
-        // this.elements.lblWarning2();
-        this.elements.lblSendingInvoiceTo();
-        this.elements.lblCCInvoiceTo();
-        this.elements.lblVATNumber();
+        this.elements.lblActiveSubscriptions().should("be.visible");
+        this.elements.lblCurrentPlan().should("be.visible");
+        this.elements.lblFooter().should("be.visible");
+        this.elements.lblPaymentInfo().should("be.visible");
+        this.elements.lblSendingInvoiceTo().should("be.visible");
+        this.elements.lblCCInvoiceTo().should("be.visible");
+        this.elements.lblVATNumber().should("be.visible");
     };
     //update payment method and redirect to mollie.com for payment
     clickUpdatePaymentMethod = () => {
-        this.elements.btnPaymentMethod().click();
+        this.elements.btnPaymentMethod().should("be.visible").click();
     };
     paymentRedirects = () => {
         this.elements.linkBackwebsite().click();
         this.clickUpdatePaymentMethod();
-        cy.wait(5000);
+        cy.wait(3000);
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
     };
     afterPayRedirectBackToWebsite = () => {
@@ -177,7 +175,7 @@ class BillingPage {
     };
     //update payment info
     clickUpdatePaymentInfo = () => {
-        this.elements.btnUpdate().click();
+        this.elements.btnUpdate().should("be.visible").click();
     };
     //check the invalid/required fields
     checkRequiredFields = () => {
@@ -193,11 +191,11 @@ class BillingPage {
         this.elements.inputDisableSendingInvoiceTo().should("be.disabled");
         this.elements.inputCCInvoiceTo().should("be.visible").clear().type('panganibanmish.work@gmail.com');
         this.elements.inputVATNumber().should("be.visible").clear().type('NL861742163B01');
-        this.elements.btnUpdate().click();
+        this.elements.btnUpdate().should("be.visible").click();
     };
     //download the invoice pdf
     clickDownloadButton = () => {
-        this.elements.downloadFile().eq(2).click();
+        this.elements.downloadFile().eq(2).should("be.visible").click();
     };
 }
 module.exports = new BillingPage(); 

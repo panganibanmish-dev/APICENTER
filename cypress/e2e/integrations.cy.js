@@ -15,9 +15,9 @@ describe('Integrations Page Test Suite', () => {
                 Cypress.env('login_email'),
                 Cypress.env('login_password'));
         cy.get("body")
-            .contains("Integrations");
-        AddIntegrationsPage
-            .gotoIntegrations();
+            .contains("Integrations").click();
+        // AddIntegrationsPage
+        //     .gotoIntegrations();
     });
     it('It should be the add integration flow to proceed to step 1 to step 5', () => {
         const visibility = "Active"
@@ -25,31 +25,31 @@ describe('Integrations Page Test Suite', () => {
 
         AddIntegrationsPage
             .addIntegration();
-        cy.wait(3000);
+        // cy.wait(3000);
         AddIntegrationsPage
             .followStep1();
-        cy.wait(3000);
+        // cy.wait(3000);
         AddIntegrationsPage
             .followStep2();
-        cy.wait(3000);
+        // cy.wait(3000);
         AddIntegrationsPage
             .followStep3();
-        cy.wait(3000);
+        // cy.wait(3000);
         AddIntegrationsPage
             .followStep4(visibility, variantvisibility);
-        cy.wait(3000);
+        // cy.wait(3000);
         AddIntegrationsPage
             .followStep5();
-        cy.wait(3000);
+        // cy.wait(3000);
         IntegrationsSettingPage
             .OverviewConfigureFlow();
-        cy.wait(2000);
+        // cy.wait(2000);
         IntegrationsSettingPage
             .IntegrationSettings();
-        cy.wait(2000);
+        // cy.wait(2000);
         IntegrationsSettingPage
             .ActivityTab();
-        cy.wait(2000);
+        // cy.wait(2000);
         AddIntegrationsPage
             .gotoIntegrations();
         ProductSynchronizationPage

@@ -16,24 +16,28 @@ class ApplicationPage {
     };
     YourApplications = () => {
         cy.wait(3000);
-        this.elements.appToggle().eq(0).click();
+        this.elements.appToggle().eq(1).click();
         this.elements.appToolbar().contains("Edit").click({ force: true });
+
         //the app should be retain on the added application with no name
-        this.elements.inputTitle().eq(0).clear();
+        this.elements.inputTitle().eq(1).clear();
         this.elements.saveBtn().click();
         this.elements.applicationNav().click();
         cy.wait(3000);
+
         //the changes made on the fields should be saved
-        this.elements.appToggle().eq(0).click();
+        this.elements.appToggle().eq(1).click();
         this.elements.appToolbar().contains("Edit").click({ force: true });
-        this.elements.inputTitle().eq(0).clear().type("Mitch Magento", { delay: 200 });
+        this.elements.inputTitle().eq(1).clear().type("Mitch Magento", { delay: 200 });
         this.elements.saveBtn().click();
         cy.wait(3000);
+
         //it should be showing a confirming notification saying: "Connection is good"
         this.elements.testconnectionBtn().click();
         cy.wait(3000);
-        this.elements.applicationNav().click();
-        cy.wait(3000);
+        this.elements.applicationNav().should("be.visible").click();
+        // cy.wait(3000);
+
         //the added application should be canceled to delete
         this.elements.appToggle().eq(0).click();
         this.elements.appToolbar().contains("Delete").click({ force: true });

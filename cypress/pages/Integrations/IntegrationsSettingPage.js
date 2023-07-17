@@ -14,22 +14,22 @@ class IntegrationsSettingPage {
 
     //It should be reloading the current page as this tab is opened by default upon redirecting
     OverviewConfigureFlow = () => {
-        this.elements.cardTile().click();
+        this.elements.cardTile().should("be.visible").click();
         cy.wait(2000);
     };
     //It should be redirecting to the settings of the integration
     IntegrationSettings = () => {
-        this.elements.tabSettings().click();
-        this.elements.currenciesSettings().click();
-        this.elements.customerSettings().click();
-        this.elements.generalIntegrationSetting().click();
-        this.elements.stockAndwarehouseSettings().click();
-        this.elements.unitofmeasurementSettings().click();
-        this.elements.btnSaveSettings().click();
+        this.elements.tabSettings().should("be.visible").click();
+        this.elements.currenciesSettings().should("be.visible").click();
+        this.elements.customerSettings().should("be.visible").click();
+        this.elements.generalIntegrationSetting().should("be.visible").click();
+        this.elements.stockAndwarehouseSettings().should("be.visible").click();
+        this.elements.unitofmeasurementSettings().should("be.visible").click();
+        this.elements.btnSaveSettings().should("be.visible").click();
     };
     //It should be redirecting to the activities done upon the integration
     ActivityTab = () => {
-        this.elements.tabActivity().click();
+        this.elements.tabActivity().should("be.visible").click();
     };
 }
 

@@ -37,10 +37,8 @@ describe('Profile Page Test Suite', () => {
 
         //this is for blank input and it show an error message
         ProfilePage.invalidInfo();
-
         //this is for valid info
         ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.mainfirstname, updatedata.valid.mainlastname, updatedata.valid.mainphone, updatedata.valid.email);
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
-        cy.wait(5000);
     });
 })

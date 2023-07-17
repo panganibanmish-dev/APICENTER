@@ -21,15 +21,15 @@ class ResetPasswordPage {
         this.goToMailosaur();
         //login account
         this.elements.email_mailosaur().type(email);
-        this.elements.submit_btn().eq(0).click();
+        this.elements.submit_btn().eq(0).should("be.visible").click();
         this.elements.password_mailosaur().type(password);
-        this.elements.submit_btn().eq(0).click({ force: true });
-        cy.wait(3000);
+        this.elements.submit_btn().eq(0).should("be.visible").click({ force: true });
+        // cy.wait(3000);
 
         //get the link for reset password
-        this.elements.sidebar().eq(1).click();
-        this.elements.message().eq(0).click();
-        cy.wait(3000);
+        this.elements.sidebar().eq(1).should("be.visible").click();
+        this.elements.message().eq(0).should("be.visible").click();
+        // cy.wait(3000);
         // this.elements.reset_btn().click();
         this.elements.reset_btn().invoke('attr', 'href').then((link_reset)=> {
             cy.visit(link_reset);
@@ -39,8 +39,8 @@ class ResetPasswordPage {
         // cy.visit("https://stg.apicenter.io/reset-password/");
         this.elements.newpassword().type(newpassword);
         this.elements.confirmpassword().type(newpassword);
-        cy.wait(3000);
-        this.elements.btn().click();
+        // cy.wait(3000);
+        this.elements.btn().should("be.visible").click();
 
     };
 }

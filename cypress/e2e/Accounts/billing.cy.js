@@ -16,9 +16,7 @@ describe('Billing Page Test Suite', () => {
         BillingPage.paymentMolliebyiDeal();
         BillingPage.paymentMolliebyKbcCbc();
         BillingPage.checkRequiredFields();
-        cy.wait(2000);
         BillingPage.inputRequiredFields();
         BillingPage.clickDownloadButton();
-        // CheckNovaPage.InvoiceDownload();
     });
 })
