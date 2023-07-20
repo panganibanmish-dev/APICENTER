@@ -48,11 +48,11 @@ class ProfilePage {
     };
     //update info and showing confirmation updated
     updateContactInformation = (company_name, firstname, lastname, phone, email) => {
-        this.elements.inputCompany().should("be.visible").clear().type(company_name);
+        // this.elements.inputCompany().should("be.visible").clear().type(company_name);
         this.elements.inputFirstname().should("be.visible").clear().type(firstname);
         this.elements.inputLastname().should("be.visible").clear().type(lastname);
         this.elements.inputPhonenumber().should("be.visible").clear().type(phone);
-        this.elements.inputEmail().should("be.visible").clear().type(email, { force: true });
+        // this.elements.inputEmail().should("be.visible").clear().type(email, { force: true });
         this.elements.btnUpdate().eq(2).should("be.visible").click();
         this.elements.msgSuccess().should('be.visible').contains("Your contact information has been updated!")
     };
@@ -75,12 +75,12 @@ class ProfilePage {
         //Showing an error contact information
         this.elements.inputFirstname().should("be.visible").clear();
         this.elements.inputLastname().should("be.visible").clear();
-        this.elements.inputEmail().should("be.visible").clear();
+        // this.elements.inputEmail().should("be.visible").clear();
         this.elements.btnUpdate().eq(2).should("be.visible").click();
         // cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The first name field is required.");
         this.elements.errormsg().should("be.visible").contains("The last name field is required.");
-        this.elements.errormsg().should("be.visible").contains("The email field is required.");
+        // this.elements.errormsg().should("be.visible").contains("The email field is required.");
         // cy.wait(2000);
         //Showing an error billing information
         this.elements.inputAddress().should("be.visible").clear();

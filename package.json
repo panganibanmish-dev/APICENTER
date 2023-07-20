@@ -9,7 +9,13 @@
     "allure serve": "allure-results",
     "allure generate": "allure-results",
     "allure-report": "npx allure generate allure-results --clean allure-report",
-    "cypress run": "npx cypress run --browser chrome"
+    "cypress run": "npx cypress run --browser chrome",
+    "npx cypress run --env ENV='staging'": "npx cypress run  --env ENV='staging'",
+    "npx cypress run --env ENV='dev2'": "npx cypress run --env ENV='dev2'",
+    "npx cypress open --env ENV='staging'": "npx cypress open  --env ENV='staging'",
+    "npx cypress open --env dev2": "npx cypress open --env dev2",
+    "run-dev": "npx cypress open --config-file cypress.config.dev.js",
+    "run-staging": "npx cypress open --config-file cypress.config.staging.js"
   },
   "author": "",
   "license": "ISC",

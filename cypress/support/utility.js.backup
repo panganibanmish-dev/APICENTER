@@ -1,0 +1,11 @@
+export class Utility {
+    getBaseUrl() {
+        let envi = Cypress.env('ENV'); //Get the value of evnironment variable i.e ENV
+        if (envi == 'staging') //Check the value
+            return "https://stg.apicenter.io"; //return desired url
+        else if (envi == 'dev2')
+            return "https://dev2.apicenter.io";
+        // else if (envi == 'production')
+        //     return "https://app.apicenter.io";
+    }
+}

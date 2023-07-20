@@ -13,6 +13,8 @@ describe('Profile Page Test Suite', () => {
         const data = 'English';
         const data1 = "Nederlands";
 
+        const phone = "0923456784";
+
         const add = "naga";
         const add2 = "cal";
         const city = "legazpi";
@@ -22,7 +24,13 @@ describe('Profile Page Test Suite', () => {
 
         ProfilePage.setProfilePhoto();
         ProfilePage.setProfileLanguage(data, data1);
-        ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.firstname, updatedata.valid.lastname, updatedata.valid.phone, updatedata.valid.email);
+        ProfilePage.updateContactInformation(
+            Cypress.env("firstname"),
+            Cypress.env("lastname"),
+            phone,
+            // Cypress.env("phone"),
+            // Cypress.env("login_email")
+        );
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
         cy.wait(3000);
     });
@@ -35,10 +43,18 @@ describe('Profile Page Test Suite', () => {
         const zip = "4405";
         const country = "Philippines";
 
+        const phone = "0923456784";
+
         //this is for blank input and it show an error message
         ProfilePage.invalidInfo();
         //this is for valid info
-        ProfilePage.updateContactInformation(updatedata.valid.company, updatedata.valid.mainfirstname, updatedata.valid.mainlastname, updatedata.valid.mainphone, updatedata.valid.email);
+        ProfilePage.updateContactInformation(
+            Cypress.env("firstname"),
+            Cypress.env("lastname"),
+            // phone,
+            Cypress.env("phone"),
+            // Cypress.env("login_email")
+        );
         ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
     });
 })

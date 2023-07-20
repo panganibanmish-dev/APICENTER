@@ -35,7 +35,7 @@ class SignupPage {
     //link that redirect to login
     goToLoginLink() {
         this.elements.btnLink().should("be.visible").contains("Log in").click();
-        cy.visit('/login');
+        cy.visit("/login");
         cy.wait(3000);
         this.goToRegisterPage();
     };
@@ -46,7 +46,6 @@ class SignupPage {
             firstname: newUser.firstname || "Michelle",
             lastname: newUser.lastname || "Tester",
             phonenumber: newUser.phonenumber || "9954415824",
-            email: newUser.email || "michuser30@mailinator.com",
             password: newUser.password || "Asdfghjkl@1130",
             confirmpassword: newUser.confirmpassword || "Asdfghjkl@1130",
         };

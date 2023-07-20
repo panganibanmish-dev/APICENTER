@@ -1,5 +1,5 @@
-import SignupPage from "../pages/SignupPage";
 import NovaPage from "../pages/Accounts/NovaPage";
+import SignupPage from "../pages/SignupPage";
 
 describe('Sign Up Page Test Suite', () => {
     beforeEach(() => {

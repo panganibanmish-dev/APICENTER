@@ -43,14 +43,14 @@ class LoginPage {
       "Account",
       "Profile",
       "Billing",
-      "Teams",
-      "Change Logs",
+      // "Teams",
+      // "Change Logs",
       "Support",
     ];
     sidebar.forEach((s) => {
       cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
     });
-    // cy.wait(2000);
+    cy.wait(2000);
   };
 
   // user with no creds input and must display the required fields

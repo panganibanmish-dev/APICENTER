@@ -9,7 +9,9 @@ describe('Login Page Test Suite', () => {
     });
     it('Email and Password Fields - Fill out email and password fields with the valid credentials', () => {
         LoginPage
-            .loginAdmin(data.valid.email, data.valid.password);
+            .loginAdmin(
+                Cypress.env('login_email'),
+                Cypress.env('login_password'));
         LoginPage.logout();
     });
     it('Email and Password Fields - Blank input', () => {
@@ -18,7 +20,7 @@ describe('Login Page Test Suite', () => {
     });
     it('Email and Password Fields - Fill out email and password fields with the invalid credentials', () => {
         LoginPage
-            .loginAdminWithInvalidCreds(data.valid.email, data.valid.inPassword)
+            .loginAdminWithInvalidCreds(Cypress.env('login_email'), Cypress.env('inPassword'));
     });
     it('Email and Password Fields - User forgot password with input email address', () => {
         LoginPage

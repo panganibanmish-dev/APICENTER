@@ -5,7 +5,7 @@ describe('Landing Page Test Suite', () => {
     beforeEach(() => {
         LoginPage.goToLoginPage();
     });
-    it('Viewing the landing page of the APIcenter', () => {
+    it('should viewing the landing page of the APIcenter', () => {
 
         const app1 = "shopify"
         const app2 = "magento 2"

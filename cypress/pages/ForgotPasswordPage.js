@@ -33,14 +33,19 @@ class ForgotPasswordPage {
         this.elements.successmessage().should("be.visible");
         // cy.wait(5000);
 
-        cy.mailosaurGetMessage(serverId, {
-            sentTo: emailAddress
-        }).then(email => {
-            cy.log(email.subject)
-            // cy.get(passwordResetLink = email.html.links[0].href).click();
-            passwordResetLink = email.html.links[0].href
-            // cy.get(passwordResetLink).click();
-        });
+        // cy.mailosaurGetMessage(serverId, {
+        //     sentTo: emailAddress
+        // }).then(email => {
+        //     cy.log(email.subject)
+        //     // cy.get(passwordResetLink = email.html.links[0].href).click();
+        //     passwordResetLink = email.html.links[0].href
+        //     // cy.get(passwordResetLink).click();
+        // });
+
+        //mailinator
+        cy.visit('https://www.mailinator.com/');
+        cy.get("#search").should("be.visible").type(`${"mich_automator@mailinator.com"}{enter}`);
+        
 
         //set new password
         // cy.visit(passwordResetLink);
