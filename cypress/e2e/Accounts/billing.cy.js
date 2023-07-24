@@ -6,17 +6,30 @@ describe('Billing Page Test Suite', () => {
         LoginPage.goToLoginPage();
         LoginPage.loginAdmin(Cypress.env('login_email'), Cypress.env('login_password'));
         cy.get("body").contains("Account");
+        
+        //should be redirect to billing page
         BillingPage.clickBillingTab();
     });
-    it('It should be present in this section (Payment Method, Email fields for invoice and update button) and should be redirect to Nova to check the billing', () => 
-    {
+    it('should be verify the label', () => {
         BillingPage.verifyLabel();
+    });
+    it('should be update payment method through by Card Payment', () => {
         BillingPage.clickUpdatePaymentMethod();
         BillingPage.paymentMolliebyCard();
+    });
+    it('should be update payment method through by iDeal Payment', () => {
+        BillingPage.clickUpdatePaymentMethod();
         BillingPage.paymentMolliebyiDeal();
+    }); 
+    it('should be update payment method through by KBC and CBC Payment', () => {
+        BillingPage.clickUpdatePaymentMethod();
         BillingPage.paymentMolliebyKbcCbc();
+    });
+    it('should be check the required fields of the payment information ', () => {
         BillingPage.checkRequiredFields();
+    });
+    it('should be input the required fields of the payment information and should be download the invoice', () => {
         BillingPage.inputRequiredFields();
-        BillingPage.clickDownloadButton();
+        // BillingPage.clickDownloadButton();
     });
 })

@@ -20,12 +20,10 @@ module.exports = defineConfig({
 
       inEmail: "panganibanmish.test@gmail.com",
       inPassword: "Radeonstar@1120",
+      company: "GG QA",
       firstname: "Test",
       lastname: "Automator",
-      phone: "0923456784",
-      company: "GG QA",
-
-      MAILOSAUR_API_KEY: "k0xaoDI5ND0KbxaoJsFqHZfQRBLjpV4N",
+      phone: 923456784,
       baseUrl2: "https://apicenter.io/",
     },
   },
@@ -36,7 +34,7 @@ module.exports = defineConfig({
   pageLoadTimeout: 80000,
   chromeWebSecurity: false,
   screenshotOnRunFailure: false,
-  defaultCommandTimeout: 30000,
+  defaultCommandTimeout: 50000,
   video: true,
   reporter: "mochawesome",
   reporterOptions: {

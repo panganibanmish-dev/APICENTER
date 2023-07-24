@@ -1,4 +1,4 @@
-import NovaPage from "../pages/Accounts/NovaPage";
+// import NovaPage from "../pages/Accounts/NovaPage";
 import SignupPage from "../pages/SignupPage";
 
 describe('Sign Up Page Test Suite', () => {
@@ -9,7 +9,7 @@ describe('Sign Up Page Test Suite', () => {
     it('Just redirected - Check the required fields', () => {
         SignupPage.checkRequireFields();
     });
-    it('User should be input the required fields and able to proceed to the next page for the completion of the registration', () => {
+    it('User should be input the required fields and able to proceed to the homepage', () => {
         const inputInfoUser = {
             email: "michuser30@mailinator.com"
         };
@@ -27,6 +27,6 @@ describe('Sign Up Page Test Suite', () => {
         SignupPage.redirectHomePage();
         
         //delete michelle tester user after you sign up new account
-        NovaPage.deleteUsers();
+        // NovaPage.deleteUsers();
     });
 });

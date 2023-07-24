@@ -6,8 +6,7 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
 
   e2e: {
-    baseUrl: "https://stg.apicenter.io",
-    
+    baseUrl: "https://app.apicenter.io/",
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -21,8 +20,8 @@ module.exports = defineConfig({
 
       inEmail: "panganibanmish.test@gmail.com",
       inPassword: "Radeonstar@1120",
-      firstname: "Test",
-      lastname: "Michelle",
+      firstname: "Michelle",
+      lastname: "Panganiban",
       phone: 923456784,
       company: "GG QA",
       email: "panganibanmish.work@gmail.com",

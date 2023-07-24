@@ -2,7 +2,7 @@ class SalesOrderSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
         saleOrderFlow: () => cy.get("div[class='flex flex-col py-8'] div:nth-child(2) div:nth-child(1)"),
-        salesOrderToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
+        salesOrderToggle: () => cy.get('input#check-0-1[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button'] span"),
         resumeBtn: () => cy.get('.button'),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),

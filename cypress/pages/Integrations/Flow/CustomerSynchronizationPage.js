@@ -1,7 +1,7 @@
 class CustomerSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
-        customerToggle: () => cy.get("label[for='check-2-0']"),
+        customerToggle: () => cy.get("label[for='check-0-3']"),
         btnAgree: () => cy.get("button[class='button'] span"),
         customerFlow: () => cy.get("div[class='tile my-4'] div:nth-child(3) div:nth-child(1)"),
         overviewTab: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"),

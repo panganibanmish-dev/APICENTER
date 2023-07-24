@@ -28,6 +28,6 @@ describe('Login Page Test Suite', () => {
         ForgotPasswordPage
             .loginWithoutEmail();
         ForgotPasswordPage.Email();
-        ResetPasswordPage.mailosaur(data.valid.email, data.valid.password, data.valid.newPassword);
+        // ResetPasswordPage.mailosaur(data.valid.email, data.valid.password, data.valid.newPassword);
     });
 })

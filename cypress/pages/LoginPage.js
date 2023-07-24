@@ -97,6 +97,24 @@ class LoginPage {
     this.elements.accountLogout().should("be.visible").click();
     // cy.wait(3000);
   };
+  homepage = () => {
+    this.elements.homePage().should("be.visible");
+    // cy.wait(3000);
+    cy.get(".navbar-brand.nav_brand").should("be.visible");
+    const sidebar = [
+      "Dashboard",
+      "Integrations",
+      "Applications",
+      "Account",
+      "Profile",
+      "Billing",
+      "Support",
+    ];
+    sidebar.forEach((s) => {
+      cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
+    });
+    cy.wait(2000);
+  };
 }
 
 module.exports = new LoginPage();

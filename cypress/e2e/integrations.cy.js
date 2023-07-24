@@ -8,24 +8,20 @@ import LoginPage from "../pages/LoginPage";
 
 describe('Integrations Page Test Suite', () => {
     beforeEach(() => {
-        LoginPage
-            .goToLoginPage();
-        LoginPage
-            .loginAdmin(
-                Cypress.env('login_email'),
-                Cypress.env('login_password'));
+        cy.login(Cypress.env('login_email'), Cypress.env('login_password'));
+        cy.viewport(1800, 1000);
+        cy.visit('/');
+        LoginPage.homepage();
         cy.get("body")
             .contains("Integrations").click();
-        // AddIntegrationsPage
-        //     .gotoIntegrations();
     });
-    it('It should be the add integration flow to proceed to step 1 to step 5', () => {
+    it('should be add integration flow and complete the step 1 to step 5', () => {
         const visibility = "Active"
         const variantvisibility = "Active"
 
         AddIntegrationsPage
             .addIntegration();
-        // cy.wait(3000);
+        cy.wait(3000);
         AddIntegrationsPage
             .followStep1();
         // cy.wait(3000);
@@ -40,16 +36,17 @@ describe('Integrations Page Test Suite', () => {
         // cy.wait(3000);
         AddIntegrationsPage
             .followStep5();
-        // cy.wait(3000);
+        cy.wait(3000);
+    });
+    it('should be allowing to update the configure flow overview and integration settings', () => {
         IntegrationsSettingPage
             .OverviewConfigureFlow();
-        // cy.wait(2000);
         IntegrationsSettingPage
             .IntegrationSettings();
-        // cy.wait(2000);
         IntegrationsSettingPage
             .ActivityTab();
-        // cy.wait(2000);
+    });
+    it('should be sychronize the flow of the integration for product, sales order, customer and stock ', () => {
         AddIntegrationsPage
             .gotoIntegrations();
         ProductSynchronizationPage
@@ -60,6 +57,5 @@ describe('Integrations Page Test Suite', () => {
             .customerSynchronizationFlow();
         StockSynchronizationPage
             .stockSynchronizationFlow();
-        
     });
 });

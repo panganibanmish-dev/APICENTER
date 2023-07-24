@@ -16,19 +16,19 @@ class ApplicationPage {
     };
     YourApplications = () => {
         cy.wait(3000);
-        this.elements.appToggle().eq(1).click();
-        this.elements.appToolbar().contains("Edit").click({ force: true });
+        this.elements.appToggle().click();
+        this.elements.appToolbar().contains("Edit").click({force: true});
 
         //the app should be retain on the added application with no name
-        this.elements.inputTitle().eq(1).clear();
+        this.elements.inputTitle().eq(0).clear();
         this.elements.saveBtn().click();
         this.elements.applicationNav().click();
         cy.wait(3000);
 
         //the changes made on the fields should be saved
-        this.elements.appToggle().eq(1).click();
+        this.elements.appToggle().click();
         this.elements.appToolbar().contains("Edit").click({ force: true });
-        this.elements.inputTitle().eq(1).clear().type("Mitch Magento", { delay: 200 });
+        this.elements.inputTitle().eq(0).clear().type("Mitch Magento", { delay: 200 });
         this.elements.saveBtn().click();
         cy.wait(3000);
 
@@ -80,29 +80,29 @@ class ApplicationPage {
         cy.wait(3000);
 
            
-    //     // add applications for shopify
-    //     this.elements.appsearch().type("Shopify", { delay: 200, force: true });
-    //     cy.wait(5000);
+        // add applications for shopify
+        this.elements.appsearch().type("Shopify", { delay: 200, force: true });
+        cy.wait(5000);
     
-    //     this.elements.appbox().click();
-    //     cy.wait(3000);
+        this.elements.appbox().click();
+        cy.wait(3000);
 
-    //     //it should be showing a notification the field is required
-    //     this.elements.saveBtn().click();
-    //     cy.wait(3000);
+        //it should be showing a notification the field is required
+        this.elements.saveBtn().click();
+        cy.wait(3000);
 
-    //    // it should be redirecting to another page where the user will provide the needed credentials for the fields required
-    //     this.elements.inputField().eq(0).type("Shopify", { delay: 200 });
-    //     this.elements.inputField().eq(1).type("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", { delay: 200 });
-    //     this.elements.eyeicon().click();
-    //     this.elements.inputField().eq(2).type("348193aa4d7df599082bc16454e94054", { delay: 300 });
-    //     this.elements.inputField().eq(3).type("api3000.myshopify.com", { delay: 300 });
-    //     this.elements.saveBtn().click();
-    //     cy.wait(3000);
-    //     this.elements.testconnectionBtn().click();
-    //     cy.wait(3000);
-    //     this.elements.applicationNav().click();
-    //     cy.wait(3000);
+       // it should be redirecting to another page where the user will provide the needed credentials for the fields required
+        this.elements.inputField().eq(0).type("Shopify", { delay: 200 });
+        this.elements.inputField().eq(1).type("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", { delay: 200 });
+        this.elements.eyeicon().click();
+        this.elements.inputField().eq(2).type("348193aa4d7df599082bc16454e94054", { delay: 300 });
+        this.elements.inputField().eq(3).type("api3000.myshopify.com", { delay: 300 });
+        this.elements.saveBtn().click();
+        cy.wait(3000);
+        this.elements.testconnectionBtn().click();
+        cy.wait(3000);
+        this.elements.applicationNav().click();
+        cy.wait(3000);
     };
 };
 module.exports = new ApplicationPage();

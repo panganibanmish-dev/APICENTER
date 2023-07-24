@@ -26,10 +26,6 @@ class AddIntegrationsPage {
         appSearch: () =>
             cy.get("#app-search"),
         appBox: () => cy.get(".all-app-tile.inner-box.overflow-hidden.tile.cursor-pointer.inner-box.overflow-hidden.tile.tile_app"),
-        // appBox1: () =>
-        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3)"),
-        // appBox2: () =>
-        //     cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)"),
         appToggle: () =>
             cy.get(".application_toolbar_toggle"),
         appEdit: () =>
@@ -113,7 +109,7 @@ class AddIntegrationsPage {
         this.elements
             // .appBox1()
             .appBox()
-            .eq(1)
+            .eq(0)
             .click();
         cy.wait(2000);
         this.elements
@@ -144,14 +140,14 @@ class AddIntegrationsPage {
         this.elements
             // .appBox2()
             .appBox()
-            .eq(0)
+            .eq(1)
             .should("be.visible")
             .click();
         cy.wait(5000);
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        const product9Toggle = 'input#check-0-1[type="checkbox"]'
+        const product9Toggle = 'input#check-1-0[type="checkbox"]'
         const total = ".flex.justify-end.mt-6.mb-2.tile"
 
         cy.get(product9Toggle)
@@ -175,7 +171,7 @@ class AddIntegrationsPage {
         this.redirectToDasboard();
     };
     redirectToDasboard = () => {
-        cy.visit("https://stg.apicenter.io/dashboard/")
+        cy.visit("/dashboard/")
     };
 }
 module.exports = new AddIntegrationsPage();

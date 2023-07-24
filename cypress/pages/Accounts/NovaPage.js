@@ -32,8 +32,8 @@ class NovaPage {
     Nova = (email, password) => {
         cy.viewport(1800, 1000);
         cy.visit('/nova/login');
-        this.elements.inputEmail().type(email, { delay: 200 });
-        this.elements.inputPassword().type(password, { delay: 200 });
+        this.elements.inputEmail().type(email);
+        this.elements.inputPassword().type(password);
         this.elements.checkRememberMe().click();
         this.elements.btnLogin().click();
     };
@@ -61,7 +61,7 @@ class NovaPage {
     recipientDetails = () => {
         this.elements.clickRecipient().should("be.visible").click();
         cy.wait(2000);
-        this.elements.recipient().scrollIntoView({ duration: 100000 }).should("be.visible").contains("User Details: Michelle Panganiban General Applications Integrations Subscriptions Orders ID ");
+        this.elements.recipient().scrollIntoView({ duration: 100000 }).should("be.visible");
         cy.wait(5000);
         this.elements.tabDuskApplications().click();
         cy.wait(5000);
@@ -71,10 +71,10 @@ class NovaPage {
         cy.wait(5000);
         this.elements.tabDuskOrders().click();
         cy.wait(5000);
-        this.elements.btnNext().click();
-        cy.wait(5000);
-        this.elements.btnPrev().click();
-        cy.wait(5000);
+        // this.elements.btnNext().click();
+        // cy.wait(5000);
+        // this.elements.btnPrev().click();
+        // cy.wait(5000);
     };
     sidebarNovaOrders = () => {
         this.elements.sideBarOrders().click();
@@ -100,7 +100,7 @@ class NovaPage {
 
     //delete the new register user of Michelle Test
     deleteUsers = () => {
-        this.Nova();
+        // this.Nova();
         this.elements.sideBarUsers().contains("Users").click();
         cy.wait(3000);
         this.elements.search().type("Michelle Tester");

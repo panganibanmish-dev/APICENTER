@@ -6,6 +6,13 @@ class ForgotPasswordPage {
         successmessage: () => cy.get(".mb-4.font-medium.text-sm.text-green-600"),
         newpassword: () => cy.get("#password-field"),
         confirmpassword: () => cy.get("#password_confirmation-field"),
+        searchEmail: () => cy.get("#search"),
+        inboxSearch: () => cy.get("#inbox_field"),
+        labelPublicMessage: () => cy.get("h4[class='fw-700']"),
+        messageBox: () => cy.get("td[class='ng-binding'] span"),
+        header_message: () => cy.get("td[class='header']"),
+        labelh1: () => cy.get("td[class='content-cell'] h1"),
+        btnResetPassword: () => cy.get(".button.button-primary"),
     };
 
     goToForgotPassword() {
@@ -18,42 +25,36 @@ class ForgotPasswordPage {
         this.elements.errorMsg().should("be.visible").contains("The email field is required.");
         cy.wait(3000);
     };
+    gotoMailinator() {
+        cy.on('uncaught:exception', (err, runnable) => {
+            // Prevent Cypress from failing the test
+            return false;
+        });
+        cy.request('https://www.mailinator.com/').then((response) => {
+            // Perform assertions or actions on the response
+            expect(response.status).to.eq(200);
+            cy.visit('https://www.mailinator.com/');
+        });
+    };
 
     Email() {
-        const serverId = 'k1xcudsr'
-        const serverDomain = 'k1xcudsr.mailosaur.net'
-        const emailAddress = 'michtestuser@' + serverDomain
-        let passwordResetLink
-        // let passwordResetLink = ".button.button-primary"
+       const emailAddress = 'mich_automator@mailinator.com';
 
         this.goToForgotPassword();
         this.elements.emailTextBox().type(emailAddress);
         this.elements.btn().click().should("be.visible");
-        // cy.wait(5000);
         this.elements.successmessage().should("be.visible");
-        // cy.wait(5000);
-
-        // cy.mailosaurGetMessage(serverId, {
-        //     sentTo: emailAddress
-        // }).then(email => {
-        //     cy.log(email.subject)
-        //     // cy.get(passwordResetLink = email.html.links[0].href).click();
-        //     passwordResetLink = email.html.links[0].href
-        //     // cy.get(passwordResetLink).click();
-        // });
 
         //mailinator
-        cy.visit('https://www.mailinator.com/');
-        cy.get("#search").should("be.visible").type(`${"mich_automator@mailinator.com"}{enter}`);
-        
-
-        //set new password
-        // cy.visit(passwordResetLink);
-        // // cy.visit("/reset-password/");
-        // this.elements.newpassword().type(newpassword);
-        // this.elements.confirmpassword().type(newpassword);
-        // cy.wait(3000);
-        // this.elements.btn().click();
+        this.gotoMailinator();
+        this.elements.searchEmail().should("be.visible").type(`${emailAddress}{enter}`);
+        this.elements.inboxSearch().should("be.visible");
+        this.elements.labelPublicMessage().should("be.visible").contains("Public Messages");
+        this.elements.messageBox().eq(0).click({ force: true });
+        // this.elements.header_message().should("be.visible");
+        cy.frameLoaded('#html_msg_body').its('0.contentDocument.body').should('not.be.empty');
+        cy.iframe('#html_msg_body').find('.button.button-primary').click();
+        cy.visit("/reset-password/")
     };
 }
 

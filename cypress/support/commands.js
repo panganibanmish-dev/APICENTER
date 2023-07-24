@@ -1,5 +1,3 @@
-import 'cypress-file-upload';
-
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -30,3 +28,21 @@ import "cypress-real-events/support";
 import '@shelex/cypress-allure-plugin';
 import 'cypress-file-upload';
 import 'cypress-mochawesome-reporter/register';
+import 'cypress-iframe';
+
+Cypress.Commands.add('login', (email, password) => {
+    cy.session([email, password], () => {
+        cy.viewport(1800, 1000);
+        cy.visit("/login");
+        cy.get("#email-field").type(email);
+        cy.get("#password-field").type(password);
+        cy.get("label[for='remember-me']").should("be.visible").click();
+        cy.intercept('POST', '/login').as('postLogin');
+        cy.get('.button').click();
+        cy.wait('@postLogin');
+    },
+        {
+            cacheAcrossSpecs: true
+        },
+    );
+});

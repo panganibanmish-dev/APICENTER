@@ -84,7 +84,7 @@ class BillingPage {
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
     };
     afterPayRedirectBackToWebsite = () => {
-        cy.visit('https://stg.apicenter.io/dashboard/account/billing?payment-method-status=expired#/payment-method');
+        cy.visit('/dashboard/account/billing?payment-method-status=expired#/payment-method');
     };
     //pay by using card
     paymentMolliebyCard = () => {
@@ -133,6 +133,7 @@ class BillingPage {
         this.elements.btnContinue().click();
         cy.wait(5000);
         this.afterPayRedirectBackToWebsite();
+        this.clickDownloadButton();
     };
     //pay by using ideal
     paymentMolliebyiDeal = () => {
@@ -146,6 +147,7 @@ class BillingPage {
         cy.wait(2000);
         // this.elements.linkBackwebsite().click();
         this.afterPayRedirectBackToWebsite();
+        this.clickDownloadButton();
     };
     //pay by using kbc
     paymentMolliebyKbcCbc = () => {
@@ -166,7 +168,7 @@ class BillingPage {
         this.elements.togglePaid().click();
         this.elements.btnContinue().click();
         this.afterPayRedirectBackToWebsite();
-        cy.wait(3000);
+        this.clickDownloadButton();
     };
     //verifying error message  
     verifyErrormsg = () => {
@@ -195,7 +197,7 @@ class BillingPage {
     };
     //download the invoice pdf
     clickDownloadButton = () => {
-        this.elements.downloadFile().eq(2).should("be.visible").click();
+        this.elements.downloadFile({ timeout: 7000 }).eq(2).should("be.visible").click();
     };
 }
 module.exports = new BillingPage(); 

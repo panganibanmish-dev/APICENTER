@@ -6,7 +6,10 @@ describe('Nova Page Test Suite', () => {
         cy.get('body').should('be.visible');
         cy.wait(5000);
     });
-    it('It should be check the billing of invoice, orders and subscription', () => {
+    it('Should be check the billing of invoice, orders and subscription', () => {
         NovaPage.Billing();
     });
+    it('Should be delete the user of the created sign up ', () => {
+        NovaPage.deleteUsers();
+    })
 })

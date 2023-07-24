@@ -1,7 +1,7 @@
 class StockSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
-        stockToggle: () => cy.get('input#check-0-4[type="checkbox"]'),
+        stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button']"),
         stockFlow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1)"),
         resumeBtn: () => cy.get('.button'),
