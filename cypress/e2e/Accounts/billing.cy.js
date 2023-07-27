@@ -3,9 +3,10 @@ import LoginPage from "../../pages/LoginPage";
 
 describe('Billing Page Test Suite', () => {
     beforeEach(() => {
-        LoginPage.goToLoginPage();
-        LoginPage.loginAdmin(Cypress.env('login_email'), Cypress.env('login_password'));
-        cy.get("body").contains("Account");
+        cy.login(Cypress.env('login_email'), Cypress.env('login_password'));
+        cy.viewport(1800, 1000);
+        cy.visit('/');
+        LoginPage.homepage();
         
         //should be redirect to billing page
         BillingPage.clickBillingTab();
@@ -30,6 +31,6 @@ describe('Billing Page Test Suite', () => {
     });
     it('should be input the required fields of the payment information and should be download the invoice', () => {
         BillingPage.inputRequiredFields();
-        // BillingPage.clickDownloadButton();
+        BillingPage.clickDownloadButton();
     });
 })

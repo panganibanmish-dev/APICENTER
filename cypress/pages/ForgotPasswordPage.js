@@ -6,13 +6,6 @@ class ForgotPasswordPage {
         successmessage: () => cy.get(".mb-4.font-medium.text-sm.text-green-600"),
         newpassword: () => cy.get("#password-field"),
         confirmpassword: () => cy.get("#password_confirmation-field"),
-        searchEmail: () => cy.get("#search"),
-        inboxSearch: () => cy.get("#inbox_field"),
-        labelPublicMessage: () => cy.get("h4[class='fw-700']"),
-        messageBox: () => cy.get("td[class='ng-binding'] span"),
-        header_message: () => cy.get("td[class='header']"),
-        labelh1: () => cy.get("td[class='content-cell'] h1"),
-        btnResetPassword: () => cy.get(".button.button-primary"),
     };
 
     goToForgotPassword() {
@@ -21,41 +14,65 @@ class ForgotPasswordPage {
 
     loginWithoutEmail() {
         this.goToForgotPassword();
-        this.elements.btn().click().should("be.visible");
+        this.elements.btn().eq(0).click();
         this.elements.errorMsg().should("be.visible").contains("The email field is required.");
         cy.wait(3000);
     };
-    gotoMailinator() {
+    gotoMail() {
         cy.on('uncaught:exception', (err, runnable) => {
             // Prevent Cypress from failing the test
             return false;
         });
-        cy.request('https://www.mailinator.com/').then((response) => {
+        cy.request('https://www.guerrillamail.com/inbox').then((response) => {
             // Perform assertions or actions on the response
             expect(response.status).to.eq(200);
-            cy.visit('https://www.mailinator.com/');
+            cy.visit('https://www.guerrillamail.com/inbox');
         });
     };
 
     Email() {
-       const emailAddress = 'mich_automator@mailinator.com';
-
         this.goToForgotPassword();
-        this.elements.emailTextBox().type(emailAddress);
-        this.elements.btn().click().should("be.visible");
+        this.elements.emailTextBox().type("michtester@guerrillamail.com");
+        this.elements.btn().click();
         this.elements.successmessage().should("be.visible");
 
-        //mailinator
-        this.gotoMailinator();
-        this.elements.searchEmail().should("be.visible").type(`${emailAddress}{enter}`);
-        this.elements.inboxSearch().should("be.visible");
-        this.elements.labelPublicMessage().should("be.visible").contains("Public Messages");
-        this.elements.messageBox().eq(0).click({ force: true });
-        // this.elements.header_message().should("be.visible");
-        cy.frameLoaded('#html_msg_body').its('0.contentDocument.body').should('not.be.empty');
-        cy.iframe('#html_msg_body').find('.button.button-primary').click();
-        cy.visit("/reset-password/")
+        //guerrilla mail
+        this.gotoMail();
+        cy.get("#inbox-id").should('be.visible').click();
+        cy.get("span[class='editable button edit-in-progress'] input").type("michtester");
+        cy.get(".save.button.small").click();
+        cy.get("#gm-host-select").select('guerrillamail.com').should('have.value', 'guerrillamail.com');
+        cy.wait(10000);
+        cy.get("tr[class='mail_row  pointer click-set'] td[class='td2']").click();
+        cy.contains('a', 'Reset Password').click();
+        cy.getCookie('csrf_token').then((cookie) => {
+            // Check if the 'csrf_token' cookie exists and has a value
+            if (cookie && cookie.value) {
+                const csrfToken = cookie.value;
+                cy.request({
+                    method: 'POST',
+                    url: '/reset-password/',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    form: true,
+                    body: {
+                        email: 'michtester@guerrillamail.com',
+                        newPassword: Cypress.env('password'),
+                        confirmpassword: Cypress.env('password')
+                    },
+                }).then((response) => {
+                    expect(response.status).to.eq(200);
+                    cy.visit('/reset-password/');
+                });
+            } else {
+                // Handle the case when the 'csrf_token' cookie is not available
+                throw new Error("CSRF token cookie is missing or invalid.");
+            }
+        });
+        cy.wait(1000);
+        cy.get('.button').click();
+        cy.visit("/");
     };
 }
-
 module.exports = new ForgotPasswordPage();

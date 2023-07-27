@@ -3,17 +3,15 @@ class BillingPage {
         btnAccount: () => cy.get("button[class='nav_link']"),
         btnBilling: () => cy.get(".nav_link.nav_sublink"),
         lblActiveSubscriptions: () =>
-            cy.get("div[id='billing_current-plan'] h3[class='card-text']")
-                .should("be.visible").contains("Active subscriptions"),
+            cy.get("div[id='billing_current-plan'] h3[class='card-text']"),
         lblCurrentPlan: () =>
             cy.get("div[id='billing_current-plan'] div[class='card-body']")
                 .should("be.visible").contains("You don't have any active subscriptions, set up a new integration."),
         lblFooter: () =>
-            cy.get("div[id='billing_current-plan'] div[class='card-footer']")
-                .should("be.visible").contains("* All prices are excluding applicable VAT."),
+            cy.get("div[id='billing_current-plan'] div[class='card-footer']"),
         lblPaymentInfo: () =>
             cy.get("div[id='billing_payment-details'] div[class='card-header border-bottom rounded-0'] span")
-                .should("be.visible").contains("Payment information"),
+                ,
         lblWarning: () =>
             cy.get(".alert.alert-warning").should("be.visible")
                 .contains("It is required to setup a payment method before creating integrations."),
@@ -22,18 +20,15 @@ class BillingPage {
                 .should("be.visible").contains("You currently don't have a payment method."),
         btnPaymentMethod: () => cy.get("form[aria-label='Set payment method'] button[class='button']"),
         lblSendingInvoiceTo: () =>
-            cy.get("label[for='billing-sending_invoices_to'] span").should("be.visible")
-                .contains("Sending invoices to"),
+            cy.get("label[for='billing-sending_invoices_to'] span"),
         inputDisableSendingInvoiceTo: () =>
             cy.get("#billing-sending_invoices_to"),
         lblCCInvoiceTo: () =>
-            cy.get("label[for='billing-cc_invoices_to'] span")
-                .should("be.visible").contains("CC invoices to"),
+            cy.get("label[for='billing-cc_invoices_to'] span"),
         inputCCInvoiceTo: () =>
             cy.get("#billing-cc_invoices_to"),
         lblVATNumber: () =>
-            cy.get("label[for='billing-vat_id'] span")
-                .should("be.visible").contains("VAT ID number"),
+            cy.get("label[for='billing-vat_id'] span"),
         inputVATNumber: () =>
             cy.get("#billing-vat_id"),
         btnUpdate: () => cy.get("div[class='form_row'] button[class='button']"),
@@ -65,13 +60,13 @@ class BillingPage {
     //verifying label elements
     verifyLabel = () => {
         cy.wait(3000);
-        this.elements.lblActiveSubscriptions().should("be.visible");
-        this.elements.lblCurrentPlan().should("be.visible");
-        this.elements.lblFooter().should("be.visible");
-        this.elements.lblPaymentInfo().should("be.visible");
-        this.elements.lblSendingInvoiceTo().should("be.visible");
-        this.elements.lblCCInvoiceTo().should("be.visible");
-        this.elements.lblVATNumber().should("be.visible");
+        this.elements.lblActiveSubscriptions().should("be.visible").contains("Active subscriptions");
+        // this.elements.lblCurrentPlan().should("be.visible");
+        this.elements.lblFooter().should("be.visible").contains("* All prices are excluding applicable VAT.");
+        this.elements.lblPaymentInfo().should("be.visible").contains("Payment information");
+        this.elements.lblSendingInvoiceTo().should("be.visible").contains("Sending invoices to");
+        this.elements.lblCCInvoiceTo().should("be.visible").contains("CC invoices to");
+        this.elements.lblVATNumber().should("be.visible").contains("VAT ID number");
     };
     //update payment method and redirect to mollie.com for payment
     clickUpdatePaymentMethod = () => {

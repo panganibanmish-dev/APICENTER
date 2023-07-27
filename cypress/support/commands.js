@@ -23,12 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import 'cypress-mailosaur';
-import "cypress-real-events/support";
 import '@shelex/cypress-allure-plugin';
 import 'cypress-file-upload';
-import 'cypress-mochawesome-reporter/register';
 import 'cypress-iframe';
+import 'cypress-mailosaur';
+import 'cypress-mochawesome-reporter/register';
+import "cypress-real-events/support";
+
+/// <reference types=”cypress-xpath” />
+
 
 Cypress.Commands.add('login', (email, password) => {
     cy.session([email, password], () => {
@@ -46,3 +49,8 @@ Cypress.Commands.add('login', (email, password) => {
         },
     );
 });
+
+Cypress.Commands.add('getIframeBody', { prevSubject: 'element' }, (iframe) => {
+    return cy.wrap(iframe).its('0.contentDocument.body').should('not.be.empty').then(cy.wrap);
+  });
+  

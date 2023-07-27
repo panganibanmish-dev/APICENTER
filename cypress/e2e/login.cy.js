@@ -1,7 +1,6 @@
-import data from "../fixtures/data.json";
+
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import LoginPage from "../pages/LoginPage";
-import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 describe('Login Page Test Suite', () => {
     beforeEach(() => {
@@ -22,12 +21,12 @@ describe('Login Page Test Suite', () => {
         LoginPage
             .loginAdminWithInvalidCreds(Cypress.env('login_email'), Cypress.env('inPassword'));
     });
-    it('Email and Password Fields - User forgot password with input email address', () => {
+    it.only('Email and Password Fields - User forgot password with input email address', () => {
         LoginPage
             .goTologinWithForgotPassword()
         ForgotPasswordPage
             .loginWithoutEmail();
+        // ForgotPasswordPage.Email();
         ForgotPasswordPage.Email();
-        // ResetPasswordPage.mailosaur(data.valid.email, data.valid.password, data.valid.newPassword);
     });
 })

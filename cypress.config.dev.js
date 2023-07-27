@@ -4,12 +4,13 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
-
   e2e: {
     baseUrl: "https://dev2.apicenter.io",
-
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      on('after:run', (results) => {
+        /* ... */
+      })
       allureWriter(on, config);
       require('cypress-mochawesome-reporter/plugin')(on);
       return config;
@@ -25,6 +26,8 @@ module.exports = defineConfig({
       lastname: "Automator",
       phone: 923456784,
       baseUrl2: "https://apicenter.io/",
+      email: "michelle.automator@yopmail.com",
+      password: "Radeonstar@1120",
     },
   },
   requestTimeout: 30000,
@@ -44,7 +47,7 @@ module.exports = defineConfig({
     timestamp: "longDate",
     charts: true,
     html: true,
-    json: true,
+    json: false,
     embeddedScreenshots: true,
     overwrite: true,
     inlineAssets: true,
