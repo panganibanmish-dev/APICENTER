@@ -5,10 +5,10 @@ describe('Sign Up Page Test Suite', () => {
         SignupPage.goToRegisterPage();
         SignupPage.goToLoginLink();
     });
-    it('Just redirected - Check the required fields', () => {
+    it('should be just redirected and check the required fields', () => {
         SignupPage.checkRequireFields();
     });
-    it('User should be input the required fields and able to proceed to the homepage', () => {
+    it('should be input the required fields and able to proceed to the homepage', () => {
         const inputInfoUser = {
             email: "michuser30@mailinator.com"
         };

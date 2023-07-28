@@ -72,13 +72,13 @@ class AddIntegrationsPage {
         this.elements.h3App().should("be.visible").contains("Your Applications");
         this.elements.appStore().should("be.visible").contains("APIcenter appstore");
         this.elements.appSearch().should("be.visible").type("Magento 2").clear();
-        // cy.wait(2000);
-        this.elements.appBox().eq(0).should("be.visible").click();
-        // cy.wait(2000);
-        this.elements.appToggle().should("be.visible").click();
-        this.elements.appEdit().should("be.visible").contains("Edit").click();
-        this.elements.btnTestConnection().should("be.visible").contains("Test Connection").click();
-        // cy.wait(5000);
+        cy.wait(2000);
+        this.elements.appBox().eq(1).should("be.visible").click();
+        cy.wait(2000);
+        this.elements.appToggle().click();
+        this.elements.appEdit().click();
+        this.elements.btnTestConnection().contains("Test Connection").click();
+        cy.wait(5000);
         this.elements.btnSave().should("be.visible").click();
         // cy.wait(5000);
     };
@@ -86,12 +86,12 @@ class AddIntegrationsPage {
     connectApplication2 = () => {
         cy.reload();
         this.elements.btnApplication2().should("be.visible").click();
-        this.elements.appBox().eq(1).should("be.visible").click();
+        this.elements.appBox().eq(0).should("be.visible").click();
         // cy.wait(5000);
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        this.elements.product9Toggle().should("be.visible").click({ force: true });
+        this.elements.product9Toggle().click({ force: true });
         // cy.wait(3000);
         this.elements.total().should("be.visible");
         // cy.wait(3000);

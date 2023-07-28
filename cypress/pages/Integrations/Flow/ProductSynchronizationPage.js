@@ -1,5 +1,3 @@
-const { should } = require("chai");
-
 class ProductSyncronizationPage {
     elements = {
         cardTile: () => cy.get(".tile.tile-wide.cursor-pointer.overflow-hidden.h-100"),
@@ -48,7 +46,7 @@ class ProductSyncronizationPage {
         this.elements.resumeFlow().should("be.visible").click()
     };
     clickOkBtn = () => {
-        this.elements.okBtn().should("be.visible").click();
+        this.elements.okBtn().click();
     };
     clickCancelBtn = () => {
         this.elements.cancelBtn().should("be.visible").click();

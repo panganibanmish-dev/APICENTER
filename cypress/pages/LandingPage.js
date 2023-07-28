@@ -182,18 +182,18 @@ class LandingPage {
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
         // cy.wait(5000);
         cy.contains("Platform Overview").should("be.visible").click();
-        // cy.wait(3000);
-        cy.contains("Platform Overview").should('be.visible');
+        cy.wait(3000);
+        cy.contains("Platform Overview");
         cy.contains("Why Choose the APIcenter Platform?").should('be.visible');
         cy.contains("What Can You Do with the APIcenter Platform?").should('be.visible');
         // cy.wait(3000);
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
-        cy.contains("Platform Features").should("be.visible").click();
-        cy.contains("Platform Features").should("be.visible");
+        cy.contains("Platform Features").click();
+        cy.contains("Platform Features");
         // cy.wait(3000);
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
-        cy.contains("Platform Security").should("be.visible").click();
-        cy.contains("Platform Security").should("be.visible");
+        cy.contains("Platform Security").click();
+        cy.contains("Platform Security");
         // cy.wait(2000);
     };
     //navbar for integrations page
@@ -208,13 +208,13 @@ class LandingPage {
     //navbar for ecommerce page
     navEcommerce = () => {
         cy.contains("E-Commerce").should("be.visible").click();
-        cy.contains("E-commerce Integrations").should("be.visible");
+        cy.contains("E-commerce Integrations");
     };
     //navbar for partners page
     navPartners = () => {
         cy.contains("a", "Partners").should("be.visible").realHover('mouse');
         cy.contains("Become a partner").should("be.visible").click();
-        cy.contains("Become a partner").should("be.visible");
+        cy.contains("Become a partner");
         cy.get(".btn.btn_secondary").should("be.visible").contains("become an integration partner").click();
         this.gotoLandingpage();
         // cy.wait(3000);

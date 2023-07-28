@@ -16,7 +16,7 @@ describe('Application Page Test Suite', () => {
         cy.get("body")
             .contains("Applications").click();
     });
-    it('It should be able to add, edit, delete and search the applications', () => {
+    it('should be able to add, edit, delete and search the applications', () => {
         ApplicationPage.YourApplications();
     });
 });

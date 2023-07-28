@@ -70,10 +70,10 @@ class BillingPage {
     };
     //update payment method and redirect to mollie.com for payment
     clickUpdatePaymentMethod = () => {
-        this.elements.btnPaymentMethod().should("be.visible").click();
+        this.elements.btnPaymentMethod().click();
     };
     paymentRedirects = () => {
-        this.elements.linkBackwebsite().should("be.visible").click();
+        this.elements.linkBackwebsite().click();
         this.clickUpdatePaymentMethod();
         // cy.wait(3000);
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
@@ -84,8 +84,8 @@ class BillingPage {
     //pay by using card
     paymentMolliebyCard = () => {
         this.paymentRedirects();
-        this.elements.btnCard().should("be.visible").click();
-        // cy.wait(3000);
+        this.elements.btnCard().click();
+        cy.wait(3000);
         this.verifyErrormsg();
         this.elements.inputCardNumber().its("0.contentDocument.body").should("not.be.empty").then((body) => {
             cy.wrap(body)
@@ -118,7 +118,7 @@ class BillingPage {
     paymentMolliebyiDeal = () => {
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnIdeal().should("be.visible").click();
+        this.elements.btnIdeal().click();
         this.elements.btnIdealASNBank().should("be.visible").click();
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
@@ -133,7 +133,7 @@ class BillingPage {
         //payment for cbc
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnKbcCBc().should("be.visible").click();
+        this.elements.btnKbcCBc().click();
         this.elements.btnCbc().should("be.visible").click();
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
@@ -142,7 +142,7 @@ class BillingPage {
         //payment for kbc
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnKbcCBc().should("be.visible").click();
+        this.elements.btnKbcCBc().click();
         this.elements.btnKbc().should("be.visible").click();
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();

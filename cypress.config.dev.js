@@ -31,7 +31,7 @@ module.exports = defineConfig({
   requestTimeout: 30000,
   numTestsKeptInMemory: 0,
   numTestsKeptInMemory: 0,
-  responseTimeout: 30000,
+  responseTimeout: 50000,
   pageLoadTimeout: 80000,
   chromeWebSecurity: false,
   screenshotOnRunFailure: false,

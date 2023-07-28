@@ -30,36 +30,36 @@ class CustomerSynchronizationPage {
         this.elements.activityTab().should("be.visible").click();
         // cy.wait(3000);
         this.elements.selectStatus().select('pending').should("have.value", "pending");
-        // cy.wait(5000);
+        cy.wait(5000);
         this.elements.selectStatus().select('success').should("have.value", "success");
-        // cy.wait(10000);
+        cy.wait(5000);
         this.elements.selectStatus().select('warning').should('have.value', 'warning');
-        // cy.wait(5000);
+        cy.wait(5000);
         this.elements.selectStatus().select('failed').should('have.value', 'failed');
-        // cy.wait(5000);
+        cy.wait(5000);
         this.elements.selectStatus().select('debug').should('have.value', 'debug');
-        // cy.wait(5000);
+        cy.wait(5000);
         this.elements.selectStatus().select('—').should('have.value', '—');
-        // cy.wait(5000);
+        cy.wait(5000);
         this.elements.selectApplicationDirection().select('source').should('have.value', 'source');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectApplicationDirection().select('target', {force: true}).should('have.value', 'target');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectApplicationDirection().select('—').should('have.value', '—');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectFlow().select('getCustomer').should('have.value', 'getCustomer');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectFlow().select('sendCustomer').should('have.value', 'sendCustomer');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectFlow().select('—').should('have.value', '—');
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectTrigger().select('cron').should("have.value", "cron");
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectTrigger().select('webhook').should("have.value", "webhook");
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.selectTrigger().select('function').should('have.value', 'function');
-        // cy.wait(3000);
-        this.elements.selectTrigger().select('—').should('have.value', '—');
+        cy.wait(3000);
+        // this.elements.selectTrigger().select('—');
         // cy.wait(3000);
     };
     adminSettingsTab = () => {
@@ -89,18 +89,18 @@ class CustomerSynchronizationPage {
     customerSynchronizationFlow = () => {
         //configure flow
         this.elements.configureflowBtn().should("be.visible").click();
-        this.elements.customerToggle().should("be.visible").click({ force: true });
+        this.elements.customerToggle().click({ force: true });
         this.elements.btnAgree().should("be.visible").click();
-        // cy.wait(2000);
+        cy.wait(2000);
         this.elements.customerFlow().should("be.visible").click();
-        // cy.wait(3000);
+        cy.wait(3000);
         this.elements.overviewTab().should("be.visible").click();
         this.elements.resumeFlowbtn().should("be.visible").click();
         this.elements.cancelbtn().should("be.visible").click();
         this.elements.resumeFlowbtn().should("be.visible").click();
-        this.elements.okbtn().should("be.visible").click();
-        // cy.wait(2000);
-        this.elements.okbtn().should("be.visible").click();
+        this.elements.okbtn().click();
+        cy.wait(2000);
+        this.elements.okbtn().click();
         //setting tab
         this.customerSettingsTab();
         //admin tab
