@@ -55,7 +55,7 @@ class ApplicationPage {
         //nothing to show any appls
         this.elements.appsearch().type("Mailbox", { delay: 500, force: true }).clear();
         cy.wait(6000);
-        
+                                                                   
         // add applications for magento
         this.elements.appsearch().type("Magento", { delay: 200, force: true });
         cy.wait(5000);

@@ -17,26 +17,24 @@ class SignupPage {
         homePage: () => cy.get(".breadcrumb_link.active"),
         errormsg: () => cy.get(".invalid-feedback"),
     };
-
     //redirect to sign up
     goToRegisterPage = () => {
         // cy.viewport(1280, 768)
         cy.viewport(1800, 1000)
         cy.visit('/register')
-        cy.wait(3000)
+        // cy.wait(3000)
     };
-
     //toogle that needs to check for the agreement
     clickToggleTermsAndProcessingAgreement() {
-        this.elements.clickToggleTerms().check({force: true});
-        this.elements.clickToggleProcessingAgreement().check({force: true});
+        this.elements.clickToggleTerms().should("be.not.visible").check({ force: true });
+        this.elements.clickToggleProcessingAgreement().should("be.not.visible").check({ force: true });
     };
 
     //link that redirect to login
     goToLoginLink() {
         this.elements.btnLink().should("be.visible").contains("Log in").click();
         cy.visit("/login");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.goToRegisterPage();
     };
 
@@ -56,16 +54,15 @@ class SignupPage {
         this.elements.inputPassword().should("be.visible").clear().type(inputInfoUser.password);
         this.elements.inputConfirmPassword().should("be.visible").clear().type(inputInfoUser.confirmpassword);
     };
-
     //checks the require field that should be input by the user
     checkRequireFields() {
-        this.elements.inputFirstName().clear();
-        this.elements.inputLastName().clear();
+        this.elements.inputFirstName().should("be.visible").clear();
+        this.elements.inputLastName().should("be.visible").clear();
         // this.elements.inputPhoneNumber().clear();
-        this.elements.inputEmailAdd().clear();
-        this.elements.inputPassword().clear();
-        this.elements.inputConfirmPassword().clear();
-        this.elements.btn().click();
+        this.elements.inputEmailAdd().should("be.visible").clear();
+        this.elements.inputPassword().should("be.visible").clear();
+        this.elements.inputConfirmPassword().should("be.visible").clear();
+        this.elements.btn().should("be.visible").click();
 
         //message error if the input field is blank
         this.elements.errormsg().should("be.visible").contains("The First name field is required.");
@@ -75,35 +72,29 @@ class SignupPage {
         this.elements.errormsg().should("be.visible").contains("The Applications field is required.");
         this.elements.errormsg().should("be.visible").contains("The Terms of Service must be accepted.");
         this.elements.errormsg().should("be.visible").contains("The Processing agreement must be accepted.");
-        cy.wait(2000);
+        // cy.wait(2000);
     };
-
     //dropdown for the register language and apps 
     drpdownClick(data, data1, app1, app2, app3) {
         //change into netherlands language
-        this.elements.drpdownLanguage().click();
-        this.elements.inputLanguage().type(`${data1}{enter}`);
-
-        cy.wait(3000);
-
+        this.elements.drpdownLanguage().should("be.visible").click();
+        this.elements.inputLanguage().should("be.visible").type(`${data1}{enter}`);
+        // cy.wait(3000);
         //change into english language
-        this.elements.drpdownLanguage().click();
-        this.elements.inputLanguage().type(`${data}{enter}`);
-
-        cy.wait(2000);
+        this.elements.drpdownLanguage().should("be.visible").click();
+        this.elements.inputLanguage().should("be.visible").type(`${data}{enter}`);
+        // cy.wait(2000);
         //Register apps
-        this.elements.drpdownApps().click();
+        this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app1}{enter}`);
-        this.elements.drpdownApps().click();
+        this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app2}{enter}`);
-        this.elements.drpdownApps().click();
+        this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app3}{enter}`);
-
-        cy.wait(2000);
-        this.elements.drpdownApps().click();
+        // cy.wait(2000);
+        this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app3}{enter}`);
     };
-
     //after sign up, it will redirect to homepage
     redirectHomePage() {
         this.elements.homePage().should("be.visible");
@@ -118,10 +109,9 @@ class SignupPage {
             "Support",
         ];
         sidebar.forEach((s) => {
-            cy.get(".sidebar_nav.sidebar_list").contains(s);
+            cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
         });
-        cy.wait(10000);
+        // cy.wait(10000);
     };
-}
-
+};
 module.exports = new SignupPage();

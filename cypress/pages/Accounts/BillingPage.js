@@ -11,7 +11,7 @@ class BillingPage {
             cy.get("div[id='billing_current-plan'] div[class='card-footer']"),
         lblPaymentInfo: () =>
             cy.get("div[id='billing_payment-details'] div[class='card-header border-bottom rounded-0'] span")
-                ,
+        ,
         lblWarning: () =>
             cy.get(".alert.alert-warning").should("be.visible")
                 .contains("It is required to setup a payment method before creating integrations."),
@@ -59,7 +59,7 @@ class BillingPage {
     };
     //verifying label elements
     verifyLabel = () => {
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.lblActiveSubscriptions().should("be.visible").contains("Active subscriptions");
         // this.elements.lblCurrentPlan().should("be.visible");
         this.elements.lblFooter().should("be.visible").contains("* All prices are excluding applicable VAT.");
@@ -73,9 +73,9 @@ class BillingPage {
         this.elements.btnPaymentMethod().should("be.visible").click();
     };
     paymentRedirects = () => {
-        this.elements.linkBackwebsite().click();
+        this.elements.linkBackwebsite().should("be.visible").click();
         this.clickUpdatePaymentMethod();
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
     };
     afterPayRedirectBackToWebsite = () => {
@@ -84,49 +84,33 @@ class BillingPage {
     //pay by using card
     paymentMolliebyCard = () => {
         this.paymentRedirects();
-        this.elements.btnCard().click();
-        cy.wait(3000);
+        this.elements.btnCard().should("be.visible").click();
+        // cy.wait(3000);
         this.verifyErrormsg();
-        this.elements
-            .inputCardNumber()
-            .its("0.contentDocument.body")
-            .should("not.be.empty")
-            .then((body) => {
-                cy.wrap(body)
-                    .find("#cardNumber")
-                    .type('4000056655665556', { force: true });
+        this.elements.inputCardNumber().its("0.contentDocument.body").should("not.be.empty").then((body) => {
+            cy.wrap(body)
+                .find("#cardNumber")
+                .type('4000056655665556', { force: true });
         });
-        this.elements
-            .inputCardHolder()
-            .its("0.contentDocument.body")
-            .should("not.be.empty")
-            .then((body) => {
-                cy.wrap(body)
-                    .find("#cardHolder")
-                    .type('Test visa', { force: true });
+        this.elements.inputCardHolder().its("0.contentDocument.body").should("not.be.empty").then((body) => {
+            cy.wrap(body)
+                .find("#cardHolder")
+                .type('Test visa', { force: true });
         });
-        this.elements
-            .inputExpiryDate()
-            .its("0.contentDocument.body")
-            .should("not.be.empty")
-            .then((body) => {
-                cy.wrap(body)
-                    .find("#expiryDate")
-                    .type('1030', { force: true });
+        this.elements.inputExpiryDate().its("0.contentDocument.body").should("not.be.empty").then((body) => {
+            cy.wrap(body)
+                .find("#expiryDate")
+                .type('1030', { force: true });
         });
-        this.elements
-            .inputcvv()
-            .its("0.contentDocument.body")
-            .should("not.be.empty")
-            .then((body) => {
-                cy.wrap(body)
-                    .find("#verificationCode")
-                    .type("234", { force: true });
+        this.elements.inputcvv().its("0.contentDocument.body").should("not.be.empty").then((body) => {
+            cy.wrap(body)
+                .find("#verificationCode")
+                .type("234", { force: true });
         });
         this.elements.btnPaySubmit().should("be.visible").click();
-        this.elements.togglePaid().click();
-        this.elements.btnContinue().click();
-        cy.wait(5000);
+        this.elements.togglePaid().should("be.visible").click();
+        this.elements.btnContinue().should("be.visible").click();
+        // cy.wait(5000);
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
     };
@@ -134,12 +118,12 @@ class BillingPage {
     paymentMolliebyiDeal = () => {
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnIdeal().click();
-        this.elements.btnIdealASNBank().click();
-        this.elements.togglePaid().click();
-        this.elements.btnContinue().click();
+        this.elements.btnIdeal().should("be.visible").click();
+        this.elements.btnIdealASNBank().should("be.visible").click();
+        this.elements.togglePaid().should("be.visible").click();
+        this.elements.btnContinue().should("be.visible").click();
         // this.elements.linkBackwebsite().click();
-        cy.wait(2000);
+        // cy.wait(2000);
         // this.elements.linkBackwebsite().click();
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
@@ -149,25 +133,25 @@ class BillingPage {
         //payment for cbc
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnKbcCBc().click();
-        this.elements.btnCbc().click();
-        this.elements.togglePaid().click();
-        this.elements.btnContinue().click();
+        this.elements.btnKbcCBc().should("be.visible").click();
+        this.elements.btnCbc().should("be.visible").click();
+        this.elements.togglePaid().should("be.visible").click();
+        this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
-        cy.wait(3000);
+        // cy.wait(3000);
         //payment for kbc
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();
-        this.elements.btnKbcCBc().click();
-        this.elements.btnKbc().click();
-        this.elements.togglePaid().click();
-        this.elements.btnContinue().click();
+        this.elements.btnKbcCBc().should("be.visible").click();
+        this.elements.btnKbc().should("be.visible").click();
+        this.elements.togglePaid().should("be.visible").click();
+        this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
     };
     //verifying error message  
     verifyErrormsg = () => {
-        this.elements.btnPaySubmit().click();
+        this.elements.btnPaySubmit().should("be.visible").click();
         this.elements.form_errormsg().should('be.visible');
     };
     //update payment info
@@ -179,7 +163,7 @@ class BillingPage {
         this.elements.inputDisableSendingInvoiceTo().should("be.disabled");
         this.elements.inputCCInvoiceTo().should("be.visible").clear().type('test');
         this.elements.inputVATNumber().should("be.visible").clear().type('validnumber');
-        this.elements.btnUpdate().click();
+        this.elements.btnUpdate().should("be.visible").click();
         this.elements.errormsg().should("be.visible").contains("The billing cc invoices to must be a valid email address.");
         this.elements.errormsg().should("be.visible").contains("This VAT identification number is invalid.");
     };
@@ -194,5 +178,5 @@ class BillingPage {
     clickDownloadButton = () => {
         this.elements.downloadFile({ timeout: 7000 }).eq(2).should("be.visible").click();
     };
-}
+};
 module.exports = new BillingPage(); 

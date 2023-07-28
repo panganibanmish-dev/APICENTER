@@ -15,7 +15,6 @@ class LoginPage {
     errorMsg: () => cy.get(".invalid-feedback"),
     sidebar: () => cy.get(".sidebar_nav.sidebar_list"),
   };
-
   //redirect to login page
   goToLoginPage = () => {
     // cy.viewport(1280, 768)
@@ -23,7 +22,6 @@ class LoginPage {
     cy.visit('/login')
     cy.get("body").should('be.visible').contains("Log in");
   };
-
   //user should input valid creds and must redirect to homepage 
   loginAdmin = (email, password) => {
     cy.get("#email-field").should("be.visible").and("have.class", "form_field");
@@ -43,14 +41,12 @@ class LoginPage {
       "Account",
       "Profile",
       "Billing",
-      // "Teams",
-      // "Change Logs",
       "Support",
     ];
     sidebar.forEach((s) => {
       cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
     });
-    cy.wait(2000);
+    // cy.wait(2000);
   };
 
   // user with no creds input and must display the required fields
@@ -62,33 +58,29 @@ class LoginPage {
     this.elements.btn().click().should("be.visible").contains("Log in");
     this.elements.errorMsg().should("be.visible").contains("The email field is required.");
     this.elements.errorMsg().should("be.visible").contains("The password field is required.");
-    cy.wait(2000);
+    // cy.wait(2000);
   };
-
   // user with invalid creds and must display the message that the account don't match
   loginAdminWithInvalidCreds(email = "", password = "") {
-    this.elements.emailTextBox().type(email);
-    this.elements.passwordTextBox().type(password);
+    this.elements.emailTextBox().should("be.visible").type(email);
+    this.elements.passwordTextBox().should("be.visible").type(password);
     this.elements.rememberMeToggle().should("be.visible").click();
     this.elements.btn().should("be.visible").click();
     // cy.wait(3000);
     this.elements.errorMsg().should("be.visible").contains("These credentials do not match our records.");
-    cy.wait(3000);
+    // cy.wait(3000);
   };
-
   // redirect to forgot password page
   goTologinWithForgotPassword() {
     this.elements.btnLink().should("be.visible").contains("Reset").click();
   };
-
   //redirect link to register page
   goToSignUpLink() {
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
     cy.visit('/register');
-    cy.wait(3000);
+    // cy.wait(3000);
     this.goToLoginPage();
   };
-  
   // user must be logout the account after used
   logout() {
     this.elements.userIcon().should("be.visible").click();
@@ -113,8 +105,7 @@ class LoginPage {
     sidebar.forEach((s) => {
       cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
     });
-    cy.wait(2000);
+    // cy.wait(2000);
   };
-}
-
+};
 module.exports = new LoginPage();

@@ -12,6 +12,7 @@
     "cypress run": "npx cypress run --browser chrome",
     "headless-dev": "npx cypress run --config-file cypress.config.dev.js --browser chrome",
     "headless-staging": "npx cypress run --config-file cypress.config.staging.js --browser chrome",
+    "headless-prod": "npx cypress run --config-file cypress.config.prod.js --browser chrome",
     "run-dev": "npx cypress open --config-file cypress.config.dev.js",
     "run-staging": "npx cypress open --config-file cypress.config.staging.js",
     "run-prod": "npx cypress open --config-file cypress.config.prod.js"

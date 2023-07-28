@@ -24,7 +24,6 @@ describe('Integrations Page Test Suite', () => {
         cy.wait(3000);
         AddIntegrationsPage
             .followStep1();
-        // cy.wait(3000);
         AddIntegrationsPage
             .followStep2();
         // cy.wait(3000);

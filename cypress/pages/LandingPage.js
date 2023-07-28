@@ -17,9 +17,7 @@ class LandingPage {
         flowName: () => cy.get(".flow_name"),
         flowPrice: () => cy.get(".flow_price"),
         btnSetup: () => cy.get(".btn.btn_try"),
-
         registerForm: () => cy.get("div[class='flex justify-content-between'] h1"),
-
         text_sectionLeaders: () => cy.get("section[class='text_center mb-6 wrap_min'] h2"),
         videobtn: () => cy.get(".video_button"),
         footer: () => cy.get(".color_theme.footer_title"),
@@ -43,7 +41,7 @@ class LandingPage {
         this.elements.contact_becomePartnerAndQuestionNeedHelp().should("be.visible").contains("Become a partner");
         this.elements.btnBookAMeeting().should("be.visible").click();
         this.gotoCalenderPage();
-        cy.wait(3000);
+        // cy.wait(3000);
         cy.visit("https://apicenter.io/contact/");
         this.elements.contact_becomePartnerAndQuestionNeedHelp().should("be.visible").contains("Questions? Need help?");
         this.elements.link_here().should("be.visible").click();
@@ -65,7 +63,7 @@ class LandingPage {
     };
     navbar = () => {
         this.elements.navLogo().should("be.visible");
-        cy.wait(3000);
+        // cy.wait(3000);
         cy.get(".nav_mobile.nav_body").should("be.visible");
         const nav = [
             "Platform",
@@ -79,7 +77,7 @@ class LandingPage {
         nav.forEach((n) => {
             cy.get(".nav_item").should("be.visible").contains(n);
         });
-        cy.wait(3000);
+        // cy.wait(3000);
     };
     apicenterLogo = () => {
         this.elements.navLogo().should("be.visible").click();
@@ -155,7 +153,7 @@ class LandingPage {
         this.elements.appshopify().should("be.visible").click()
 
         // this.elements.appshopify().click();
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.searchApp().should("be.visible").type(`${app2}{enter}`)
         // cy.wait(5000);
         this.elements.appmagento().should("be.visible").click({ force: true });
@@ -172,11 +170,10 @@ class LandingPage {
         this.elements.flowPrice().eq(1).should("be.visible").contains("€ 949 / MO");
         this.elements.flowName().eq(2).should("be.visible").contains("Products");
         this.elements.flowPrice().eq(2).should("be.visible").contains("€ 1698 / MO");
-        cy.wait(3000);
-
+        // cy.wait(3000);
         this.elements.btnSetup().eq(1).should("be.visible").click();
         this.elements.registerForm().should("be.visible").contains("Register");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.gotoLandingpage();
     };
     //the navbar for platform page
@@ -197,12 +194,12 @@ class LandingPage {
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
         cy.contains("Platform Security").should("be.visible").click();
         cy.contains("Platform Security").should("be.visible");
-        cy.wait(2000);
-    };a
+        // cy.wait(2000);
+    };
     //navbar for integrations page
     navIntegrations = () => {
         cy.contains("a", "Integrations").should("be.visible").realHover('mouse');
-        cy.wait(2000);
+        // cy.wait(2000);
     };
     //navbar for solutions page
     navSolutions = () => {
@@ -220,7 +217,7 @@ class LandingPage {
         cy.contains("Become a partner").should("be.visible");
         cy.get(".btn.btn_secondary").should("be.visible").contains("become an integration partner").click();
         this.gotoLandingpage();
-        cy.wait(3000);
+        // cy.wait(3000);
     };
     //navbar for pricing page
     navPricing = () => {
@@ -233,7 +230,7 @@ class LandingPage {
         this.elements.footer().should('be.visible').contains("Contact");
         cy.contains("Contact Us").should("be.visible").click();
         // cy.wait(3000);
-        cy.contains("About Us").click();
+        cy.contains("About Us").should("be.visible").click();
         // cy.wait(3000);
         cy.contains("About Us").should('be.visible');
         cy.contains("Our Mission").should('be.visible');

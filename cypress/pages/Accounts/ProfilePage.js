@@ -17,9 +17,10 @@ class ProfilePage {
         inputState: () => cy.get("#user-billing_state"),
         inputZip: () => cy.get("#user-billing_zip"),
         drpdwnCountry: () => cy.get("div[class='form_group'] div div[class='multiselect__tags']"),
+        inputLanguage: () => cy.get('#user-profile_language'),
+        inputCountry: () => cy.get("#user-billing_country"),
         errormsg: () => cy.get(".invalid-feedback"),
     };
-
     //redirect to profile account
     clickProfileTab = () => {
         this.elements.btnProfile().should("be.visible").contains("Profile").click();
@@ -30,21 +31,19 @@ class ProfilePage {
     };
     //update profile language
     setProfileLanguage(data, data1) {
-        const inputLanguage = '#user-profile_language';
-
         //change into english language
         this.elements.dropdownProfileLanguage().should("be.visible").click();
-        cy.get(inputLanguage).should("be.visible").type(`${data}{enter}`);
+        this.elements.inputLanguage().should("be.visible").type(`${data}{enter}`);
         this.clickUpdateProfile();
 
         //change into netherlands language
         this.elements.dropdownProfileLanguage().should("be.visible").click();
-        cy.get(inputLanguage).should("be.visible").type(`${data1}{enter}`);
+        this.elements.inputLanguage().should("be.visible").type(`${data1}{enter}`);
         this.clickUpdateProfile();
     };
     //button for update profile
     clickUpdateProfile() {
-        this.elements.btnUpdate().eq(1).click();
+        this.elements.btnUpdate().eq(1).should("be.visible").click();
     };
     //update info and showing confirmation updated
     updateContactInformation = (company_name, firstname, lastname, phone, email) => {
@@ -58,15 +57,13 @@ class ProfilePage {
     };
     //Update info and showing confirmation updated
     updateBillingAddress = (add, add2, city, state, zip, country) => {
-        const inputCountry = "#user-billing_country"
-
         this.elements.inputAddress().should("be.visible").clear().type(add);
         this.elements.inputAddress2().should("be.visible").clear().type(add2);
         this.elements.inputCity().should("be.visible").clear().type(city);
         this.elements.inputState().should("be.visible").clear().type(state);
         this.elements.inputZip().should("be.visible").clear().type(zip);
         this.elements.drpdwnCountry().should("be.visible").click();
-        cy.get(inputCountry).should("be.visible").type(`${country}{enter}`);
+        this.elements.inputCountry().should("be.visible").type(`${country}{enter}`);
         this.elements.btnUpdate().eq(3).should("be.visible").click();
         this.elements.msgSuccess().should('be.visible');
     };
@@ -79,12 +76,11 @@ class ProfilePage {
         this.elements.inputPhonenumber().should("be.visible").clear();
         this.elements.inputEmail().should("be.visible").clear();
         this.elements.btnUpdate().eq(2).should("be.visible").click();
-        cy.wait(2000);
+        // cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The first name field is required.");
         this.elements.errormsg().should("be.visible").contains("The last name field is required.");
         this.elements.errormsg().should("be.visible").contains("The email field is required.");
         // cy.wait(2000);
-
     };
     invalidBillingAddressInfo = () => {
         //Showing an error billing information
@@ -94,11 +90,10 @@ class ProfilePage {
         this.elements.inputState().should("be.visible").clear();
         this.elements.inputZip().should("be.visible").clear();
         this.elements.btnUpdate().eq(3).should("be.visible").click();
-        cy.wait(2000);
+        // cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The billing address field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing city field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing zip field is required.");
     };
-}
-
+};
 module.exports = new ProfilePage(); 

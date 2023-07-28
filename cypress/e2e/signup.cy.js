@@ -1,4 +1,3 @@
-// import NovaPage from "../pages/Accounts/NovaPage";
 import SignupPage from "../pages/SignupPage";
 
 describe('Sign Up Page Test Suite', () => {
@@ -21,12 +20,8 @@ describe('Sign Up Page Test Suite', () => {
 
         SignupPage.fillData(inputInfoUser);
         SignupPage.clickToggleTermsAndProcessingAgreement();
-        cy.wait(3000);
         SignupPage.drpdownClick(data, data1, app1, app2, app3);
-        cy.get(".button").click();
+        cy.get(".button").should("be.visible").click();
         SignupPage.redirectHomePage();
-        
-        //delete michelle tester user after you sign up new account
-        // NovaPage.deleteUsers();
     });
 });

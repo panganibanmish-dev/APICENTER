@@ -21,12 +21,11 @@ describe('Login Page Test Suite', () => {
         LoginPage
             .loginAdminWithInvalidCreds(Cypress.env('login_email'), Cypress.env('inPassword'));
     });
-    it.only('Email and Password Fields - User forgot password with input email address', () => {
+    it('Email and Password Fields - User forgot password with input email address', () => {
         LoginPage
             .goTologinWithForgotPassword()
         ForgotPasswordPage
             .loginWithoutEmail();
-        // ForgotPasswordPage.Email();
         ForgotPasswordPage.Email();
     });
 })

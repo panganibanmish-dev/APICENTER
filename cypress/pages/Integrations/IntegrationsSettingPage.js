@@ -15,7 +15,7 @@ class IntegrationsSettingPage {
     //It should be reloading the current page as this tab is opened by default upon redirecting
     OverviewConfigureFlow = () => {
         this.elements.cardTile().should("be.visible").click();
-        cy.wait(2000);
+        // cy.wait(2000);
     };
     //It should be redirecting to the settings of the integration
     IntegrationSettings = () => {
@@ -32,5 +32,4 @@ class IntegrationsSettingPage {
         this.elements.tabActivity().should("be.visible").click();
     };
 }
-
 module.exports = new IntegrationsSettingPage();

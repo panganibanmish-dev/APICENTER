@@ -1,3 +1,5 @@
+const { should } = require("chai");
+
 class ProductSyncronizationPage {
     elements = {
         cardTile: () => cy.get(".tile.tile-wide.cursor-pointer.overflow-hidden.h-100"),
@@ -36,30 +38,20 @@ class ProductSyncronizationPage {
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
     };
     clickCardTile = () => {
-        this.elements
-            .cardTile()
-            .click();
+        this.elements.cardTile().should("be.visible").click();
     };
     //it should be reloading the current page as this tab is opened by default upon redirecting
     clickOverview = () => {
-        this.elements
-            .tabOverview()
-            .click();
+        this.elements.tabOverview().should("be.visible").click();
     };
     clickResumeFlow = () => {
-        this.elements
-            .resumeFlow()
-            .click()
+        this.elements.resumeFlow().should("be.visible").click()
     };
     clickOkBtn = () => {
-        this.elements
-            .okBtn()
-            .click();
+        this.elements.okBtn().should("be.visible").click();
     };
     clickCancelBtn = () => {
-        this.elements
-            .cancelBtn()
-            .click();
+        this.elements.cancelBtn().should("be.visible").click();
     };
     dialogActivateModal = () => {
         this.elements.dialogActivate().should("be.visible");
@@ -67,15 +59,13 @@ class ProductSyncronizationPage {
     };
     //product resume flow - it should be showing a modal of confirmation for resuming the flow of integration
     productResumeFlow = () => {
-        cy.wait(3000);
-        this.elements
-            .productflow()
-            .click();
-        cy.wait(3000);
+        // cy.wait(3000);
+        this.elements.productflow().should("be.visible").click();
+        // cy.wait(3000);
         // this.clickOverview();
         // cy.wait(3000);
         this.clickResumeFlow();
-        cy.wait(3000);
+        // cy.wait(3000);
         this.clickCancelBtn();
         this.clickResumeFlow();
         this.clickOkBtn();
@@ -83,78 +73,78 @@ class ProductSyncronizationPage {
     };//product settings flow - 
     productSettingsFlow = () => {
         // It should be redirecting to the settings of the integration
-        this.elements.tabSettings().click();
-        cy.wait(5000);
+        this.elements.tabSettings().should("be.visible").click();
+        // cy.wait(5000);
         //It should show an option for enabling the debug
-        this.elements.adminsettingsExpand().click();
-        cy.wait(3000);
-        this.elements.debugEnabled().click();
-        this.elements.notifExpand().click();
-        this.elements.attributesfeaturesExpand().click().should("be.visible").contains("Attributes & Features");
+        this.elements.adminsettingsExpand().should("be.visible").click();
+        // cy.wait(3000);
+        this.elements.debugEnabled().should("be.visible").click();
+        this.elements.notifExpand().should("be.visible").click();
+        this.elements.attributesfeaturesExpand().should("be.visible").contains("Attributes & Features").click();
         this.elements.categoriesExpand().should("be.visible").contains("Categories").click();
         this.elements.generalflowsettingExpand().should("be.visible").contains("General flow setting").click();
         this.elements.productsettingsExpand().should("be.visible").contains("Product Settings").click();
         this.elements.runbehaviourExpand().should("be.visible").contains("Run behaviour").click();
         this.elements.stockwarehousesettingsExpand().should("be.visible").contains("Stock & Warehouse Settings").click();
         this.elements.taxtaxratesExpand().should("be.visible").contains("Tax & Tax Rates").click();
-        this.elements.btnSaveSettings().click();
+        this.elements.btnSaveSettings().should("be.visible").click();
         //should click the tab data mapping
-        this.elements.tabDataMapping().click();
-        this.elements.btnDefault().click().should("be.visible").contains("Back to default mappings");
-        this.elements.btnConfirm().click();
+        this.elements.tabDataMapping().should("be.visible").click();
+        this.elements.btnDefault().should("be.visible").contains("Back to default mappings").click();
+        this.elements.btnConfirm().should("be.visible").click();
         //should click the tab endpoints
-        this.elements.tabEndpoints().click();
-        this.elements.btnBackDefault().click();
-        this.elements.btnSaveEndpoint().click();
+        this.elements.tabEndpoints().should("be.visible").click();
+        this.elements.btnBackDefault().should("be.visible").click();
+        this.elements.btnSaveEndpoint().should("be.visible").click();
         //should click the tab filter options
-        this.elements.tabFilterOptions().click();
-        cy.wait(3000);
+        this.elements.tabFilterOptions().should("be.visible").click();
+        // cy.wait(3000);
     };
     //should go to activity tab 
     settingsActivityTab = () => {
-        this.elements.tabActivity().click();
-        cy.wait(3000);
+        this.elements.tabActivity().should("be.visible").click();
+        // cy.wait(3000);
         this.elements.selectStatus().select('pending').should("have.value", "pending");
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('success').should("have.value", "success");
-        cy.wait(10000);
+        // cy.wait(10000);
         this.elements.selectStatus().select('warning').should('have.value', 'warning');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('failed').should('have.value', 'failed');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('debug').should('have.value', 'debug');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('—').should('have.value', '—');
-        cy.wait(5000);
+        // cy.wait(5000);
 
         this.elements.selectApplicationDirection().select('source').should('have.value', 'source');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectApplicationDirection().select('target', {force: true}).should('have.value', 'target');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectApplicationDirection().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
 
         this.elements.selectFlow().select('getProduct').should('have.value', 'getProduct');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectFlow().select('sendProduct').should('have.value', 'sendProduct');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectFlow().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
 
         this.elements.selectTrigger().select('cron').should("have.value", "cron");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('webhook').should("have.value", "webhook");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('function').should('have.value', 'function');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
     };
     //should go to admin tab and click the trigger manual button
     settingsAdminTab = () => {
-        this.elements.tabAdmin().click();
-        this.elements.btnTriggerManual().click();
-        cy.wait(5000);
+        this.elements.tabAdmin().should("be.visible").click();
+        this.elements.btnTriggerManual().should("be.visible").click();
+        // cy.wait(5000);
     };
     productSyncronizationFlow = () => {
         this.clickCardTile();
@@ -164,9 +154,8 @@ class ProductSyncronizationPage {
         this.settingsActivityTab();
         this.settingsAdminTab();
         this.clickOverview();
-        this.elements.breadcrumbLinkFlows().click();
+        this.elements.breadcrumbLinkFlows().should("be.visible").click();
     };
-}
-
+};
 module.exports = new ProductSyncronizationPage();
 

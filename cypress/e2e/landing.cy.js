@@ -6,10 +6,8 @@ describe('Landing Page Test Suite', () => {
         LoginPage.goToLoginPage();
     });
     it('should viewing the landing page of the APIcenter', () => {
-
         const app1 = "shopify"
         const app2 = "magento 2"
-
         LandingPage.gotoLandingpage();
         LandingPage.navbar();
         LandingPage.apicenterLogo();

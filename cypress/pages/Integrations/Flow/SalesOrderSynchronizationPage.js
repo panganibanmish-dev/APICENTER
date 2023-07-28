@@ -25,77 +25,74 @@ class SalesOrderSynchronizationPage {
     };
     //sale order activity
     settingsActivityTab = () => {
-        this.elements.tabActivity().click();
-        cy.wait(3000);
+        this.elements.tabActivity().should("be.visible").click();
+        // cy.wait(3000);
         this.elements.selectStatus().select('pending').should("have.value", "pending");
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('success').should("have.value", "success");
-        cy.wait(10000);
+        // cy.wait(10000);
         this.elements.selectStatus().select('warning').should('have.value', 'warning');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('failed').should('have.value', 'failed');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('debug').should('have.value', 'debug');
-        cy.wait(5000);
+        // cy.wait(5000);
         this.elements.selectStatus().select('—').should('have.value', '—');
-        cy.wait(5000);
+        // cy.wait(5000);
 
         this.elements.selectApplicationDirection().select('source').should('have.value', 'source');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectApplicationDirection().select('target', {force: true}).should('have.value', 'target');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectApplicationDirection().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
 
         this.elements.selectFlow().select('getSalesOrder').should('have.value', 'getSalesOrder');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectFlow().select('sendSalesOrder').should('have.value', 'sendSalesOrder');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectFlow().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
 
         this.elements.selectTrigger().select('cron').should("have.value", "cron");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('webhook').should("have.value", "webhook");
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('function').should('have.value', 'function');
-        cy.wait(3000);
+        // cy.wait(3000);
         this.elements.selectTrigger().select('—').should('have.value', '—');
-        cy.wait(3000);
+        // cy.wait(3000);
     };
     clickOverview = () => {
-        this.elements
-            .tabOverview()
-            .click();
+        this.elements.tabOverview().should("be.visible").click();
     };
     saleSynchronizationFlow = () => {
-        this.elements.configureflowBtn().click();
-        this.elements.salesOrderToggle().click({ force: true });
-        cy.wait(3000);
-        this.elements.btnAgree().click();
-        cy.wait(5000);
-        this.elements.saleOrderFlow().click();
-        cy.wait(5000);
-        this.elements.resumeBtn().click();
-        this.elements.cancelbtn().click();
-        this.elements.resumeBtn().click();
-        this.elements.okbtn().click();
-        cy.wait(2000);
-        this.elements.okbtn().click();
-        cy.wait(3000);
-        this.elements.settingsTab().click();
-        cy.wait(3000);
-        this.elements.adminSettingExpand().click();
-        this.elements.debugenabled().click();
-        cy.wait(2000);
-        this.elements.adminTab().click();
-        cy.wait(3000);
-        this.elements.triggerManualbtn().click();
-        cy.wait(5000);
+        this.elements.configureflowBtn().should("be.visible").click();
+        this.elements.salesOrderToggle().should("be.visible").click({ force: true });
+        // cy.wait(3000);
+        this.elements.btnAgree().should("be.visible").click();
+        // cy.wait(5000);
+        this.elements.saleOrderFlow().should("be.visible").click();
+        // cy.wait(5000);
+        this.elements.resumeBtn().should("be.visible").click();
+        this.elements.cancelbtn().should("be.visible").click();
+        this.elements.resumeBtn().should("be.visible").click();
+        this.elements.okbtn().should("be.visible").click();
+        // cy.wait(2000);
+        this.elements.okbtn().should("be.visible").click();
+        // cy.wait(3000);
+        this.elements.settingsTab().should("be.visible").click();
+        // cy.wait(3000);
+        this.elements.adminSettingExpand().should("be.visible").click();
+        this.elements.debugenabled().should("be.visible").click();
+        // cy.wait(2000);
+        this.elements.adminTab().should("be.visible").click();
+        // cy.wait(3000);
+        this.elements.triggerManualbtn().should("be.visible").click();
+        // cy.wait(5000);
         this.settingsActivityTab();
         this.clickOverview();
-        this.elements.breadcrumbLinkFlows().click();
+        this.elements.breadcrumbLinkFlows().should("be.visible").click();
     };
-}
-
+};
 module.exports = new SalesOrderSynchronizationPage();

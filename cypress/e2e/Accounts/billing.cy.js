@@ -33,4 +33,4 @@ describe('Billing Page Test Suite', () => {
         BillingPage.inputRequiredFields();
         BillingPage.clickDownloadButton();
     });
-})
+});

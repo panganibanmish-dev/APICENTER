@@ -32,83 +32,82 @@ class NovaPage {
     Nova = (email, password) => {
         cy.viewport(1800, 1000);
         cy.visit('/nova/login');
-        this.elements.inputEmail().type(email);
-        this.elements.inputPassword().type(password);
-        this.elements.checkRememberMe().click();
-        this.elements.btnLogin().click();
+        this.elements.inputEmail().should("be.visible").type(email);
+        this.elements.inputPassword().should("be.visible").type(password);
+        this.elements.checkRememberMe().should("be.visible").click();
+        this.elements.btnLogin().should("be.visible").click();
     };
     sidebarNovaInvoices = () => {
-        this.elements.sideBarInvoices().click();
-        cy.wait(3000);
+        this.elements.sideBarInvoices().should("be.visible").click();
+        // cy.wait(3000);
     };
     searchInvoiceByID = () => {
-        this.elements.search().type('382', { delay: 2000 }).clear();
-        cy.wait(5000);
+        this.elements.search().should("be.visible").type('382').clear();
+        // cy.wait(5000);
     };
     viewInvoiceAndDownloadInvoice = () => {
-        this.elements.clickEyesIcon().click();
-        cy.wait(2000);
+        this.elements.clickEyesIcon().should("be.visible").click();
+        // cy.wait(2000);
         this.elements.selectActionInvoice().select('Download').should('have.value', 'download');
-        cy.wait(2000);
-        this.elements.btnDownload().click();
-        cy.wait(2000);
-        this.elements.modalBtnCancel().click();
-        this.elements.btnDownload().click();
-        cy.wait(2000);
-        this.elements.modalBtnDownload().click();
+        // cy.wait(2000);
+        this.elements.btnDownload().should("be.visible").click();
+        // cy.wait(2000);
+        this.elements.modalBtnCancel().should("be.visible").click();
+        this.elements.btnDownload().should("be.visible").click();
+        // cy.wait(2000);
+        this.elements.modalBtnDownload().should("be.visible").click();
         this.sidebarNovaInvoices();
     };
     recipientDetails = () => {
         this.elements.clickRecipient().should("be.visible").click();
-        cy.wait(2000);
+        // cy.wait(2000);
         this.elements.recipient().scrollIntoView({ duration: 100000 }).should("be.visible");
-        cy.wait(5000);
-        this.elements.tabDuskApplications().click();
-        cy.wait(5000);
-        this.elements.tabDuskIntegrations().click();
-        cy.wait(5000);
-        this.elements.tabDuskSubscriptions().click();
-        cy.wait(5000);
-        this.elements.tabDuskOrders().click();
-        cy.wait(5000);
+        // cy.wait(5000);
+        this.elements.tabDuskApplications().should("be.visible").click();
+        // cy.wait(5000);
+        this.elements.tabDuskIntegrations().should("be.visible").click();
+        // cy.wait(5000);
+        this.elements.tabDuskSubscriptions().should("be.visible").click();
+        // cy.wait(5000);
+        this.elements.tabDuskOrders().should("be.visible").click();
+        // cy.wait(5000);
         // this.elements.btnNext().click();
         // cy.wait(5000);
         // this.elements.btnPrev().click();
         // cy.wait(5000);
     };
     sidebarNovaOrders = () => {
-        this.elements.sideBarOrders().click();
-        cy.wait(3000);
-        this.elements.ordersIndex().should("be.visible").contains("Orders ");
-        cy.wait(5000);
+        this.elements.sideBarOrders().should("be.visible").click();
+        // cy.wait(3000);
+        this.elements.ordersIndex().should("be.visible").contains("Orders");
+        // cy.wait(5000);
     };
     sideNovaSubscriptions = () => {
-        this.elements.sideBarSubscriptions().click();
-        cy.wait(3000);
+        this.elements.sideBarSubscriptions().should("be.visible").click();
+        // cy.wait(3000);
         this.elements.subscriptionsIndex().should("be.visible").contains("Subscriptions ");
-        cy.wait(5000);
+        // cy.wait(5000);
     };
     Billing = () => {
         this.sidebarNovaInvoices();
         this.searchInvoiceByID();
         this.viewInvoiceAndDownloadInvoice();
-        cy.wait(5000);
+        // cy.wait(5000);
         this.recipientDetails();
         this.sidebarNovaOrders();
         this.sideNovaSubscriptions();
     };
-
     //delete the new register user of Michelle Test
     deleteUsers = () => {
         // this.Nova();
-        this.elements.sideBarUsers().contains("Users").click();
-        cy.wait(3000);
-        this.elements.search().type("Michelle Tester");
-        cy.wait(3000);
-        this.elements.btnDeleteUser().click();
+        this.elements.sideBarUsers().should("be.visible").contains("Users").click();
+        // cy.wait(3000);
+        this.elements.search().should("be.visible").type("Michelle Tester");
+        // cy.wait(3000);
+        this.elements.btnDeleteUser().should("be.visible").click();
         this.elements.verifyDeleteResource().should("be.visible").contains("Delete Resource");
-        this.elements.btnConfirmDelete().click();
-        cy.wait(3000);
+        this.elements.btnConfirmDelete().should("be.visible").click();
+        // cy.wait(3000);
     };
-}
+};
 module.exports = new NovaPage();
