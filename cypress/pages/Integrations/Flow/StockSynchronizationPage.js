@@ -24,6 +24,11 @@ class StockSynchronizationPage {
 
         tabOverview: () => cy.get("div[class='tile tabs mx-6 mt-4'] a:nth-child(1)"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
+        
+        //change logs
+        tabChangeLogs: () => cy.get("a:nth-child(10)"),
+        eyeButton: () => cy.get("button[class='tile-button']"),
+        closebtn: () => cy.get("button[class='button button_secondary']")
     };
     acitvitySettingsTab = () => {
         //settings activity tab
@@ -88,6 +93,11 @@ class StockSynchronizationPage {
     clickOverview = () => {
         this.elements.tabOverview().should("be.visible").click();
     };
+    changeLog = () => {
+        this.elements.tabChangeLogs().should('be.visible').click();
+        this.elements.eyeButton().eq(0).should('be.visible').click();
+        this.elements.closebtn().should('be.visible').click();
+    };
     stockSynchronizationFlow = () => {
         //stock synchronization flow
         this.elements.configureflowBtn().should("be.visible").click();
@@ -110,6 +120,7 @@ class StockSynchronizationPage {
         this.adminSettingsTab();
         //activity tab
         this.acitvitySettingsTab();
+        this.changeLog();
 
         this.clickOverview();
         this.elements.breadcrumbLinkFlows().should("be.visible").click();

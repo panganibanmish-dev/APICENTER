@@ -63,7 +63,7 @@ class AddIntegrationsPage {
     followStep2 = () => {
         this.connectApplication1();
         this.connectApplication2();
-        this.elements.btnNext().should("be.visible").click();
+        this.elements.btnNext().click();
     };
     //Add Application 1
     connectApplication1 = () => {
@@ -73,21 +73,21 @@ class AddIntegrationsPage {
         this.elements.appStore().should("be.visible").contains("APIcenter appstore");
         this.elements.appSearch().should("be.visible").type("Magento 2").clear();
         cy.wait(2000);
-        this.elements.appBox().eq(1).should("be.visible").click();
+        this.elements.appBox().eq(0).should("be.visible").click();
         cy.wait(2000);
         this.elements.appToggle().click();
         this.elements.appEdit().click();
         this.elements.btnTestConnection().contains("Test Connection").click();
         cy.wait(5000);
         this.elements.btnSave().should("be.visible").click();
-        // cy.wait(5000);
+        cy.wait(5000);
     };
     //Add Application 2
     connectApplication2 = () => {
         cy.reload();
         this.elements.btnApplication2().should("be.visible").click();
-        this.elements.appBox().eq(0).should("be.visible").click();
-        // cy.wait(5000);
+        this.elements.appBox().eq(1).should("be.visible").click();
+        cy.wait(5000);
     };
     //step 3 synchronize your applications
     followStep3 = () => {

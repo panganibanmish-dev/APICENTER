@@ -167,9 +167,11 @@ class LandingPage {
         this.elements.flowName().eq(0).should("be.visible").contains("Sales Orders");
         this.elements.flowPrice().eq(0).should("be.visible").contains("€ 1498 / MO");
         this.elements.flowName().eq(1).should("be.visible").contains("Stocks");
-        this.elements.flowPrice().eq(1).should("be.visible").contains("€ 949 / MO");
-        this.elements.flowName().eq(2).should("be.visible").contains("Products");
-        this.elements.flowPrice().eq(2).should("be.visible").contains("€ 1698 / MO");
+        this.elements.flowPrice().eq(1).should("be.visible").contains("€ 1249 / MO");
+        this.elements.flowName().eq(2).should("be.visible").contains("Customers");
+        this.elements.flowPrice().eq(2).should("be.visible").contains("€ 895 / MO");
+        this.elements.flowName().eq(3).should("be.visible").contains("Products");
+        this.elements.flowPrice().eq(3).should("be.visible").contains("€ 1498 / MO");
         // cy.wait(3000);
         this.elements.btnSetup().eq(1).should("be.visible").click();
         this.elements.registerForm().should("be.visible").contains("Register");

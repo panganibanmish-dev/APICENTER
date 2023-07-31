@@ -34,6 +34,11 @@ class ProductSyncronizationPage {
         tabAdmin: () => cy.get('body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(9)'),
         btnTriggerManual: () => cy.get("button[class='btn btn-primary']"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
+
+        //change logs
+        tabChangeLogs: () => cy.get("a:nth-child(10)"),
+        eyeButton: () => cy.get("button[class='tile-button']"),
+        closebtn: () => cy.get("button[class='button button_secondary']")
     };
     clickCardTile = () => {
         this.elements.cardTile().should("be.visible").click();
@@ -144,6 +149,11 @@ class ProductSyncronizationPage {
         this.elements.btnTriggerManual().should("be.visible").click();
         // cy.wait(5000);
     };
+    changeLog = () => {
+        this.elements.tabChangeLogs().should('be.visible').click();
+        this.elements.eyeButton().eq(0).should('be.visible').click();
+        this.elements.closebtn().should('be.visible').click();
+    };
     productSyncronizationFlow = () => {
         this.clickCardTile();
         // this.clickOverview();
@@ -151,6 +161,7 @@ class ProductSyncronizationPage {
         this.productSettingsFlow();
         this.settingsActivityTab();
         this.settingsAdminTab();
+        this.changeLog();
         this.clickOverview();
         this.elements.breadcrumbLinkFlows().should("be.visible").click();
     };

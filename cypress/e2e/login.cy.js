@@ -26,6 +26,6 @@ describe('Login Page Test Suite', () => {
             .goTologinWithForgotPassword()
         ForgotPasswordPage
             .loginWithoutEmail();
-        ForgotPasswordPage.Email();
+        ForgotPasswordPage.Email(Cypress.env('password'));
     });
 })

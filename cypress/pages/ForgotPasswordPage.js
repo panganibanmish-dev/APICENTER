@@ -31,7 +31,7 @@ class ForgotPasswordPage {
             cy.visit('https://www.guerrillamail.com/inbox');
         });
     };
-    Email() {
+    Email = (password) => {
         this.goToForgotPassword();
         this.elements.emailTextBox().should("be.visible").type("michtester@guerrillamail.com");
         this.elements.btn().should("be.visible").click();
@@ -49,8 +49,8 @@ class ForgotPasswordPage {
             .then((href) => {
                 cy.visit(href)
             });
-        this.elements.newpassword().should("be.visible").type(Cypress.env('password'));
-        this.elements.confirmpassword().should("be.visible").type(Cypress.env('password'));
+        this.elements.newpassword().should("be.visible").type(password);
+        this.elements.confirmpassword().should("be.visible").type(password);
         this.elements.btn().should("be.visible").click();
         cy.visit("/login");
     };

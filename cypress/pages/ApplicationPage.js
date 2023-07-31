@@ -16,6 +16,21 @@ class ApplicationPage {
     };
     YourApplications = () => {
         cy.wait(3000);
+        this.elements.appsearch().type("Magento", { delay: 200, force: true });
+        cy.wait(5000);
+        this.elements.appbox().click();
+
+        this.elements.inputField().eq(0).type("Mitch Magento", { delay: 200 });
+        this.elements.inputField().eq(1).type("*qX^knbeVBZ9", { delay: 200 });
+        this.elements.eyeicon().click();
+        this.elements.inputField().eq(2).type("apicenter3000.web-company.dev/szxiuwdvvqxpcdrn", { delay: 300 });
+        this.elements.saveBtn().click();
+        cy.wait(3000);
+        this.elements.testconnectionBtn().click();
+        cy.wait(3000);
+        this.elements.applicationNav().click();
+        cy.wait(3000);
+
         this.elements.appToggle().click();
         this.elements.appToolbar().contains("Edit").click({force: true});
 

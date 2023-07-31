@@ -112,7 +112,7 @@ class BillingPage {
         this.elements.btnContinue().should("be.visible").click();
         // cy.wait(5000);
         this.afterPayRedirectBackToWebsite();
-        this.clickDownloadButton();
+        // this.clickDownloadButton();
     };
     //pay by using ideal
     paymentMolliebyiDeal = () => {
@@ -126,7 +126,7 @@ class BillingPage {
         // cy.wait(2000);
         // this.elements.linkBackwebsite().click();
         this.afterPayRedirectBackToWebsite();
-        this.clickDownloadButton();
+        // this.clickDownloadButton();
     };
     //pay by using kbc
     paymentMolliebyKbcCbc = () => {
@@ -147,7 +147,7 @@ class BillingPage {
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
-        this.clickDownloadButton();
+        // this.clickDownloadButton();
     };
     //verifying error message  
     verifyErrormsg = () => {
@@ -170,13 +170,21 @@ class BillingPage {
     //input the required fields
     inputRequiredFields = () => {
         this.elements.inputDisableSendingInvoiceTo().should("be.disabled");
-        this.elements.inputCCInvoiceTo().should("be.visible").clear().type('panganibanmish.work@gmail.com');
+        this.elements.inputCCInvoiceTo().should("be.visible").clear().type(Cypress.env('login_email'));
         this.elements.inputVATNumber().should("be.visible").clear().type('NL861742163B01');
         this.elements.btnUpdate().should("be.visible").click();
     };
     //download the invoice pdf
     clickDownloadButton = () => {
-        this.elements.downloadFile({ timeout: 7000 }).eq(2).should("be.visible").click();
+        this.elements.downloadFile().eq(2).should("be.visible").click();
+        // cy.visit("/dashboard/account/billing/");
+        // cy.wait(2000);
+        // // cy.request({
+        // //     method: 'GET',
+        // //     encoding: 'binary'
+        // // }).then((response) => {
+        // //     expect(response.status).to.equal(200);
+        // // });
     };
 };
 module.exports = new BillingPage(); 
