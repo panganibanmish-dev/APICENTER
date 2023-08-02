@@ -49,8 +49,4 @@ Cypress.Commands.add('login', (email, password) => {
         },
     );
 });
-
-Cypress.Commands.add('getIframeBody', { prevSubject: 'element' }, (iframe) => {
-    return cy.wrap(iframe).its('0.contentDocument.body').should('not.be.empty').then(cy.wrap);
-  });
   

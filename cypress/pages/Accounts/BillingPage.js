@@ -112,7 +112,7 @@ class BillingPage {
         this.elements.btnContinue().should("be.visible").click();
         // cy.wait(5000);
         this.afterPayRedirectBackToWebsite();
-        // this.clickDownloadButton();
+        this.clickDownloadButton();
     };
     //pay by using ideal
     paymentMolliebyiDeal = () => {
@@ -126,7 +126,7 @@ class BillingPage {
         // cy.wait(2000);
         // this.elements.linkBackwebsite().click();
         this.afterPayRedirectBackToWebsite();
-        // this.clickDownloadButton();
+        this.clickDownloadButton();
     };
     //pay by using kbc
     paymentMolliebyKbcCbc = () => {
@@ -138,6 +138,8 @@ class BillingPage {
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
+        this.clickDownloadButton();
+        
         // cy.wait(3000);
         //payment for kbc
         this.clickUpdatePaymentMethod();
@@ -147,7 +149,7 @@ class BillingPage {
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
-        // this.clickDownloadButton();
+        this.clickDownloadButton();
     };
     //verifying error message  
     verifyErrormsg = () => {
@@ -176,15 +178,14 @@ class BillingPage {
     };
     //download the invoice pdf
     clickDownloadButton = () => {
-        this.elements.downloadFile().eq(2).should("be.visible").click();
-        // cy.visit("/dashboard/account/billing/");
-        // cy.wait(2000);
-        // // cy.request({
-        // //     method: 'GET',
-        // //     encoding: 'binary'
-        // // }).then((response) => {
-        // //     expect(response.status).to.equal(200);
-        // // });
+        cy.window().document().then(function (doc) {
+            doc.addEventListener('click', () => {
+                // this adds a listener that reloads your page 
+                // after 5 seconds from clicking the download button
+                setTimeout(function () { doc.location.reload() }, 5000)
+            });
+            cy.get("td[class='text-right'] a[class='button']").eq(0).should("be.visible").contains("Download PDF").click();
+        });
     };
 };
 module.exports = new BillingPage(); 

@@ -23,6 +23,7 @@ module.exports = defineConfig({
       company: "GG QA",
       email: "panganibanmish.work@gmail.com",
       baseUrl2: "https://apicenter.io/",
+      password: "Radeonstar@1120",
     },
   },
   requestTimeout: 30000,
