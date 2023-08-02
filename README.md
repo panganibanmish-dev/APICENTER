@@ -10,7 +10,7 @@ Welcome to the Cypress project based on the Page Object Model! This project is i
     - Type git --version to check the successful installation, or else you can install from this link:
     https://git-scm.com/downloads
 * Visual Studio IDE
-    - Please feel free to use the editor of your choice if you have any preference, or if you don't have an editor I suggest you use this IDE
+    - Please feel free to use the editor of your choice if you have any preference, or if you don't have an editor I suggest you to use this IDE
     https://code.visualstudio.com/download
 
 ## Installations
