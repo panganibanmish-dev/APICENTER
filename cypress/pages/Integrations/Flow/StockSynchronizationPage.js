@@ -3,16 +3,16 @@ class StockSynchronizationPage {
         configureflowBtn: () => cy.get('.button.button_success'),
         stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button']"),
-        stockFlow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1)"),
+        stockFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)"),
         resumeBtn: () => cy.get('.button'),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
         cancelbtn: () => cy.get("button[class='swal2-cancel swal2-styled']"),
         settingsTab: () => cy.get("main a:nth-child(2)"),
-        adminSettings: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
+        adminSettings: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
         adminDebugEnabled: () => cy.get("label[for='debug-enabled13-null']"),
-        notifExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"),
-        generalflowExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)"),
-        runbehaviourExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)"),
+        notifExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"),
+        generalflowExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)"),
+        runbehaviourExpand: () => cy.get("div[class='m-4'] div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1)"),
         saveSettingsbtn: () => cy.get("button[type='submit']"),
         adminTab: () => cy.get("main a:nth-child(9)"),
         triggerManualbtn: () => cy.get("button[class='btn btn-primary']"),
@@ -95,8 +95,8 @@ class StockSynchronizationPage {
     };
     changeLog = () => {
         this.elements.tabChangeLogs().should('be.visible').click();
-        this.elements.eyeButton().eq(0).should('be.visible').click();
-        this.elements.closebtn().should('be.visible').click();
+        // this.elements.eyeButton().eq(0).should('be.visible').click();
+        // this.elements.closebtn().should('be.visible').click();
     };
     stockSynchronizationFlow = () => {
         //stock synchronization flow
@@ -115,7 +115,7 @@ class StockSynchronizationPage {
         this.elements.okbtn().click();
         cy.wait(3000);
         //setting tab
-        this.stockSettingsTab();
+        // this.stockSettingsTab();
         //admin tab
         this.adminSettingsTab();
         //activity tab

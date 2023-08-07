@@ -51,7 +51,6 @@ class ApplicationPage {
         this.elements.testconnectionBtn().click();
         cy.wait(3000);
         this.elements.applicationNav().should("be.visible").click();
-        // cy.wait(3000);
 
         //the added application should be canceled to delete
         this.elements.appToggle().eq(0).click();
@@ -94,7 +93,6 @@ class ApplicationPage {
         this.elements.applicationNav().click();
         cy.wait(3000);
 
-           
         // add applications for shopify
         this.elements.appsearch().type("Shopify", { delay: 200, force: true });
         cy.wait(5000);

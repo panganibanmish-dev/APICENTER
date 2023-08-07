@@ -1,8 +1,8 @@
 class SalesOrderSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
-        saleOrderFlow: () => cy.get("div[class='flex flex-col py-8'] div:nth-child(2) div:nth-child(1)"),
-        salesOrderToggle: () => cy.get('input#check-0-1[type="checkbox"]'),
+        saleOrderFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"),
+        salesOrderToggle: () => cy.get('input#check-0-0[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button'] span"),
         resumeBtn: () => cy.get('.button'),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
@@ -14,7 +14,7 @@ class SalesOrderSynchronizationPage {
         debugenabled: () => cy.get("label[for='debug-enabled13-null']"),
         
         //tab activity
-        tabActivity: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(8)"),
+        tabActivity: () => cy.get("a:nth-child(8)"),
         selectStatus: () => cy.get("select[dusk='filter-status-select']"),
         selectApplicationDirection: () => cy.get("select[dusk='filter-direction-select']"),
         selectFlow: () => cy.get("select[dusk='filter-flow-select']"),

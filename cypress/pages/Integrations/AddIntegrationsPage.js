@@ -38,7 +38,7 @@ class AddIntegrationsPage {
             cy.get("button[role='button']"),
         btnTestConnection: () =>
             cy.get("button[class='button button_app'] span"),
-        product9Toggle: () => cy.get('input#check-1-0[type="checkbox"]'),
+        product9Toggle: () => cy.get('input#check-1-1[type="checkbox"]'),
         total: () => cy.get(".flex.justify-end.mt-6.mb-2.tile"),
         label1: () => cy.get(".h5"),
         label2: () => cy.get("div[class='grid-2 wizard_grid'] div p"),

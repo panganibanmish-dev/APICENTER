@@ -42,7 +42,7 @@ class ForgotPasswordPage {
         this.elements.inputEmail().should("be.visible").type("michtester");
         this.elements.savebuttonEmail().should("be.visible").click();
         this.elements.selectDomain().select('guerrillamail.com').should('have.value', 'guerrillamail.com');
-        // cy.wait(10000);
+        cy.wait(5000);
         this.elements.messageBox().should("be.visible").click();
         cy.contains('a', 'Reset Password')
             .invoke('attr', 'href')

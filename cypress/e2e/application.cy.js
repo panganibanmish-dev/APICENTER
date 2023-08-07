@@ -3,12 +3,6 @@ import LoginPage from "../pages/LoginPage";
 
 describe('Application Page Test Suite', () => {
     beforeEach(() => {
-        // LoginPage
-        //     .goToLoginPage();
-        // LoginPage
-        //     .loginAdmin(
-        //         Cypress.env('login_email'),
-        //         Cypress.env('login_password'));
         cy.login(Cypress.env('login_email'), Cypress.env('login_password'));
         cy.viewport(1800, 1000);
         cy.visit('/');

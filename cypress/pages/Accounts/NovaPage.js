@@ -42,7 +42,7 @@ class NovaPage {
         // cy.wait(3000);
     };
     searchInvoiceByID = () => {
-        this.elements.search().should("be.visible").type('382').clear();
+        this.elements.search().should("be.visible").type('1').clear();
         // cy.wait(5000);
     };
     viewInvoiceAndDownloadInvoice = () => {

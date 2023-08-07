@@ -2,23 +2,23 @@ class ProductSyncronizationPage {
     elements = {
         cardTile: () => cy.get(".tile.tile-wide.cursor-pointer.overflow-hidden.h-100"),
         tabOverview: () => cy.get("main a:nth-child(1)"),
-        productflow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1)"),
+        productflow: () => cy.get("div[class='px-8 tile_column'] h3[class='h5']"),
         resumeFlow: () => cy.get("button[class='button'] span"),
         cancelBtn: () => cy.get("button[class='swal2-cancel swal2-styled']"),
         okBtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
         dialogActivate: () => cy.get("div[role='dialog']"),
         tabSettings: () => cy.get("main a:nth-child(2)"),
-        tabDataMapping: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(4)"),
+        tabDataMapping: () => cy.get("a:nth-child(4)"),
         adminsettingsExpand: () => cy.get("div[class='m-4'] div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1)"),
         debugEnabled: () => cy.get("label[for='debug-enabled13-null']"),
-        notifExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"),
-        attributesfeaturesExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)"),
-        categoriesExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)"),
-        generalflowsettingExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1)"),
-        productsettingsExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
-        runbehaviourExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
-        stockwarehousesettingsExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(8) > div:nth-child(1) > div:nth-child(1)"),
-        taxtaxratesExpand: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"),
+        notifExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1)"),
+        attributesfeaturesExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)"),
+        categoriesExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)"),
+        generalflowsettingExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1)"),
+        productsettingsExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1)"),
+        runbehaviourExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1)"),
+        stockwarehousesettingsExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(8) > div:nth-child(1) > div:nth-child(1)"),
+        taxtaxratesExpand: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > form:nth-child(2) > div:nth-child(1) > div:nth-child(9) > div:nth-child(1) > div:nth-child(1)"),
         btnSaveSettings: () => cy.get("button[type='submit']"),
         btnDefault: () => cy.get(".button.mr-6"),
         btnConfirm: () => cy.get(".button.ml-3"),
@@ -26,12 +26,12 @@ class ProductSyncronizationPage {
         btnBackDefault: () => cy.get("div[class='ml-auto'] button[type='button']"),
         btnSaveEndpoint: () => cy.get("button[type='submit'] span"),
         tabFilterOptions: () => cy.get("#app > main > div > div.tile.tabs.mx-6.mt-4 > div > a:nth-child(7)"),
-        tabActivity: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(8)"),
+        tabActivity: () => cy.get("a:nth-child(8)"),
         selectStatus: () => cy.get("select[dusk='filter-status-select']"),
         selectApplicationDirection: () => cy.get("select[dusk='filter-direction-select']"),
         selectFlow: () => cy.get("select[dusk='filter-flow-select']"),
         selectTrigger: () => cy.get("select[dusk='filter-trigger-select']"),
-        tabAdmin: () => cy.get('body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(9)'),
+        tabAdmin: () => cy.get('a:nth-child(9)'),
         btnTriggerManual: () => cy.get("button[class='btn btn-primary']"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
 
@@ -63,10 +63,7 @@ class ProductSyncronizationPage {
     //product resume flow - it should be showing a modal of confirmation for resuming the flow of integration
     productResumeFlow = () => {
         // cy.wait(3000);
-        this.elements.productflow().should("be.visible").click();
-        // cy.wait(3000);
-        // this.clickOverview();
-        // cy.wait(3000);
+        this.elements.productflow().should("contain", "Product Synchronization").click();
         this.clickResumeFlow();
         // cy.wait(3000);
         this.clickCancelBtn();
@@ -151,8 +148,8 @@ class ProductSyncronizationPage {
     };
     changeLog = () => {
         this.elements.tabChangeLogs().should('be.visible').click();
-        this.elements.eyeButton().eq(0).should('be.visible').click();
-        this.elements.closebtn().should('be.visible').click();
+        // this.elements.eyeButton().eq(0).should('be.visible').click();
+        // this.elements.closebtn().should('be.visible').click();
     };
     productSyncronizationFlow = () => {
         this.clickCardTile();

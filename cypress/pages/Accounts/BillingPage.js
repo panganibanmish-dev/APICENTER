@@ -55,13 +55,10 @@ class BillingPage {
     clickBillingTab = () => {
         this.elements.btnAccount().should("be.visible").click();
         this.elements.btnBilling().should("be.visible").contains("Billing").click();
-        // cy.wait(2000);
     };
     //verifying label elements
     verifyLabel = () => {
-        // cy.wait(3000);
         this.elements.lblActiveSubscriptions().should("be.visible").contains("Active subscriptions");
-        // this.elements.lblCurrentPlan().should("be.visible");
         this.elements.lblFooter().should("be.visible").contains("* All prices are excluding applicable VAT.");
         this.elements.lblPaymentInfo().should("be.visible").contains("Payment information");
         this.elements.lblSendingInvoiceTo().should("be.visible").contains("Sending invoices to");
@@ -75,7 +72,6 @@ class BillingPage {
     paymentRedirects = () => {
         this.elements.linkBackwebsite().click();
         this.clickUpdatePaymentMethod();
-        // cy.wait(3000);
         this.elements.selectLocale().select('English').should('have.value', 'en_US');
     };
     afterPayRedirectBackToWebsite = () => {
@@ -110,7 +106,6 @@ class BillingPage {
         this.elements.btnPaySubmit().should("be.visible").click();
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
-        // cy.wait(5000);
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
     };
@@ -122,9 +117,6 @@ class BillingPage {
         this.elements.btnIdealASNBank().should("be.visible").click();
         this.elements.togglePaid().should("be.visible").click();
         this.elements.btnContinue().should("be.visible").click();
-        // this.elements.linkBackwebsite().click();
-        // cy.wait(2000);
-        // this.elements.linkBackwebsite().click();
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
     };
@@ -139,8 +131,7 @@ class BillingPage {
         this.elements.btnContinue().should("be.visible").click();
         this.afterPayRedirectBackToWebsite();
         this.clickDownloadButton();
-        
-        // cy.wait(3000);
+      
         //payment for kbc
         this.clickUpdatePaymentMethod();
         this.paymentRedirects();

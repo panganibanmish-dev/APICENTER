@@ -26,13 +26,10 @@ describe('Integrations Page Test Suite', () => {
             .followStep1();
         AddIntegrationsPage
             .followStep2();
-        // cy.wait(3000);
         AddIntegrationsPage
             .followStep3();
-        // cy.wait(3000);
         AddIntegrationsPage
             .followStep4(visibility, variantvisibility);
-        // cy.wait(3000);
         AddIntegrationsPage
             .followStep5();
         cy.wait(3000);
@@ -46,8 +43,6 @@ describe('Integrations Page Test Suite', () => {
             .ActivityTab();
     });
     it('should be sychronize the flow of the integration for product, sales order, customer and stock ', () => {
-        AddIntegrationsPage
-            .gotoIntegrations();
         ProductSynchronizationPage
             .productSyncronizationFlow();
         SalesOrderSynchronizationPage

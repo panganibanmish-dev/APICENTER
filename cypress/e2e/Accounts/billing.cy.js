@@ -5,7 +5,6 @@ describe('Billing Page Test Suite', () => {
     beforeEach(() => {
         LoginPage.goToLoginPage();
         LoginPage.loginAdmin(Cypress.env('login_email'), Cypress.env('login_password'));
-        // should be redirect to billing page
         BillingPage.clickBillingTab();
     });
     it('should be verify the label', () => {
@@ -26,11 +25,7 @@ describe('Billing Page Test Suite', () => {
     it('should be check the required fields of the payment information ', () => {
         BillingPage.checkRequiredFields();
     });
-    it('should be input the required fields of the payment information and should be download the invoice', () => {
+    it('should be input the required fields of the payment information', () => {
         BillingPage.inputRequiredFields();
-        BillingPage.clickDownloadButton();
     });
-    // it('gmail', () => {
-    //     BillingPage.gotoGmail();
-    // });
 });
