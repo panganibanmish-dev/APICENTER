@@ -2,7 +2,12 @@ class SalesOrderSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
         saleOrderFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"),
+        //prod env
         salesOrderToggle: () => cy.get('input#check-0-0[type="checkbox"]'),
+        //stg env
+        stg_salesOrderToggle: () => cy.get('input#check-0-1[type="checkbox"]'),
+        //dev env
+        dev_salesOrderToggle: () => cy.get('input#check-0-1[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button'] span"),
         resumeBtn: () => cy.get('.button'),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
@@ -12,14 +17,14 @@ class SalesOrderSynchronizationPage {
         settingsTab: () => cy.get("main a:nth-child(2)"),
         adminSettingExpand: () => cy.get("div[class='m-4'] div:nth-child(1) div:nth-child(1) div:nth-child(1) div:nth-child(1)"),
         debugenabled: () => cy.get("label[for='debug-enabled13-null']"),
-        
+
         //tab activity
         tabActivity: () => cy.get("a:nth-child(8)"),
         selectStatus: () => cy.get("select[dusk='filter-status-select']"),
         selectApplicationDirection: () => cy.get("select[dusk='filter-direction-select']"),
         selectFlow: () => cy.get("select[dusk='filter-flow-select']"),
         selectTrigger: () => cy.get("select[dusk='filter-trigger-select']"),
-        
+
         tabOverview: () => cy.get("div[class='tile tabs mx-6 mt-4'] a:nth-child(1)"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
 
@@ -47,7 +52,7 @@ class SalesOrderSynchronizationPage {
 
         this.elements.selectApplicationDirection().select('source').should('have.value', 'source');
         cy.wait(3000);
-        this.elements.selectApplicationDirection().select('target', {force: true}).should('have.value', 'target');
+        this.elements.selectApplicationDirection().select('target', { force: true }).should('have.value', 'target');
         cy.wait(3000);
         this.elements.selectApplicationDirection().select('—').should('have.value', '—');
         cy.wait(3000);
@@ -77,9 +82,19 @@ class SalesOrderSynchronizationPage {
         this.elements.closebtn().should('be.visible').click();
     };
     saleSynchronizationFlow = () => {
+        const environment = Cypress.config().env;
+
         this.elements.configureflowBtn().should("be.visible").click();
-        this.elements.salesOrderToggle().click({ force: true });
-        cy.wait(3000);
+        if (environment === 'prod') {
+            this.elements.salesOrderToggle().click({ force: true });
+            cy.wait(3000);
+        } else if (environment === 'staging') {
+            this.elements.stg_salesOrderToggle().click({ force: true });
+            cy.wait(3000);
+        } else {
+            this.elements.dev_salesOrderToggle().click({ force: true });
+            cy.wait(3000);
+        }
         this.elements.btnAgree().should("be.visible").click();
         cy.wait(5000);
         this.elements.saleOrderFlow().should("be.visible").click();

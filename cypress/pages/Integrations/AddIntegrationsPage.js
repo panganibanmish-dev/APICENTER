@@ -38,7 +38,12 @@ class AddIntegrationsPage {
             cy.get("button[role='button']"),
         btnTestConnection: () =>
             cy.get("button[class='button button_app'] span"),
+        //prod env
         product9Toggle: () => cy.get('input#check-1-1[type="checkbox"]'),
+        //stg env
+        stg_product9Toggle: () => cy.get('input#check-1-0[type="checkbox"]'),
+        //dev env
+        dev_product9Toggle: () => cy.get('input#check-1-0[type="checkbox"]'),
         total: () => cy.get(".flex.justify-end.mt-6.mb-2.tile"),
         label1: () => cy.get(".h5"),
         label2: () => cy.get("div[class='grid-2 wizard_grid'] div p"),
@@ -91,7 +96,14 @@ class AddIntegrationsPage {
     };
     //step 3 synchronize your applications
     followStep3 = () => {
-        this.elements.product9Toggle().click({ force: true });
+        const environment = Cypress.config().env;
+        if (environment === 'prod') {
+            this.elements.product9Toggle().click({ force: true });
+        } else if (environment === 'staging') {
+            this.elements.stg_product9Toggle().click({ force: true });
+        } else {
+            this.elements.dev_product9Toggle().click({ force: true });
+        }
         // cy.wait(3000);
         this.elements.total().should("be.visible");
         // cy.wait(3000);

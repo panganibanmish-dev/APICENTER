@@ -1,7 +1,12 @@
 class CustomerSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
+        //prod
         customerToggle: () => cy.get("label[for='check-1-3']"),
+        //stg
+        stg_customerToggle: () => cy.get("label[for='check-1-3']"),
+        //dev
+        dev_customerToggle: () => cy.get("label[for='check-0-3']"),
         btnAgree: () => cy.get("button[class='button'] span"),
         customerFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"),
         overviewTab: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"),
@@ -48,7 +53,7 @@ class CustomerSynchronizationPage {
         cy.wait(5000);
         this.elements.selectApplicationDirection().select('source').should('have.value', 'source');
         cy.wait(3000);
-        this.elements.selectApplicationDirection().select('target', {force: true}).should('have.value', 'target');
+        this.elements.selectApplicationDirection().select('target', { force: true }).should('have.value', 'target');
         cy.wait(3000);
         this.elements.selectApplicationDirection().select('—').should('have.value', '—');
         cy.wait(3000);
@@ -97,9 +102,16 @@ class CustomerSynchronizationPage {
         this.elements.closebtn().should('be.visible').click();
     };
     customerSynchronizationFlow = () => {
+        const environment = Cypress.config().env
         //configure flow
         this.elements.configureflowBtn().should("be.visible").click();
-        this.elements.customerToggle().click({ force: true });
+        if (environment === 'prod') {
+            this.elements.customerToggle().click({ force: true });
+        } else if (environment === 'staging') {
+            this.elements.stg_customerToggle().click({ force: true });
+        } else {
+            this.elements.dev_customerToggle().click({ force: true });
+        }
         this.elements.btnAgree().should("be.visible").click();
         cy.wait(2000);
         this.elements.customerFlow().should("be.visible").click();

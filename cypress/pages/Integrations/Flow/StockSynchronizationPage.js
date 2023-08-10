@@ -1,7 +1,12 @@
 class StockSynchronizationPage {
     elements = {
         configureflowBtn: () => cy.get('.button.button_success'),
+        //prod
         stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
+        //stg
+        stg_stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
+        //dev
+        dev_stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button']"),
         stockFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)"),
         resumeBtn: () => cy.get('.button'),
@@ -24,7 +29,7 @@ class StockSynchronizationPage {
 
         tabOverview: () => cy.get("div[class='tile tabs mx-6 mt-4'] a:nth-child(1)"),
         breadcrumbLinkFlows: () => cy.get("div[class='nav_home'] li:nth-child(3) a:nth-child(1)"),
-        
+
         //change logs
         tabChangeLogs: () => cy.get("a:nth-child(10)"),
         eyeButton: () => cy.get("button[class='tile-button']"),
@@ -99,10 +104,17 @@ class StockSynchronizationPage {
         // this.elements.closebtn().should('be.visible').click();
     };
     stockSynchronizationFlow = () => {
+        const environment = Cypress.config().env;
         //stock synchronization flow
         this.elements.configureflowBtn().should("be.visible").click();
         cy.wait(3000);
-        this.elements.stockToggle().click({ force: true });
+        if (environment === "prod") {
+            this.elements.stockToggle().click({ force: true });
+        } else if (environment === "staging") {
+            this.elements.stg_stockToggle().click({ force: true });
+        } else {
+            this.elements.dev_stockToggle().click({ force: true });
+        }
         this.elements.btnAgree().should("be.visible").click();
         cy.wait(5000);
         this.elements.stockFlow().should("be.visible").click();

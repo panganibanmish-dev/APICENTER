@@ -42,10 +42,11 @@ class NovaPage {
         // cy.wait(3000);
     };
     searchInvoiceByID = () => {
-        this.elements.search().should("be.visible").type('1').clear();
+        this.elements.search().should("be.visible").type('Michelle Panganiban').clear();
         // cy.wait(5000);
     };
     viewInvoiceAndDownloadInvoice = () => {
+        this.elements.search().should("be.visible").type('Michelle Panganiban');
         this.elements.clickEyesIcon().should("be.visible").click();
         // cy.wait(2000);
         this.elements.selectActionInvoice().select('Download').should('have.value', 'download');
