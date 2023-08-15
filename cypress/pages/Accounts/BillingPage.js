@@ -171,8 +171,6 @@ class BillingPage {
     clickDownloadButton = () => {
         cy.window().document().then(function (doc) {
             doc.addEventListener('click', () => {
-                // this adds a listener that reloads your page 
-                // after 5 seconds from clicking the download button
                 setTimeout(function () { doc.location.reload() }, 5000)
             });
             cy.get("td[class='text-right'] a[class='button']").eq(0).should("be.visible").contains("Download PDF").click();

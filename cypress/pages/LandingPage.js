@@ -41,7 +41,6 @@ class LandingPage {
         this.elements.contact_becomePartnerAndQuestionNeedHelp().should("be.visible").contains("Become a partner");
         this.elements.btnBookAMeeting().should("be.visible").click();
         this.gotoCalenderPage();
-        // cy.wait(3000);
         cy.visit("https://apicenter.io/contact/");
         this.elements.contact_becomePartnerAndQuestionNeedHelp().should("be.visible").contains("Questions? Need help?");
         this.elements.link_here().should("be.visible").click();
@@ -63,7 +62,6 @@ class LandingPage {
     };
     navbar = () => {
         this.elements.navLogo().should("be.visible");
-        // cy.wait(3000);
         cy.get(".nav_mobile.nav_body").should("be.visible");
         const nav = [
             "Platform",
@@ -77,23 +75,18 @@ class LandingPage {
         nav.forEach((n) => {
             cy.get(".nav_item").should("be.visible").contains(n);
         });
-        // cy.wait(3000);
     };
     apicenterLogo = () => {
         this.elements.navLogo().should("be.visible").click();
-        // cy.wait(3000);
     };
     //main homepage of apicenter
     homepage = () => {
         this.elements.contentBox().should("be.visible").contains("Software direct, affordable, easy, integrations");
-        // cy.wait(3000);
         this.elements.text().should("be.visible").contains("API integrations designed to scale your application ecosystem and assure a fluid and secure flow of data.");
         this.elements.btnIntegrations().should("be.visible");
         this.elements.text_sectionLeaders().should("be.visible").contains("Leaders across all industries trust their API security to API Center.");
         this.elements.textSubject().should("be.visible").contains("APIcenter supports API integrations globally. For all industries, from SME to multinationals.");
         this.elements.videobtn().should("be.visible").click();
-        cy.wait(60000);
-        cy.wait(10000);
         this.elements.logoLievERP().should("be.visible");
         this.elements.logoEserviceWare().should("be.visible");
         this.elements.logoMailBlue().should("be.visible");
@@ -119,16 +112,12 @@ class LandingPage {
         this.elements.div_a_contactUs().should("be.visible").click();
         this.contactUs();
         this.gotoLandingpage();
-        // this.elements.link_apicenter().should("be.visible").click();
-        // this.elements.titleApicenterSection().eq(1).should("be.visible").contains("Focus on the data you care about");
         cy.contains("Focus on the data you care about").should("be.visible");
     };
     //integration page 
     IntegrationPage = (app1, app2) => {
         this.elements.btnIntegrations().should("be.visible").click();
-        cy.wait(3000);
         this.elements.hero_text().should("be.visible").contains("Integrations");
-        cy.wait(3000);
         this.elements.category().should("be.visible").contains("Category");
         cy.get(".sidebar_nav.nav-pills").should("be.visible");
         const sidebar = [
@@ -146,18 +135,14 @@ class LandingPage {
         ];
         sidebar.forEach((s) => {
             cy.get(".sidebar_link").should("be.visible").contains(s);
-            //cy.wait(3000);
         });
         cy.reload();
         this.elements.searchApp().should("be.visible").type(`${app1}{enter}`);
         this.elements.appshopify().should("be.visible").click()
 
         // this.elements.appshopify().click();
-        // cy.wait(3000);
         this.elements.searchApp().should("be.visible").type(`${app2}{enter}`)
-        // cy.wait(5000);
         this.elements.appmagento().should("be.visible").click({ force: true });
-        // cy.wait(3000);
 
         this.elements.title().should("be.visible").contains("Shopify");
         this.elements.breadcrumbsList().should("be.visible").contains("APIcenter");
@@ -172,36 +157,28 @@ class LandingPage {
         this.elements.flowPrice().eq(2).should("be.visible").contains("€ 895 / MO");
         this.elements.flowName().eq(3).should("be.visible").contains("Products");
         this.elements.flowPrice().eq(3).should("be.visible").contains("€ 1498 / MO");
-        // cy.wait(3000);
         this.elements.btnSetup().eq(1).should("be.visible").click();
         this.elements.registerForm().should("be.visible").contains("Register");
-        // cy.wait(3000);
         this.gotoLandingpage();
     };
     //the navbar for platform page
     navPlatform = () => {
         this.elements.navLogo().should("be.visible").click();
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
-        // cy.wait(5000);
         cy.contains("Platform Overview").should("be.visible").click();
-        cy.wait(3000);
         cy.contains("Platform Overview");
         cy.contains("Why Choose the APIcenter Platform?").should('be.visible');
         cy.contains("What Can You Do with the APIcenter Platform?").should('be.visible');
-        // cy.wait(3000);
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
         cy.contains("Platform Features").click();
         cy.contains("Platform Features");
-        // cy.wait(3000);
         cy.contains("a", "Platform").should("be.visible").realHover('mouse');
         cy.contains("Platform Security").click();
         cy.contains("Platform Security");
-        // cy.wait(2000);
     };
     //navbar for integrations page
     navIntegrations = () => {
         cy.contains("a", "Integrations").should("be.visible").realHover('mouse');
-        // cy.wait(2000);
     };
     //navbar for solutions page
     navSolutions = () => {
@@ -219,7 +196,6 @@ class LandingPage {
         cy.contains("Become a partner");
         cy.get(".btn.btn_secondary").should("be.visible").contains("become an integration partner").click();
         this.gotoLandingpage();
-        // cy.wait(3000);
     };
     //navbar for pricing page
     navPricing = () => {
@@ -231,17 +207,12 @@ class LandingPage {
         this.elements.footer().should('be.visible').contains("Platform");
         this.elements.footer().should('be.visible').contains("Contact");
         cy.contains("Contact Us").should("be.visible").click();
-        // cy.wait(3000);
         cy.contains("About Us").should("be.visible").click();
-        // cy.wait(3000);
         cy.contains("About Us").should('be.visible');
         cy.contains("Our Mission").should('be.visible');
         cy.contains("Our Team").should('be.visible');
-        // cy.wait(2000);
         cy.contains("Terms and conditions").should("be.visible").click();
-        // cy.wait(3000);
         cy.contains("Privacy policy").should("be.visible").click();
-        // cy.wait(3000);
         cy.reload();
     };
 };

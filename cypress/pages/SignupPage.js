@@ -22,7 +22,6 @@ class SignupPage {
         // cy.viewport(1280, 768)
         cy.viewport(1800, 1000)
         cy.visit('/register')
-        // cy.wait(3000)
     };
     //toogle that needs to check for the agreement
     clickToggleTermsAndProcessingAgreement() {
@@ -34,7 +33,6 @@ class SignupPage {
     goToLoginLink() {
         this.elements.btnLink().should("be.visible").contains("Log in").click();
         cy.visit("/login");
-        // cy.wait(3000);
         this.goToRegisterPage();
     };
 
@@ -72,18 +70,15 @@ class SignupPage {
         this.elements.errormsg().should("be.visible").contains("The Applications field is required.");
         this.elements.errormsg().should("be.visible").contains("The Terms of Service must be accepted.");
         this.elements.errormsg().should("be.visible").contains("The Processing agreement must be accepted.");
-        // cy.wait(2000);
     };
     //dropdown for the register language and apps 
     drpdownClick(data, data1, app1, app2, app3) {
         //change into netherlands language
         this.elements.drpdownLanguage().should("be.visible").click();
         this.elements.inputLanguage().should("be.visible").type(`${data1}{enter}`);
-        // cy.wait(3000);
         //change into english language
         this.elements.drpdownLanguage().should("be.visible").click();
         this.elements.inputLanguage().should("be.visible").type(`${data}{enter}`);
-        // cy.wait(2000);
         //Register apps
         this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app1}{enter}`);
@@ -91,7 +86,6 @@ class SignupPage {
         this.elements.inputApps().should("be.visible").type(`${app2}{enter}`);
         this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app3}{enter}`);
-        // cy.wait(2000);
         this.elements.drpdownApps().should("be.visible").click();
         this.elements.inputApps().should("be.visible").type(`${app3}{enter}`);
     };
@@ -111,7 +105,6 @@ class SignupPage {
         sidebar.forEach((s) => {
             cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
         });
-        // cy.wait(10000);
     };
 };
 module.exports = new SignupPage();

@@ -31,14 +31,15 @@ class IntegrationsSettingPage {
 
     //It should be reloading the current page as this tab is opened by default upon redirecting
     OverviewConfigureFlow = () => {
+        cy.intercept('**/overview').as('clickcardTile')
         this.elements.cardTile().should("be.visible").click();
-        // cy.wait(2000);
+        cy.wait('@clickcardTile')
     };
     //It should be redirecting to the settings of the integration
     IntegrationSettings = () => {
         const environment = Cypress.config().env;
+        this.elements.tabSettings().should("be.visible").click();
         if (environment === "prod") {
-            this.elements.tabSettings().should("be.visible").click();
             this.elements.currenciesSettings().should("be.visible").click();
             this.elements.customerSettings().should("be.visible").click();
             this.elements.generalIntegrationSetting().should("be.visible").click();
@@ -47,7 +48,7 @@ class IntegrationsSettingPage {
             this.elements.unitofmeasurementSettings().should("be.visible").click();
             this.elements.btnSaveSettings().should("be.visible").click();
         } else if (environment === "staging") {
-            this.elements.tabSettings().should("be.visible").click();
+            // this.elements.tabSettings().should("be.visible").click();
             this.elements.stg_currenciesSettings().should("be.visible").click();
             this.elements.stg_customerSettings().should("be.visible").click();
             this.elements.stg_generalIntegrationSetting().should("be.visible").click();
@@ -56,7 +57,7 @@ class IntegrationsSettingPage {
             this.elements.stg_unitofmeasurementSettings().should("be.visible").click();
             this.elements.btnSaveSettings().should("be.visible").click();
         } else {
-            this.elements.tabSettings().should("be.visible").click();
+            // this.elements.tabSettings().should("be.visible").click();
             this.elements.dev_currenciesSettings().should("be.visible").click();
             this.elements.dev_customerSettings().should("be.visible").click();
             this.elements.dev_generalIntegrationSetting().should("be.visible").click();

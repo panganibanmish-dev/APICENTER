@@ -39,76 +39,51 @@ class NovaPage {
     };
     sidebarNovaInvoices = () => {
         this.elements.sideBarInvoices().should("be.visible").click();
-        // cy.wait(3000);
     };
     searchInvoiceByID = () => {
         this.elements.search().should("be.visible").type('Michelle Panganiban').clear();
-        // cy.wait(5000);
     };
     viewInvoiceAndDownloadInvoice = () => {
         this.elements.search().should("be.visible").type('Michelle Panganiban');
         this.elements.clickEyesIcon().should("be.visible").click();
-        // cy.wait(2000);
         this.elements.selectActionInvoice().select('Download').should('have.value', 'download');
-        // cy.wait(2000);
         this.elements.btnDownload().should("be.visible").click();
-        // cy.wait(2000);
         this.elements.modalBtnCancel().should("be.visible").click();
         this.elements.btnDownload().should("be.visible").click();
-        // cy.wait(2000);
         this.elements.modalBtnDownload().should("be.visible").click();
         this.sidebarNovaInvoices();
     };
     recipientDetails = () => {
         this.elements.clickRecipient().should("be.visible").click();
-        // cy.wait(2000);
         this.elements.recipient().scrollIntoView({ duration: 100000 }).should("be.visible");
-        // cy.wait(5000);
         this.elements.tabDuskApplications().should("be.visible").click();
-        // cy.wait(5000);
         this.elements.tabDuskIntegrations().should("be.visible").click();
-        // cy.wait(5000);
         this.elements.tabDuskSubscriptions().should("be.visible").click();
-        // cy.wait(5000);
         this.elements.tabDuskOrders().should("be.visible").click();
-        // cy.wait(5000);
-        // this.elements.btnNext().click();
-        // cy.wait(5000);
-        // this.elements.btnPrev().click();
-        // cy.wait(5000);
     };
     sidebarNovaOrders = () => {
         this.elements.sideBarOrders().should("be.visible").click();
-        // cy.wait(3000);
         this.elements.ordersIndex().should("be.visible").contains("Orders");
-        // cy.wait(5000);
     };
     sideNovaSubscriptions = () => {
         this.elements.sideBarSubscriptions().should("be.visible").click();
-        // cy.wait(3000);
         this.elements.subscriptionsIndex().should("be.visible").contains("Subscriptions ");
-        // cy.wait(5000);
     };
     Billing = () => {
         this.sidebarNovaInvoices();
         this.searchInvoiceByID();
         this.viewInvoiceAndDownloadInvoice();
-        // cy.wait(5000);
         this.recipientDetails();
         this.sidebarNovaOrders();
         this.sideNovaSubscriptions();
     };
     //delete the new register user of Michelle Test
     deleteUsers = () => {
-        // this.Nova();
         this.elements.sideBarUsers().should("be.visible").contains("Users").click();
-        // cy.wait(3000);
         this.elements.search().should("be.visible").type("Michelle Tester");
-        // cy.wait(3000);
         this.elements.btnDeleteUser().should("be.visible").click();
         this.elements.verifyDeleteResource().should("be.visible").contains("Delete Resource");
         this.elements.btnConfirmDelete().should("be.visible").click();
-        // cy.wait(3000);
     };
 };
 module.exports = new NovaPage();

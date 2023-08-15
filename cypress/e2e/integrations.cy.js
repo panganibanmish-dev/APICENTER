@@ -12,8 +12,9 @@ describe('Integrations Page Test Suite', () => {
         cy.viewport(1800, 1000);
         cy.visit('/');
         LoginPage.homepage();
-        cy.get("body")
-            .contains("Integrations").click();
+        cy.intercept('**/integrations').as('clickIntegration')
+        cy.get("body").contains("Integrations").click();
+        cy.wait('@clickIntegration')
     });
     it('should be add integration flow and complete the step 1 to step 5', () => {
         const visibility = "Active"
@@ -21,7 +22,6 @@ describe('Integrations Page Test Suite', () => {
 
         AddIntegrationsPage
             .addIntegration();
-        cy.wait(3000);
         AddIntegrationsPage
             .followStep1();
         AddIntegrationsPage
@@ -32,7 +32,6 @@ describe('Integrations Page Test Suite', () => {
             .followStep4(visibility, variantvisibility);
         AddIntegrationsPage
             .followStep5();
-        cy.wait(3000);
     });
     it('should be allowing to update the configure flow overview and integration settings', () => {
         IntegrationsSettingPage

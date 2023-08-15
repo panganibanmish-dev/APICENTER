@@ -76,11 +76,9 @@ class ProfilePage {
         this.elements.inputPhonenumber().should("be.visible").clear();
         this.elements.inputEmail().should("be.visible").clear();
         this.elements.btnUpdate().eq(2).should("be.visible").click();
-        // cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The first name field is required.");
         this.elements.errormsg().should("be.visible").contains("The last name field is required.");
         this.elements.errormsg().should("be.visible").contains("The email field is required.");
-        // cy.wait(2000);
     };
     invalidBillingAddressInfo = () => {
         //Showing an error billing information
@@ -90,7 +88,6 @@ class ProfilePage {
         this.elements.inputState().should("be.visible").clear();
         this.elements.inputZip().should("be.visible").clear();
         this.elements.btnUpdate().eq(3).should("be.visible").click();
-        // cy.wait(2000);
         this.elements.errormsg().should("be.visible").contains("The billing address field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing city field is required.");
         this.elements.errormsg().should("be.visible").contains("The billing zip field is required.");
