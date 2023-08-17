@@ -72,9 +72,7 @@ class ProductSyncronizationPage {
         this.elements.resumeFlow().should("be.visible").click()
     };
     clickOkBtn = () => {
-        cy.intercept('**/flag-update').as('resume-flow-ok')
         this.elements.okBtn().click();
-        cy.wait('@resume-flow-ok')
     };
     clickCancelBtn = () => {
         this.elements.cancelBtn().should("be.visible").click();

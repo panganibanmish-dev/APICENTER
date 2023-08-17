@@ -8,7 +8,12 @@ class CustomerSynchronizationPage {
         //dev
         dev_customerToggle: () => cy.get("label[for='check-0-3']"),
         btnAgree: () => cy.get("button[class='button'] span"),
+        //prod
         customerFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"),
+        //stg
+        stg_customerFlow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"),
+        //dev
+        dev_customerFlow: () => cy.get("body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3)"),
         overviewTab: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"),
         resumeFlowbtn: () => cy.get(".button"),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
@@ -93,9 +98,19 @@ class CustomerSynchronizationPage {
         cy.intercept("**/flows").as("clickAgree")
         this.elements.btnAgree().should("be.visible").click();
         cy.wait("@clickAgree");
-        cy.intercept("**/overview").as("customerFlow")
-        this.elements.customerFlow().should("be.visible").click();
-        cy.wait("@customerFlow");
+        if(environment === 'prod'){
+            cy.intercept("**/overview").as("customerFlow")
+            this.elements.customerFlow().should("be.visible").click();
+            cy.wait("@customerFlow");
+        }else if(environment === 'staging'){
+            cy.intercept("**/overview").as("customerFlow")
+            this.elements.stg_customerFlow().should("be.visible").click();
+            cy.wait("@customerFlow");
+        }else{
+            cy.intercept("**/overview").as("customerFlow")
+            this.elements.dev_customerFlow().should("be.visible").click();
+            cy.wait("@customerFlow");
+        }
         this.elements.overviewTab().should("be.visible").click();
         this.elements.resumeFlowbtn().should("be.visible").click();
         this.elements.cancelbtn().should("be.visible").click();

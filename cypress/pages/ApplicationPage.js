@@ -16,14 +16,17 @@ class ApplicationPage {
     };
     YourApplications = () => {
         cy.intercept("**/applications*").as("application")
-        this.elements.appsearch().type("Magento", { delay: 200, force: true });
+        this.elements.appsearch().type("Magento", {force: true });
         cy.wait("@application");
-        this.elements.appbox().click();
 
-        this.elements.inputField().eq(0).type("Mitch Magento", { delay: 200 });
-        this.elements.inputField().eq(1).type("*qX^knbeVBZ9", { delay: 200 });
+        cy.intercept("**/new").as("newApp")
+        this.elements.appbox().eq(0).click();
+        cy.wait("@newApp");
+
+        this.elements.inputField().eq(0).type("Mitch Magento");
+        this.elements.inputField().eq(1).type("*qX^knbeVBZ9");
         this.elements.eyeicon().click();
-        this.elements.inputField().eq(2).type("apicenter3000.web-company.dev/szxiuwdvvqxpcdrn", { delay: 300 });
+        this.elements.inputField().eq(2).type("apicenter3000.web-company.dev/szxiuwdvvqxpcdrn");
         this.elements.saveBtn().click();
         this.elements.testconnectionBtn().click();
         cy.intercept("**/applications").as("applicationNav")
@@ -43,7 +46,7 @@ class ApplicationPage {
         //the changes made on the fields should be saved
         this.elements.appToggle().click();
         this.elements.appToolbar().contains("Edit").click({ force: true });
-        this.elements.inputTitle().eq(0).clear().type("Mitch Magento", { delay: 200 });
+        this.elements.inputTitle().eq(0).clear().type("Mitch Magento");
         this.elements.saveBtn().click();
 
         //it should be showing a confirming notification saying: "Connection is good"
@@ -62,31 +65,31 @@ class ApplicationPage {
         this.elements.btnRemove().eq(0).click();
         //should be showing results based on the inputted keyword
         cy.intercept("**/applications*").as("application")
-        this.elements.appsearch().type("Magento", { delay: 200, force: true }).clear();
+        this.elements.appsearch().type("Magento", {force: true }).clear();
         cy.wait("@application");
 
         //nothing to show any appls
         cy.intercept("**/applications*").as("application")
-        this.elements.appsearch().type("Mailbox", { delay: 500, force: true }).clear();
+        this.elements.appsearch().type("Mailbox", {force: true }).clear();
         cy.wait("@application");
                                                                    
         // add applications for magento
         cy.intercept("**/applications*").as("application")
-        this.elements.appsearch().type("Magento", { delay: 200, force: true });
+        this.elements.appsearch().type("Magento", {force: true });
         cy.wait("@application");
         
         cy.intercept("**/new").as("newApp")
-        this.elements.appbox().click();
+        this.elements.appbox().eq(0).click();
         cy.wait("@newApp");
 
         //it should be showing a notification the field is required
         this.elements.saveBtn().click();
 
        // it should be redirecting to another page where the user will provide the needed credentials for the fields required
-        this.elements.inputField().eq(0).type("Mitch Magento", { delay: 200 });
-        this.elements.inputField().eq(1).type("*qX^knbeVBZ9", { delay: 200 });
+        this.elements.inputField().eq(0).type("Mitch Magento");
+        this.elements.inputField().eq(1).type("*qX^knbeVBZ9");
         this.elements.eyeicon().click();
-        this.elements.inputField().eq(2).type("apicenter3000.web-company.dev/szxiuwdvvqxpcdrn", { delay: 300 });
+        this.elements.inputField().eq(2).type("apicenter3000.web-company.dev/szxiuwdvvqxpcdrn");
         this.elements.saveBtn().click();
         this.elements.testconnectionBtn().click();
         cy.intercept("**/applications").as("applicationNav")
@@ -95,22 +98,22 @@ class ApplicationPage {
 
         // add applications for shopify
         cy.intercept("**/applications*").as("application")
-        this.elements.appsearch().type("Shopify", { delay: 200, force: true });
+        this.elements.appsearch().type("Shopify", {force: true });
         cy.wait("@application");
     
         cy.intercept("**/new").as("newApp")
-        this.elements.appbox().click();
+        this.elements.appbox().eq(0).click();
         cy.wait("@newApp");
 
         //it should be showing a notification the field is required
         this.elements.saveBtn().click();
 
        // it should be redirecting to another page where the user will provide the needed credentials for the fields required
-        this.elements.inputField().eq(0).type("Shopify", { delay: 200 });
-        this.elements.inputField().eq(1).type("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", { delay: 200 });
+        this.elements.inputField().eq(0).type("Shopify");
+        this.elements.inputField().eq(1).type("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");
         this.elements.eyeicon().click();
-        this.elements.inputField().eq(2).type("348193aa4d7df599082bc16454e94054", { delay: 300 });
-        this.elements.inputField().eq(3).type("api3000.myshopify.com", { delay: 300 });
+        this.elements.inputField().eq(2).type("348193aa4d7df599082bc16454e94054");
+        this.elements.inputField().eq(3).type("api3000.myshopify.com");
         this.elements.saveBtn().click();
         this.elements.testconnectionBtn().click();
         cy.intercept("**/applications").as("applicationNav")

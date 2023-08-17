@@ -41,10 +41,10 @@ class NovaPage {
         this.elements.sideBarInvoices().should("be.visible").click();
     };
     searchInvoiceByID = () => {
-        this.elements.search().should("be.visible").type('Michelle Panganiban').clear();
+        this.elements.search().should("be.visible").type('155').clear();
     };
     viewInvoiceAndDownloadInvoice = () => {
-        this.elements.search().should("be.visible").type('Michelle Panganiban');
+        this.elements.search().should("be.visible").type('164');
         this.elements.clickEyesIcon().should("be.visible").click();
         this.elements.selectActionInvoice().select('Download').should('have.value', 'download');
         this.elements.btnDownload().should("be.visible").click();

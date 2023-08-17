@@ -8,7 +8,12 @@ class StockSynchronizationPage {
         //dev
         dev_stockToggle: () => cy.get('input#check-0-2[type="checkbox"]'),
         btnAgree: () => cy.get("button[class='button']"),
+        //prod
         stockFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)"),
+        //stg
+        stg_stockFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)"),
+        //dev
+        dev_stockFlow: () => cy.get("body > div:nth-child(2) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4)"),
         resumeBtn: () => cy.get('.button'),
         okbtn: () => cy.get("button[class='swal2-confirm swal2-styled']"),
         cancelbtn: () => cy.get("button[class='swal2-cancel swal2-styled']"),
@@ -102,12 +107,24 @@ class StockSynchronizationPage {
         } else {
             this.elements.dev_stockToggle().click({ force: true });
         }
+        
         cy.intercept("**/flows").as("clickAgree")
         this.elements.btnAgree().should("be.visible").click();
         cy.wait("@clickAgree");
-        cy.intercept("**/overview").as("stock-flow")
-        this.elements.stockFlow().should("be.visible").click();
-        cy.wait("@stock-flow");
+
+        if(environment === 'prod'){
+            cy.intercept("**/overview").as("stock-flow")
+            this.elements.stockFlow().should("be.visible").click();
+            cy.wait("@stock-flow");
+        }else if(environment === 'staging'){
+            cy.intercept("**/overview").as("stock-flow")
+            this.elements.stg_stockFlow().should("be.visible").click();
+            cy.wait("@stock-flow");
+        }else{
+            cy.intercept("**/overview").as("stock-flow")
+            this.elements.dev_stockFlow().should("be.visible").click();
+            cy.wait("@stock-flow");
+        };
         this.elements.resumeBtn().should("be.visible").click();
         this.elements.cancelbtn().should("be.visible").click();
         this.elements.resumeBtn().should("be.visible").click();
