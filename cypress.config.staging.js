@@ -1,13 +1,13 @@
 const { defineConfig } = require("cypress");
-const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 module.exports = defineConfig({
-  reporter: 'cypress-mochawesome-reporter',
+  reporter: "cypress-mochawesome-reporter",
   e2e: {
     baseUrl: "https://stg.apicenter.io",
     setupNodeEvents(on, config) {
       // implement node event listeners here
       allureWriter(on, config);
-      require('cypress-mochawesome-reporter/plugin')(on);
+      require("cypress-mochawesome-reporter/plugin")(on);
       return config;
     },
     env: {
@@ -57,5 +57,5 @@ module.exports = defineConfig({
     runMode: 1,
     openMode: 1,
   },
-  experimentalStudio: true
+  experimentalStudio: true,
 });

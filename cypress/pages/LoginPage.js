@@ -18,15 +18,17 @@ class LoginPage {
   //redirect to login page
   goToLoginPage = () => {
     // cy.viewport(1280, 768)
-    cy.viewport(1800, 1000)
-    cy.visit('/login')
-    cy.get("body").should('be.visible').contains("Log in");
+    cy.viewport(1800, 1000);
+    cy.visit("/login");
+    cy.get("body").should("be.visible").contains("Log in");
   };
-  //user should input valid creds and must redirect to homepage 
+  //user should input valid creds and must redirect to homepage
   loginAdmin = (email, password) => {
     cy.get("#email-field").should("be.visible").and("have.class", "form_field");
     this.elements.emailTextBox().type(email);
-    cy.get("#password-field").should("be.visible").and("have.class", "form_field");
+    cy.get("#password-field")
+      .should("be.visible")
+      .and("have.class", "form_field");
     this.elements.passwordTextBox().type(password);
     this.elements.rememberMeToggle().should("be.visible").click();
     cy.contains(".button", "Log in");
@@ -53,8 +55,14 @@ class LoginPage {
     this.elements.rememberMeToggle().should("be.visible").click();
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
     this.elements.btn().click().should("be.visible").contains("Log in");
-    this.elements.errorMsg().should("be.visible").contains("The email field is required.");
-    this.elements.errorMsg().should("be.visible").contains("The password field is required.");
+    this.elements
+      .errorMsg()
+      .should("be.visible")
+      .contains("The email field is required.");
+    this.elements
+      .errorMsg()
+      .should("be.visible")
+      .contains("The password field is required.");
   };
   // user with invalid creds and must display the message that the account don't match
   loginAdminWithInvalidCreds(email = "", password = "") {
@@ -62,24 +70,27 @@ class LoginPage {
     this.elements.passwordTextBox().should("be.visible").type(password);
     this.elements.rememberMeToggle().should("be.visible").click();
     this.elements.btn().should("be.visible").click();
-    this.elements.errorMsg().should("be.visible").contains("These credentials do not match our records.");
-  };
+    this.elements
+      .errorMsg()
+      .should("be.visible")
+      .contains("These credentials do not match our records.");
+  }
   // redirect to forgot password page
   goTologinWithForgotPassword() {
     this.elements.btnLink().should("be.visible").contains("Reset").click();
-  };
+  }
   //redirect link to register page
   goToSignUpLink() {
     this.elements.btnLink().should("be.visible").contains("Sign Up").click();
-    cy.visit('/register');
+    cy.visit("/register");
     this.goToLoginPage();
-  };
+  }
   // user must be logout the account after used
   logout() {
     this.elements.userIcon().should("be.visible").click();
     this.elements.accountLogout().contains("Logout");
     this.elements.accountLogout().should("be.visible").click();
-  };
+  }
   homepage = () => {
     this.elements.homePage().should("be.visible");
     cy.get(".navbar-brand.nav_brand").should("be.visible");
@@ -96,5 +107,5 @@ class LoginPage {
       cy.get(".sidebar_nav.sidebar_list").should("be.visible").contains(s);
     });
   };
-};
+}
 module.exports = new LoginPage();

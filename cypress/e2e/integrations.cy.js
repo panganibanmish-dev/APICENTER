@@ -6,49 +6,36 @@ import StockSynchronizationPage from "../pages/Integrations/Flow/StockSynchroniz
 import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
-describe('Integrations Page Test Suite', () => {
-    beforeEach(() => {
-        cy.login(Cypress.env('login_email'), Cypress.env('login_password'));
-        cy.viewport(1800, 1000);
-        cy.visit('/');
-        LoginPage.homepage();
-        cy.intercept('**/integrations').as('clickIntegration')
-        cy.get("body").contains("Integrations").click();
-        cy.wait('@clickIntegration')
-    });
-    it('should be add integration flow and complete the step 1 to step 5', () => {
-        const visibility = "Active"
-        const variantvisibility = "Active"
+describe("Integrations Page Test Suite", () => {
+  beforeEach(() => {
+    cy.login(Cypress.env("login_email"), Cypress.env("login_password"));
+    cy.viewport(1800, 1000);
+    cy.visit("/");
+    LoginPage.homepage();
+    cy.intercept("**/integrations").as("clickIntegration");
+    cy.get("body").contains("Integrations").click();
+    cy.wait("@clickIntegration");
+  });
+  it("should be add integration flow and complete the step 1 to step 5", () => {
+    const visibility = "Active";
+    const variantvisibility = "Active";
 
-        AddIntegrationsPage
-            .addIntegration();
-        AddIntegrationsPage
-            .followStep1();
-        AddIntegrationsPage
-            .followStep2();
-        AddIntegrationsPage
-            .followStep3();
-        AddIntegrationsPage
-            .followStep4(visibility, variantvisibility);
-        AddIntegrationsPage
-            .followStep5();
-    });
-    it('should be allowing to update the configure flow overview and integration settings', () => {
-        IntegrationsSettingPage
-            .OverviewConfigureFlow();
-        IntegrationsSettingPage
-            .IntegrationSettings();
-        IntegrationsSettingPage
-            .ActivityTab();
-    });
-    it('should be sychronize the flow of the integration for product, sales order, customer and stock ', () => {
-        ProductSynchronizationPage
-            .productSyncronizationFlow();
-        SalesOrderSynchronizationPage
-            .saleSynchronizationFlow();
-        CustomerSynchronizationPage
-            .customerSynchronizationFlow();
-        StockSynchronizationPage
-            .stockSynchronizationFlow();
-    });
+    AddIntegrationsPage.addIntegration();
+    AddIntegrationsPage.followStep1();
+    AddIntegrationsPage.followStep2();
+    AddIntegrationsPage.followStep3();
+    AddIntegrationsPage.followStep4(visibility, variantvisibility);
+    AddIntegrationsPage.followStep5();
+  });
+  it("should be allowing to update the configure flow overview and integration settings", () => {
+    IntegrationsSettingPage.OverviewConfigureFlow();
+    IntegrationsSettingPage.IntegrationSettings();
+    IntegrationsSettingPage.ActivityTab();
+  });
+  it("should be sychronize the flow of the integration for product, sales order, customer and stock ", () => {
+    ProductSynchronizationPage.productSyncronizationFlow();
+    SalesOrderSynchronizationPage.saleSynchronizationFlow();
+    CustomerSynchronizationPage.customerSynchronizationFlow();
+    StockSynchronizationPage.stockSynchronizationFlow();
+  });
 });

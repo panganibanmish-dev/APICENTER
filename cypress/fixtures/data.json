@@ -1,17 +1,17 @@
 {
-    "valid": {
-        "email": "panganibanmish.work@gmail.com",
-        "password": "Radeonstar@1030",
-        "inEmail": "panganibanmish.test@gmail.com",
-        "inPassword": "Radeonstar@1120",
-        "emailForgotpass": "michelletest@mailinator.com",
-        "newPassword" : "newPassword@12345",
-        "mainfirstname": "Michelle",
-        "mainlastname": "Panganiban",
-        "mainphone": "0923456784",
-        "firstname": "Test",
-        "lastname": "Michelle",
-        "phone": "0923456784",
-        "company": "GG QA"
-    }
+  "valid": {
+    "email": "panganibanmish.work@gmail.com",
+    "password": "Radeonstar@1030",
+    "inEmail": "panganibanmish.test@gmail.com",
+    "inPassword": "Radeonstar@1120",
+    "emailForgotpass": "michelletest@mailinator.com",
+    "newPassword": "newPassword@12345",
+    "mainfirstname": "Michelle",
+    "mainlastname": "Panganiban",
+    "mainphone": "0923456784",
+    "firstname": "Test",
+    "lastname": "Michelle",
+    "phone": "0923456784",
+    "company": "GG QA"
+  }
 }
