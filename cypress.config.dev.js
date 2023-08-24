@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 module.exports = defineConfig({
+  projectId: "14qdc8",
   reporter: "cypress-mochawesome-reporter",
   e2e: {
     baseUrl: "https://dev2.apicenter.io",

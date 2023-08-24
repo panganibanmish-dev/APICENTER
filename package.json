@@ -10,9 +10,9 @@
     "allure generate": "allure-results",
     "allure-report": "npx allure generate allure-results --clean allure-report",
     "cypress run": "npx cypress run --browser chrome",
-    "headless-dev": "npx cypress run --config-file cypress.config.dev.js --browser chrome",
-    "headless-staging": "npx cypress run --config-file cypress.config.staging.js --browser chrome",
-    "headless-prod": "npx cypress run --config-file cypress.config.prod.js --browser chrome",
+    "headless-dev": "npx cypress run --record --key 6b503fea-1a5e-480d-9c9c-3338a6903e3e --config-file cypress.config.dev.js --browser chrome",
+    "headless-staging": "npx cypress run --record --key 6b503fea-1a5e-480d-9c9c-3338a6903e3e --config-file cypress.config.staging.js --browser chrome",
+    "headless-prod": "npx cypress run --record --key 6b503fea-1a5e-480d-9c9c-3338a6903e3e --config-file cypress.config.prod.js --browser chrome",
     "run-dev": "npx cypress open --config-file cypress.config.dev.js",
     "run-staging": "npx cypress open --config-file cypress.config.staging.js",
     "run-prod": "npx cypress open --config-file cypress.config.prod.js"
