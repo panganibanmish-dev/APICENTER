@@ -6,9 +6,13 @@ import StockSynchronizationPage from "../pages/Integrations/Flow/StockSynchroniz
 import IntegrationsSettingPage from "../pages/Integrations/IntegrationsSettingPage";
 import LoginPage from "../pages/LoginPage";
 
+const login_email = Cypress.env("login_email");
+const login_password = Cypress.env("login_password");
+const visibility = "Active";
+const variantvisibility = "Active";
 describe("Integrations Page Test Suite", () => {
   beforeEach(() => {
-    cy.login(Cypress.env("login_email"), Cypress.env("login_password"));
+    cy.login(login_email, login_password);
     cy.viewport(1800, 1000);
     cy.visit("/");
     LoginPage.homepage();
@@ -17,9 +21,6 @@ describe("Integrations Page Test Suite", () => {
     cy.wait("@clickIntegration");
   });
   it("should be add integration flow and complete the step 1 to step 5", () => {
-    const visibility = "Active";
-    const variantvisibility = "Active";
-
     AddIntegrationsPage.addIntegration();
     AddIntegrationsPage.followStep1();
     AddIntegrationsPage.followStep2();

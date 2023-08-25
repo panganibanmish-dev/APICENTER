@@ -1,13 +1,13 @@
 import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 
+const app1 = "shopify";
+const app2 = "magento 2";
 describe("Landing Page Test Suite", () => {
   beforeEach(() => {
     LoginPage.goToLoginPage();
   });
   it("should be viewing the landing page of the APIcenter", () => {
-    const app1 = "shopify";
-    const app2 = "magento 2";
     LandingPage.gotoLandingpage();
     LandingPage.navbar();
     LandingPage.apicenterLogo();

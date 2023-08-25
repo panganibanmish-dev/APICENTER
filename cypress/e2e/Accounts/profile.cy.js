@@ -1,8 +1,22 @@
 import ProfilePage from "../../pages/Accounts/ProfilePage";
 
+const login_email = Cypress.env("login_email");
+const login_password = Cypress.env("login_password");
+const company = Cypress.env("company");
+const firstname = Cypress.env("firstname");
+const lastname = Cypress.env("lastname");
+const phone_number = Cypress.env("phone");
+const add = "Naga";
+const add2 = "Calabanga";
+const city = "Naga City";
+const state = "Camarines Sur";
+const zip = "4405";
+const country = "Philippines";
+const data = "English";
+const data1 = "Nederlands";
 describe("Profile Page Test Suite", () => {
   beforeEach(() => {
-    cy.login(Cypress.env("login_email"), Cypress.env("login_password"));
+    cy.login(login_email, login_password);
     cy.viewport(1800, 1000);
     cy.visit("/");
     cy.get("body").contains("Account").click();
@@ -12,9 +26,6 @@ describe("Profile Page Test Suite", () => {
     ProfilePage.setProfilePhoto();
   });
   it("should be allowing the user to change/update the profile language", () => {
-    const data = "English";
-    const data1 = "Nederlands";
-
     ProfilePage.setProfileLanguage(data, data1);
   });
   it("should be showing the error contact information that the field is required", () => {
@@ -26,21 +37,14 @@ describe("Profile Page Test Suite", () => {
   });
   it("should be allowing the user to update the contact information and show the confirmation updated", () => {
     ProfilePage.updateContactInformation(
-      Cypress.env("company"),
-      Cypress.env("firstname"),
-      Cypress.env("lastname"),
-      Cypress.env("phone"),
-      Cypress.env("login_email")
+      company,
+      firstname,
+      lastname,
+      phone_number,
+      login_email
     );
   });
   it("should be allowing the user to update the billing address and show the confirmation updated", () => {
-    const add = "naga";
-    const add2 = "cal";
-    const city = "legazpi";
-    const state = "naga";
-    const zip = "4405";
-    const country = "Philippines";
-
     ProfilePage.updateBillingAddress(add, add2, city, state, zip, country);
   });
 });

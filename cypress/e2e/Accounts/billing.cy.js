@@ -1,13 +1,12 @@
 import BillingPage from "../../pages/Accounts/BillingPage";
 import LoginPage from "../../pages/LoginPage";
 
+const login_email = Cypress.env("login_email");
+const login_password = Cypress.env("login_password");
 describe("Billing Page Test Suite", () => {
   beforeEach(() => {
     LoginPage.goToLoginPage();
-    LoginPage.loginAdmin(
-      Cypress.env("login_email"),
-      Cypress.env("login_password")
-    );
+    LoginPage.loginAdmin(login_email, login_password);
     BillingPage.clickBillingTab();
   });
   it("should be verify the label", () => {
