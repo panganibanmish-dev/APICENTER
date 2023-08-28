@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage";
 
 const login_email = Cypress.env("login_email");
 const login_password = Cypress.env("login_password");
+
 describe("Application Page Test Suite", () => {
   beforeEach(() => {
     cy.login(login_email, login_password);

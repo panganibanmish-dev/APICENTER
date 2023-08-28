@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage";
 
 const app1 = "shopify";
 const app2 = "magento 2";
+
 describe("Landing Page Test Suite", () => {
   beforeEach(() => {
     LoginPage.goToLoginPage();

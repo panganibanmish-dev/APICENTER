@@ -10,6 +10,7 @@ const login_email = Cypress.env("login_email");
 const login_password = Cypress.env("login_password");
 const visibility = "Active";
 const variantvisibility = "Active";
+
 describe("Integrations Page Test Suite", () => {
   beforeEach(() => {
     cy.login(login_email, login_password);

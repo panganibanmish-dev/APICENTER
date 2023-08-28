@@ -4,6 +4,7 @@ import LoginPage from "../pages/LoginPage";
 const login_email = Cypress.env("login_email");
 const login_password = Cypress.env("login_password");
 const invalid_password = Cypress.env("inPassword");
+
 describe("Login Page Test Suite", () => {
   beforeEach(() => {
     LoginPage.goToLoginPage();

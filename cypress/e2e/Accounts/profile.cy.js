@@ -14,6 +14,7 @@ const zip = "4405";
 const country = "Philippines";
 const data = "English";
 const data1 = "Nederlands";
+
 describe("Profile Page Test Suite", () => {
   beforeEach(() => {
     cy.login(login_email, login_password);
