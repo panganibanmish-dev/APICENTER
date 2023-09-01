@@ -135,5 +135,5 @@ class AddIntegrationsPage {
   redirectToDasboard = () => {
     cy.visit("/dashboard/");
   };
-}
+};
 module.exports = new AddIntegrationsPage();

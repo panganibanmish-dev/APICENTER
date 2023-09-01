@@ -18,10 +18,7 @@ class ApplicationPage {
     cy.intercept("**/applications*").as("application");
     this.elements.appsearch().type("Magento", { force: true });
     cy.wait("@application");
-
-    cy.intercept("**/new").as("newApp");
     this.elements.appbox().eq(0).click();
-    cy.wait("@newApp");
 
     this.elements.inputField().eq(0).type("Mitch Magento");
     this.elements.inputField().eq(1).type("*qX^knbeVBZ9");
@@ -81,9 +78,7 @@ class ApplicationPage {
     this.elements.appsearch().type("Magento", { force: true });
     cy.wait("@application");
 
-    cy.intercept("**/new").as("newApp");
     this.elements.appbox().eq(0).click();
-    cy.wait("@newApp");
 
     //it should be showing a notification the field is required
     this.elements.saveBtn().click();
@@ -106,10 +101,8 @@ class ApplicationPage {
     cy.intercept("**/applications*").as("application");
     this.elements.appsearch().type("Shopify", { force: true });
     cy.wait("@application");
-
-    cy.intercept("**/new").as("newApp");
+    
     this.elements.appbox().eq(0).click();
-    cy.wait("@newApp");
 
     //it should be showing a notification the field is required
     this.elements.saveBtn().click();

@@ -14,7 +14,7 @@ class SalesOrderSynchronizationPage {
     //dev
     dev_saleOrderFlow: () =>
       cy.get(
-        "body > div:nth-child(1) > main:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"
+        "body > div:nth-child(1) > main:nth-child(3) > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"
       ),
 
     //prod env

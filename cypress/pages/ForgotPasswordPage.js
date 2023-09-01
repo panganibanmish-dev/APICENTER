@@ -5,7 +5,7 @@ class ForgotPasswordPage {
     inbox: () => cy.get("#inbox-id"),
     inputEmail: () =>
       cy.get("span[class='editable button edit-in-progress'] input"),
-    savebuttonEmail: () => cy.get(".save.button.small"),
+    savebuttonEmail: () => cy.get("span[id='inbox-id'] button[class='save button small']"),
     selectDomain: () => cy.get("#gm-host-select"),
     messageBox: () =>
       cy.get("tr[class='mail_row  pointer click-set'] td[class='td2']"),
@@ -48,12 +48,12 @@ class ForgotPasswordPage {
     this.gotoMail();
     this.elements.inbox().should("be.visible").click();
     this.elements.inputEmail().should("be.visible").type("michtester");
-    this.elements.savebuttonEmail().should("be.visible").click();
+    this.elements.savebuttonEmail().should("be.visible").click({force: true});
     this.elements
       .selectDomain()
       .select("guerrillamail.com")
       .should("have.value", "guerrillamail.com");
-    cy.wait(5000);
+    cy.wait(7000);
     this.elements.messageBox().should("be.visible").click();
     cy.contains("a", "Reset Password")
       .invoke("attr", "href")

@@ -54,7 +54,7 @@ class BillingPage {
     inputcvv: () => cy.get("iframe[name='verificationCode-input']"),
     btnPaySubmit: () => cy.get("#submit-button"),
     togglePaid: () => cy.get("input[value='paid']"),
-    btnContinue: () => cy.get("button[name='sumbit']"),
+    btnContinue: () => cy.get("button[name='submit']"),
     form_errormsg: () => cy.get("#form-errors"),
     downloadFile: () => cy.get(".button"),
   };

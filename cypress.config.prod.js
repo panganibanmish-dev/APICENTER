@@ -3,9 +3,16 @@ const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 module.exports = defineConfig({
   projectId: "14qdc8",
   reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: "Apicenter",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: true,
+    debug: true,
+  },
   e2e: {
-    baseUrl: "https://app2.apicenter.io/",
-
+    baseUrl: "https://app.apicenter.io/",
     setupNodeEvents(on, config) {
       // implement node event listeners here
       allureWriter(on, config);
@@ -33,23 +40,10 @@ module.exports = defineConfig({
   responseTimeout: 30000,
   pageLoadTimeout: 80000,
   chromeWebSecurity: false,
-  screenshotOnRunFailure: false,
+  screenshotOnRunFailure: true,
+  screenshotsFolder: "cypress/reports/html/assets",
   defaultCommandTimeout: 50000,
   video: true,
-  reporter: "mochawesome",
-  reporterOptions: {
-    reportDir: "cypress/report/mochawesome-report",
-    reportFilename: "[status]_[datetime]-[name]-report",
-    title: "[status]_[datetime]-[name]-report",
-    timestamp: "longDate",
-    charts: true,
-    html: true,
-    json: true,
-    embeddedScreenshots: true,
-    overwrite: true,
-    inlineAssets: true,
-    enableCharts: true,
-  },
   compilerOptions: {
     types: ["jest", "node"],
   },

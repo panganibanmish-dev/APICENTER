@@ -48,9 +48,7 @@ class NovaPage {
         ".text-white.text-justify.no-underline.dim[href='/nova/resources/users']"
       ),
     btnDeleteUser: () =>
-      cy.get(
-        "button[class='inline-flex appearance-none cursor-pointer text-70 hover:text-primary mr-3 has-tooltip']"
-      ),
+      cy.get("button[data-testid='users-items-0-delete-button']"),
     verifyDeleteResource: () => cy.get(".mb-6.text-90.font-normal.text-xl"),
     btnConfirmDelete: () => cy.get("#confirm-delete-button"),
   };
@@ -69,7 +67,14 @@ class NovaPage {
     this.elements.search().should("be.visible").type("155").clear();
   };
   viewInvoiceAndDownloadInvoice = () => {
-    this.elements.search().should("be.visible").type("164");
+    const environment = Cypress.config().env;
+    if (environment === "prod") {
+      this.elements.search().should("be.visible").type("16468");
+    } else if (environment === "staging") {
+      this.elements.search().should("be.visible").type("164");
+    } else {
+      this.elements.search().should("be.visible").type("164");
+    }
     this.elements.clickEyesIcon().should("be.visible").click();
     this.elements
       .selectActionInvoice()
@@ -115,7 +120,11 @@ class NovaPage {
   deleteUsers = () => {
     this.elements.sideBarUsers().should("be.visible").contains("Users").click();
     this.elements.search().should("be.visible").type("Michelle Tester");
-    this.elements.btnDeleteUser().should("be.visible").click();
+    this.elements
+      .btnDeleteUser()
+      .scrollIntoView({ duration: 1000, easing: "swing" })
+      .invoke("css", "margin-left", "200px")
+      .click();
     this.elements
       .verifyDeleteResource()
       .should("be.visible")
