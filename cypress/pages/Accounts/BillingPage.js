@@ -60,7 +60,7 @@ class BillingPage {
   };
   //redirects to billing url
   clickBillingTab = () => {
-    this.elements.btnAccount().should("be.visible").click();
+    // this.elements.btnAccount().should("be.visible").click();
     this.elements.btnBilling().should("be.visible").contains("Billing").click();
   };
   //verifying label elements

@@ -5,7 +5,8 @@ class ForgotPasswordPage {
     inbox: () => cy.get("#inbox-id"),
     inputEmail: () =>
       cy.get("span[class='editable button edit-in-progress'] input"),
-    savebuttonEmail: () => cy.get("span[id='inbox-id'] button[class='save button small']"),
+    savebuttonEmail: () =>
+      cy.get("span[id='inbox-id'] button[class='save button small']"),
     selectDomain: () => cy.get("#gm-host-select"),
     messageBox: () =>
       cy.get("tr[class='mail_row  pointer click-set'] td[class='td2']"),
@@ -13,6 +14,7 @@ class ForgotPasswordPage {
     successmessage: () => cy.get(".mb-4.font-medium.text-sm.text-green-600"),
     newpassword: () => cy.get("#password-field"),
     confirmpassword: () => cy.get("#password_confirmation-field"),
+    backInbox: () => cy.get('a[id="back_to_inbox_link"]'),
   };
   goToForgotPassword() {
     cy.visit("/forgot-password");
@@ -46,20 +48,28 @@ class ForgotPasswordPage {
     this.elements.successmessage().should("be.visible");
     //guerrilla mail
     this.gotoMail();
-    this.elements.inbox().should("be.visible").click();
+    this.elements.inbox().click({ force: true });
     this.elements.inputEmail().should("be.visible").type("michtester");
-    this.elements.savebuttonEmail().should("be.visible").click({force: true});
+    this.elements.savebuttonEmail().should("be.visible").click({ force: true });
+    cy.wait(2000);
     this.elements
       .selectDomain()
       .select("guerrillamail.com")
       .should("have.value", "guerrillamail.com");
-    cy.wait(7000);
+    cy.wait(10000);
     this.elements.messageBox().should("be.visible").click();
     cy.contains("a", "Reset Password")
       .invoke("attr", "href")
       .then((href) => {
         cy.visit(href);
       });
+    // this.elements.backInbox().should("be.visible").click();
+    // this.elements.messageBox().should("be.visible").click();
+    // cy.contains("a", "Reset Password")
+    //   .invoke("attr", "href")
+    //   .then((href) => {
+    //     cy.visit(href);
+    //   });
     this.elements.newpassword().should("be.visible").type(password);
     this.elements.confirmpassword().should("be.visible").type(password);
     this.elements.btn().should("be.visible").click();

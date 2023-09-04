@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 
+
 module.exports = defineConfig({
   projectId: "14qdc8",
   reporter: "cypress-mochawesome-reporter",
@@ -30,7 +31,6 @@ module.exports = defineConfig({
       lastname: "Michelle",
       phone: 923456784,
       company: "GG QA",
-      email: "michelle.automator@yopmail.com",
       baseUrl2: "https://apicenter.io/",
       password: "Radeonstar@1120",
     },

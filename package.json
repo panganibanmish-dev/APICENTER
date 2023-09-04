@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress open": "cypress open",
-    "report": "npm run test -- --reporter mochawesome && npx marge cypress/reports/*.json",
+    "report": "npm run headless-staging --reporter mochawesome && npx marge cypress/reports/*.json",
     "allure serve": "allure-results",
     "allure generate": "allure-results",
     "allure-report": "npx allure generate allure-results --clean allure-report",

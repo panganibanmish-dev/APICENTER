@@ -7,6 +7,7 @@ describe("Billing Page Test Suite", () => {
   beforeEach(() => {
     LoginPage.goToLoginPage();
     LoginPage.loginAdmin(login_email, login_password);
+    cy.get("body").contains("Account").click();
     BillingPage.clickBillingTab();
   });
   it("should be verify the label", () => {
